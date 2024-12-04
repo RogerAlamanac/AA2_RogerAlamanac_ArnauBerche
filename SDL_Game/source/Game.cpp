@@ -8,7 +8,7 @@ void Game::Init()
 {
 	RM->Init();
 
-	RM->LoadTexture("resources/guitar.jpg");
+	RM->LoadTexture("resources/Spaceship.png");
 
 	assert(SM.AddScene("Main Menu", new MainMenu()));
 	assert(SM.AddScene("Gameplay", new Gameplay()));
