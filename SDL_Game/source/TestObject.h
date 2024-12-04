@@ -2,7 +2,7 @@
 #include "Object.h"
 class TestObject : public Object {
 public:
-	TestObject() : Object("resources/guitar.jpg", Vector2(0.f, 0.f), Vector2(1600.f, 680.f)) {
+	TestObject() : Object("resources/SpriteSheet.png", Vector2(0.f, 0.f), Vector2(1600.f, 680.f), 1) {
 
 		//Rand in all the window
 		Vector2 randomPos = Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT);

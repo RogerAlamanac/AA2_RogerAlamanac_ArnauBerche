@@ -3,6 +3,7 @@
 #include "Rigidbody.h"
 #include "ImageRenderer.h"
 #include "TimeManager.h"
+#include "AnimatedImageRenderer.h"
 class Object {
 private:
 	bool isPendingDestroy = false;
@@ -12,14 +13,21 @@ protected:
 	Transform* transform;
 	Rigidbody* physics;
 public:
-	Object(std::string texturePath, Vector2 sourceOffset, Vector2 sourceSize)
+	Object(std::string texturePath, Vector2 sourceOffset, Vector2 sourceSize, int imgType)
 	{
+		isPendingDestroy = false;
 		transform = new Transform();
 		physics = new Rigidbody(transform);
 		physics->AddCollider(new AABB(sourceOffset, sourceSize * 0.2f));
-		renderer = new ImageRenderer(transform, texturePath, sourceOffset, sourceSize);
-
-		isPendingDestroy = false;
+		if (imgType == 0)
+		{
+			renderer = new ImageRenderer(transform, texturePath, sourceOffset, sourceSize);
+		}
+		else if (imgType == 1)
+		{
+			renderer = new AnimatedImageRenderer(32, 32, 60, true, transform, texturePath, sourceOffset, sourceSize);
+		}
+		
 	}
 	~Object() {
 		delete transform;

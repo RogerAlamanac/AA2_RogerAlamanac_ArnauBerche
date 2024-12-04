@@ -431,7 +431,6 @@ typedef struct SDL_ControllerTouchpadEvent
     Sint32 finger;      /**< The index of the finger on the touchpad */
     float x;            /**< Normalized in the range 0...1 with 0 being on the left */
     float y;            /**< Normalized in the range 0...1 with 0 being at the top */
-
     float pressure;     /**< Normalized in the range 0...1 */
 } SDL_ControllerTouchpadEvent;
 
