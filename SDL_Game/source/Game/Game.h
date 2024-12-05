@@ -1,7 +1,7 @@
 #pragma once
 #include<SDL.h>;
-#include "Object.h"
-#include "Scene.h"
+#include "../Object/Object.h"
+#include "../Scenes/Scene.h"
 class Game
 {
 

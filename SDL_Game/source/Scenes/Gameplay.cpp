@@ -1,5 +1,6 @@
 #include "Gameplay.h"
-#include "TestObject.h"
+#include "../Object/TestObject.h"
+
 void Gameplay::OnEnter()
 {
 	for(int i = 0; i < 50; i++)

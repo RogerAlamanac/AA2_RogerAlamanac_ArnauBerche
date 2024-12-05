@@ -1,6 +1,7 @@
 #pragma once
 #include "Renderer.h"
 #include "RenderManager.h"
+#include "../Object/Transform.h"
 class ImageRenderer : public Renderer {
 public:
 	ImageRenderer(Transform* transform, std::string resourcePath, Vector2 sourceOffset, Vector2 sourceSize) : Renderer(transform, resourcePath) {

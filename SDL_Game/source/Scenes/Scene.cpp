@@ -1,5 +1,5 @@
 #include "Scene.h"
-#include "Spawner.h"
+#include "../Spawner/Spawner.h"
 
 void Scene::OnExit()
 {

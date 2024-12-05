@@ -18,90 +18,162 @@
     <ClCompile Include="source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Game.cpp">
+    <ClCompile Include="source\Game\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\AABB.cpp">
+    <ClCompile Include="source\Object\AABB.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Rigidbody.cpp">
+    <ClCompile Include="source\Object\Rigidbody.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Object.cpp">
+    <ClCompile Include="source\Object\Object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\RenderManager.cpp">
+    <ClCompile Include="source\Renderers\RenderManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\ImageRenderer.cpp">
+    <ClCompile Include="source\Renderers\ImageRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Gameplay.cpp">
+    <ClCompile Include="source\Scenes\Gameplay.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\MainMenu.cpp">
+    <ClCompile Include="source\Scenes\MainMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Scene.cpp">
+    <ClCompile Include="source\Scenes\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\AnimatedImageRenderer.cpp">
+    <ClCompile Include="source\Renderers\AnimatedImageRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Player\Spaceship.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Player\Tank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Player\Swatter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Enemies\BasicEnemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Enemies\SeekerEnemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Enemies\ShootingEnemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Enemies\AimingEnemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Enemies\ExplodingEnemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Elements\Bullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Elements\Explosion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Elements\Background.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\Game.h">
+    <ClInclude Include="source\Game\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Vector2.h">
+    <ClInclude Include="source\Object\Vector2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\InputManager.h">
+    <ClInclude Include="source\InputManager\InputManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\AABB.h">
+    <ClInclude Include="source\Object\AABB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Transform.h">
+    <ClInclude Include="source\Object\Transform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Rigidbody.h">
+    <ClInclude Include="source\Object\Rigidbody.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Object.h">
+    <ClInclude Include="source\Object\Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\RenderManager.h">
+    <ClInclude Include="source\Renderers\RenderManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Renderer.h">
+    <ClInclude Include="source\Renderers\Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\ImageRenderer.h">
+    <ClInclude Include="source\Renderers\ImageRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\TimeManager.h">
+    <ClInclude Include="source\InputManager\TimeManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Scene.h">
+    <ClInclude Include="source\Scenes\Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\MainMenu.h">
+    <ClInclude Include="source\Scenes\MainMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Gameplay.h">
+    <ClInclude Include="source\Scenes\Gameplay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\SceneManager.h">
+    <ClInclude Include="source\Scenes\SceneManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Spawner.h">
+    <ClInclude Include="source\Spawner\Spawner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\TestObject.h">
+    <ClInclude Include="source\Object\TestObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\AnimatedImageRenderer.h">
+    <ClInclude Include="source\Renderers\AnimatedImageRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Player\Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Player\Spaceship.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Player\Tank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Player\Swatter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Enemies\Enemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Enemies\BasicEnemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Enemies\SeekerEnemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Enemies\ShootingEnemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Enemies\AimingEnemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Enemies\ExplodingEnemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Elements\Bullet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Elements\Explosion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Elements\Background.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -110,6 +182,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="resources\SpriteSheet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\Spaceship.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

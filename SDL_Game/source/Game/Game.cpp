@@ -1,9 +1,9 @@
 #include "Game.h"
-#include "RenderManager.h"
-#include "SceneManager.h"
-#include "Gameplay.h"
-#include "MainMenu.h"
-#include "InputManager.h"
+#include "../Renderers/RenderManager.h"
+#include "../Scenes/SceneManager.h"
+#include "../Scenes/Gameplay.h"
+#include "../Scenes/MainMenu.h"
+#include "../InputManager/InputManager.h"
 void Game::Init()
 {
 	RM->Init();

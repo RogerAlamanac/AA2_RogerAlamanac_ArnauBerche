@@ -1,9 +1,9 @@
 #pragma once
 #include "Transform.h"
 #include "Rigidbody.h"
-#include "ImageRenderer.h"
-#include "TimeManager.h"
-#include "AnimatedImageRenderer.h"
+#include "../Renderers/ImageRenderer.h"
+#include "../InputManager/TimeManager.h"
+#include "../Renderers/AnimatedImageRenderer.h"
 class Object {
 private:
 	bool isPendingDestroy = false;

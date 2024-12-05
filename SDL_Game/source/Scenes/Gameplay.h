@@ -1,7 +1,7 @@
 #pragma once
 #include "Scene.h"
-#include "TimeManager.h"
-#include "Spawner.h"
+#include "../InputManager/TimeManager.h"
+#include "../Spawner/Spawner.h"
 
 class Gameplay : public Scene {
 

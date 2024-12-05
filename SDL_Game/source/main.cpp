@@ -1,12 +1,12 @@
 //#include <SDL.h>
 //#include <random>
 //#include <SDL_image.h>
-#include "Game.h"
+#include "Game/Game.h"
 #include <iostream>
 #include <exception>
-#include "InputManager.h"
-#include "AABB.h"
-#include "TimeManager.h"
+#include "InputManager/InputManager.h"
+#include "Object/AABB.h"
+#include "InputManager/TimeManager.h"
 int main(int argc, char* args[]) {
 	srand(time(NULL));
 	Game game;

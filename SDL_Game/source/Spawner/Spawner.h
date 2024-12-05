@@ -1,6 +1,6 @@
 #pragma once
 #include <queue>
-#include "Object.h"
+#include "../Object/Object.h"
 
 #define SPAWN Spawner::Instance()
 class Spawner {
