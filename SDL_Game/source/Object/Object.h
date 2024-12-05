@@ -15,7 +15,7 @@ protected:
 public:
 	Object(std::string texturePath, Vector2 sourceOffset, Vector2 sourceSize, int imgType)
 	{
-		isPendingDestroy = false;
+		//isPendingDestroy = false;
 		transform = new Transform();
 		physics = new Rigidbody(transform);
 		physics->AddCollider(new AABB(sourceOffset, sourceSize * 0.2f));

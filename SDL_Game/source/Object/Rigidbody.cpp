@@ -40,8 +40,11 @@ void Rigidbody::Update(float dt)
     angularAcceleration = 0.0f;
 
     //5. Check Collision
+    Vector2 offset = (Vector2(-transform->size.x, -transform->size.y) / 2.0f) * transform->scale;
+
     for (AABB* col : colliders) {
         col->SetTopLeft(transform->position);
+        col->SetSize(transform->size * transform->scale);
     }
 
 }
