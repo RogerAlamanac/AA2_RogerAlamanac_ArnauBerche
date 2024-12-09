@@ -52,7 +52,11 @@
     <ClInclude Include="source\Enemies\SeekerEnemy.h" />
     <ClInclude Include="source\Enemies\BasicEnemy.h" />
     <ClInclude Include="source\Enemies\Enemy.h" />
+    <ClInclude Include="source\FPS_Counter_UI.h" />
+    <ClInclude Include="source\Object\ImageObject.h" />
+    <ClInclude Include="source\Object\TextObject.h" />
     <ClInclude Include="source\Renderers\AnimatedImageRenderer.h" />
+    <ClInclude Include="source\Renderers\TextRenderer.h" />
     <ClInclude Include="source\Scenes\Gameplay.h" />
     <ClInclude Include="source\Renderers\ImageRenderer.h" />
     <ClInclude Include="source\Scenes\MainMenu.h" />
@@ -86,6 +90,7 @@
     <ProjectGuid>{83564ebd-da53-4e8b-ac89-50456cef66ee}</ProjectGuid>
     <RootNamespace>SDLGame</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>AA2_RogerAlamanac_ArnauBerche</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

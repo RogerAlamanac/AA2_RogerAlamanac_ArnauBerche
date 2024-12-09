@@ -18,6 +18,9 @@ void RenderManager::InitSDL()
 	if (!success) {
 		throw SDL_GetError();
 	}
+	if (TTF_Init() == -1) {
+		throw TTF_GetError();
+	}
 }
 
 void RenderManager::CreateWindowAndRenderer()
@@ -75,4 +78,16 @@ SDL_Texture* RenderManager::GetTexture(std::string path)
 {
 	if(textures.find(path) != textures.end())
 	return textures[path];
+}
+
+void RenderManager::LoadFont(std::string path)
+{
+	if (fonts.find(path) != fonts.end()) return;
+	fonts[path] = TTF_OpenFont(path.c_str(), 24);
+}
+
+TTF_Font* RenderManager::GetFont(std::string path)
+{
+	if (fonts.find(path) != fonts.end()) return fonts[path];
+	return nullptr;
 }

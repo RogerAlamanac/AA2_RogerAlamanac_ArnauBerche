@@ -3,6 +3,7 @@
 #include <map>
 #include <string>
 #include <cassert>
+#include "SDL_ttf.h"
 
 #define RM RenderManager::GetInstance()
 class RenderManager {
@@ -16,6 +17,7 @@ private:
 	SDL_Renderer* renderer;
 
 	std::map<std::string, SDL_Texture*> textures;
+	std::map<std::string, TTF_Font*> fonts;
 
 	void InitSDL();
 	void CreateWindowAndRenderer();
@@ -38,4 +40,7 @@ public:
 
 	void LoadTexture(std::string path);
 	SDL_Texture* GetTexture(std::string path);
+
+	void LoadFont(std::string path);
+	TTF_Font* GetFont(std::string path);
 };

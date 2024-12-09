@@ -7,27 +7,18 @@
 class Object {
 private:
 	bool isPendingDestroy = false;
-	ImageRenderer* renderer;
+	
 
 protected:
 	Transform* transform;
 	Rigidbody* physics;
+	Renderer* renderer;
 public:
-	Object(std::string texturePath, Vector2 sourceOffset, Vector2 sourceSize, int imgType)
+	Object()
 	{
 		//isPendingDestroy = false;
 		transform = new Transform();
 		physics = new Rigidbody(transform);
-		physics->AddCollider(new AABB(sourceOffset, sourceSize * 0.2f));
-		if (imgType == 0)
-		{
-			renderer = new ImageRenderer(transform, texturePath, sourceOffset, sourceSize);
-		}
-		else if (imgType == 1)
-		{
-			renderer = new AnimatedImageRenderer(32, 32, 60, true, transform, texturePath, sourceOffset, sourceSize);
-		}
-		
 	}
 	~Object() {
 		delete transform;

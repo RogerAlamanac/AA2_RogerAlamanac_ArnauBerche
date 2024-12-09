@@ -176,6 +176,18 @@
     <ClInclude Include="source\Elements\Background.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\Renderers\TextRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Object\ImageObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\FPS_Counter_UI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Object\TextObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\guitar.jpg">

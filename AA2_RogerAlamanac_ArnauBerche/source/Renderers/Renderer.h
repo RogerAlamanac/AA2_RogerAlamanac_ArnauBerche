@@ -21,6 +21,6 @@ public:
 	virtual void Update(float dt) = 0;
 	virtual void Render() = 0;
 
-	void SetColor(SDL_Color color) { this->color = color; }
+	virtual void SetColor(SDL_Color color) { this->color = color; }
 	inline SDL_Color GetColor() { return color; }
 };
