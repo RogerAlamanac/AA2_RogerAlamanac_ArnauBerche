@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Audio\AudioManager.cpp" />
     <ClCompile Include="source\Elements\Background.cpp" />
     <ClCompile Include="source\Elements\Explosion.cpp" />
     <ClCompile Include="source\Elements\Bullet.cpp" />
@@ -43,6 +44,7 @@
     <ClCompile Include="source\Player\Swatter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Audio\AudioManager.h" />
     <ClInclude Include="source\Elements\Background.h" />
     <ClInclude Include="source\Elements\Explosion.h" />
     <ClInclude Include="source\Elements\Bullet.h" />

@@ -1,6 +1,8 @@
 #include "Gameplay.h"
 #include "../Object/TestObject.h"
 #include "../Object/TextObject.h"
+#include "../Audio/AudioManager.h"
+#include "../InputManager/InputManager.h"
 
 void Gameplay::OnEnter()
 {
@@ -14,6 +16,11 @@ void Gameplay::OnEnter()
 	//SPAWN.SpawnObject(textObj);
 
 	SPAWN.SpawnObject(new TestObject(Vector2(100, 400)));
+
+	AM.LoadSong("illuminati");
+	AM.PlaySong("illuminati");
+
+	AM.LoadClip("d");
 }
 
 void Gameplay::Update()

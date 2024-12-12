@@ -15,4 +15,5 @@ public:
 			renderer = new AnimatedImageRenderer(32, 32, 60, true, transform, texturePath, sourceOffset, sourceSize);
 		}
 	}
+	inline virtual void Render() { renderer->Render(); }
 };
