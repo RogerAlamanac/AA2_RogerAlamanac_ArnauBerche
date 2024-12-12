@@ -32,22 +32,7 @@ class TestObject : public ImageObject {
 
 public:
 	//Provem moviment
-	TestObject(Vector2 pos) : ImageObject("resources/Spaceship.png", Vector2(0.f, 0.f), Vector2(384.f, 96.f), 0) {
-        transform->position = pos;
-        transform->scale = Vector2(1.f, 1.f);
-	}
-    void Update() {
-        InputManager& input = IM;
-        //transform->position = pos;
-        
-        if (input.GetEvent(SDLK_a, DOWN) || input.GetEvent(SDLK_a, HOLD)) {
-            transform->position.y -= 384.f;
-            std::cout << "MOVE" << std::endl;
-        }
-        if (input.GetEvent(SDLK_d, DOWN) || input.GetEvent(SDLK_d, HOLD)) {
-            transform->position.y += 384.f;
-            std::cout << "MOVE" << std::endl;
-        }
-    }
+
+   
 
 };

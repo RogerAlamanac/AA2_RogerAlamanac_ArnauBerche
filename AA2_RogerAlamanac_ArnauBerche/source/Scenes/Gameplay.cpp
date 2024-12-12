@@ -3,6 +3,8 @@
 #include "../Object/TextObject.h"
 #include "../Audio/AudioManager.h"
 #include "../InputManager/InputManager.h"
+#include "../Player/Spaceship.h"
+#include "../Elements/Bullet.h"
 
 void Gameplay::OnEnter()
 {
@@ -15,7 +17,8 @@ void Gameplay::OnEnter()
 	//textObj->GetTransform()->position = Vector2(100, 100);
 	//SPAWN.SpawnObject(textObj);
 
-	SPAWN.SpawnObject(new TestObject(Vector2(100, 400)));
+	SPAWN.SpawnObject(new Spaceship(Vector2(100, 700)));
+	SPAWN.SpawnObject(new Bullet(Vector2(100, 700),Vector2(0,100)));
 
 	AM.LoadSong("illuminati");
 	AM.PlaySong("illuminati");
