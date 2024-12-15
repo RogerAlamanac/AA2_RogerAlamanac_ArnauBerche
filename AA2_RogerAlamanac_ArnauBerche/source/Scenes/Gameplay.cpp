@@ -4,6 +4,7 @@
 #include "../InputManager/InputManager.h"
 #include "../InputManager/TimeManager.h"
 #include "../Player/Spaceship.h"
+#include "../Player/Tank.h"
 #include "../InputManager/TimeManager.h"
 #include "../Enemies/BasicEnemy.h"
 
@@ -16,6 +17,7 @@ void Gameplay::OnEnter()
 		SPAWN.SpawnObject(new Spaceship(Vector2(100, 700)));
 		break;
 	case 1:
+		SPAWN.SpawnObject(new Tank(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2)));
 		break;
 	case 2:
 		break;
