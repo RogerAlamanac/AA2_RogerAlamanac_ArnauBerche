@@ -15,7 +15,7 @@ public:
 	}
 	~Tank();
 	void Movement() override;
-	float DirectionToAim();
+	Vector2 DirectionToAim(Vector2 relativeOffset);
 	void Attack() override;
 	void Update() override;
 };

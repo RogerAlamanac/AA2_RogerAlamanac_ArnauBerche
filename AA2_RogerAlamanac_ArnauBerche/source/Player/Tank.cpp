@@ -64,18 +64,37 @@ void Tank::Attack()
 {
 	InputManager& input = IM;
 	if (input.GetLeftClick()) {
-		SPAWN.SpawnObject(new Bullet(ImageObject::transform->position - Vector2(0, ImageObject::transform->size.y / 2), Vector2(input.GetMouseX(), input.GetMouseY())));
+		//Math to make the bullet spawn at the tip of the canon
+		Vector2 playerPosition = ImageObject::transform->position;
+
+		float rotationAngle = ImageObject::transform->rotation; // Needs to be swaped by Canon later;
+		float radians = rotationAngle * (M_PI / 180.0f);
+
+		Vector2 relativeOffset(0, -ImageObject::transform->size.y / 2);
+
+		Vector2 rotatedOffset(
+			relativeOffset.x * cos(radians) - relativeOffset.y * sin(radians),
+			relativeOffset.x * sin(radians) + relativeOffset.y * cos(radians)
+		);
+		Vector2 bulletSpawnPosition = playerPosition + rotatedOffset;
+
+		// Spawn the bullet
+		SPAWN.SpawnObject(new Bullet(bulletSpawnPosition, 500, DirectionToAim(relativeOffset)));
 	}
 }
 
-float Tank::DirectionToAim() {
-    InputManager& input = IM;
+Vector2 Tank::DirectionToAim(Vector2 relativeOffset) {
+	InputManager& input = IM;
+	Vector2 adjustedPosition = transform->position + relativeOffset;
+	Vector2 direction;
 
-	float directionX = input.GetMouseX() - transform->position.x;
-	float directionY = input.GetMouseY() - transform->position.y;
-	float angle = atan2(directionY, directionX) * 180.0f;
-	transform->rotation = angle;
-    return transform->rotation;
+	// Calculate direction to the mouse
+	direction.x = input.GetMouseX() - adjustedPosition.x;
+	direction.y = input.GetMouseY() - adjustedPosition.y;
+
+	// Normalize the direction vector
+	direction.Normalize();
+	return direction;
 }
 
 void Tank::Update()

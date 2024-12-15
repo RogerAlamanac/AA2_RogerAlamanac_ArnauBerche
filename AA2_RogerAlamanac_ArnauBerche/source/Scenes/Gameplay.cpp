@@ -17,7 +17,7 @@ void Gameplay::OnEnter()
 		SPAWN.SpawnObject(new Spaceship(Vector2(100, 700)));
 		break;
 	case 1:
-		SPAWN.SpawnObject(new Tank(Vector2(100, 700), 100));
+		SPAWN.SpawnObject(new Tank(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), 100));
 		break;
 	case 2:
 		break;
