@@ -84,6 +84,12 @@
     <ClCompile Include="source\Audio\AudioManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\Player\Attacker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Player\Damager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Game\Game.h">
@@ -194,6 +200,12 @@
     <ClInclude Include="source\Audio\AudioManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\Player\Attacker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Player\Damager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\guitar.jpg">
@@ -211,5 +223,26 @@
     <Image Include="resources\EnemyAlien.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="resources\tank turret.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\tank body.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\none.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\circle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\basicenemy.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\Swatter.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="source\WavesEnemies.xml" />
   </ItemGroup>
 </Project>

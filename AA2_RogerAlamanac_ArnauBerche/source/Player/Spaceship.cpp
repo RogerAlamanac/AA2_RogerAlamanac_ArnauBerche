@@ -26,6 +26,10 @@ void Spaceship::Attack()
     }
 }
 
+void Spaceship::ReceiveDamage()
+{
+}
+
 void Spaceship::Update()
 {
     Object::Update();

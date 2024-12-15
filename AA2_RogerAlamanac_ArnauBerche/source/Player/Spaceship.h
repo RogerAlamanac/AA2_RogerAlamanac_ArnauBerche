@@ -13,6 +13,7 @@ public:
 	~Spaceship();
 	void Movement() override;
 	void Attack() override;
+	void ReceiveDamage() override;
 	void Update() override;
 };
 

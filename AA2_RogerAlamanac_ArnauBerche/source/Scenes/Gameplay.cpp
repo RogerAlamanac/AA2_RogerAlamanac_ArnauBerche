@@ -5,6 +5,7 @@
 #include "../InputManager/TimeManager.h"
 #include "../Player/Spaceship.h"
 #include "../Player/Tank.h"
+#include "../Player/Swatter.h"
 #include "../InputManager/TimeManager.h"
 #include "../Enemies/BasicEnemy.h"
 
@@ -20,6 +21,7 @@ void Gameplay::OnEnter()
 		SPAWN.SpawnObject(new Tank(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), 100));
 		break;
 	case 2:
+		SPAWN.SpawnObject(new Swatter(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), 3.f));
 		break;
 	default:
 		break;
@@ -57,8 +59,26 @@ void Gameplay::Update()
 		}
 		break;
 	case 1:
+		if ((int)TIME.GetElapsedTime() % 5 == 0 && !enemySpawned)
+		{
+			SPAWN.SpawnObject(new BasicEnemy(Vector2(90, -90), 100, 10, 1, true));
+			enemySpawned = true;
+		}
+		else if ((int)TIME.GetElapsedTime() % 5 != 0)
+		{
+			enemySpawned = false;
+		}
 		break;
 	case 2:
+		if ((int)TIME.GetElapsedTime() % 5 == 0 && !enemySpawned)
+		{
+			SPAWN.SpawnObject(new BasicEnemy(Vector2(90, -90), 100, 10, 1, true));
+			enemySpawned = true;
+		}
+		else if ((int)TIME.GetElapsedTime() % 5 != 0)
+		{
+			enemySpawned = false;
+		}
 		break;
 	default:
 		break;

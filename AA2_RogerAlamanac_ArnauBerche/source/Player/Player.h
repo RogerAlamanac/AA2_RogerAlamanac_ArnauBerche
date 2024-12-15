@@ -1,6 +1,7 @@
 #pragma once
 #include "../Object/Object.h"
-
+#include "Attacker.h"
+#include "Damager.h"
 enum class PlayerDirections
 {
 	NONE = 0,
@@ -14,9 +15,7 @@ enum class PlayerDirections
 	DOWNRIGHT = 8
 };
 
-class Player {
-private:
-	int health;
+class Player : public IAttacker, IDamager {
 public:
 	Player() = default;
 	Vector2 DirectionToVector(PlayerDirections direction) {
@@ -34,4 +33,5 @@ public:
 	}
 	virtual void Movement() = 0;
 	virtual void Attack() = 0;
+	virtual void ReceiveDamage() = 0;
 };

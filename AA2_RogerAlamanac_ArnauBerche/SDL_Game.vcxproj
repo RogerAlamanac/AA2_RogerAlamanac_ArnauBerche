@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Player\Damager.cpp" />
+    <ClCompile Include="source\Player\Attacker.cpp" />
     <ClCompile Include="source\Audio\AudioManager.cpp" />
     <ClCompile Include="source\Elements\Background.cpp" />
     <ClCompile Include="source\Elements\Explosion.cpp" />
@@ -44,6 +46,8 @@
     <ClCompile Include="source\Player\Swatter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Player\Damager.h" />
+    <ClInclude Include="source\Player\Attacker.h" />
     <ClInclude Include="source\Audio\AudioManager.h" />
     <ClInclude Include="source\Elements\Background.h" />
     <ClInclude Include="source\Elements\Explosion.h" />
@@ -82,11 +86,20 @@
     <ClInclude Include="source\Player\Swatter.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="resources\basicenemy.png" />
     <Image Include="resources\Bullet.png" />
+    <Image Include="resources\circle.png" />
     <Image Include="resources\EnemyAlien.png" />
     <Image Include="resources\guitar.jpg" />
+    <Image Include="resources\none.png" />
     <Image Include="resources\Spaceship.png" />
     <Image Include="resources\SpriteSheet.png" />
+    <Image Include="resources\Swatter.png" />
+    <Image Include="resources\tank body.png" />
+    <Image Include="resources\tank turret.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="source\WavesEnemies.xml" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

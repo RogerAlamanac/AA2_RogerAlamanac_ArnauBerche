@@ -12,8 +12,10 @@ void Game::Init()
 	RM->LoadTexture("resources/circle.png");
 	RM->LoadTexture("resources/basicenemy.png");
 	RM->LoadTexture("resources/guitar.jpg");
-	
-
+	RM->LoadTexture("resources/tank turret.png");
+	RM->LoadTexture("resources/tank body.png");
+	RM->LoadTexture("resources/Swatter.png");
+	RM->LoadTexture("resources/none.png");
 	assert(SM.AddScene("Main Menu", new MainMenu()));
 	assert(SM.AddScene("Gameplay", new Gameplay(1)));
 	assert(SM.InitFirstScene("Gameplay"));
