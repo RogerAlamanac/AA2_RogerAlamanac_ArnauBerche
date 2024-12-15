@@ -2,4 +2,5 @@
 
 void Bullet::Update()
 {
+	Object::Update();
 }

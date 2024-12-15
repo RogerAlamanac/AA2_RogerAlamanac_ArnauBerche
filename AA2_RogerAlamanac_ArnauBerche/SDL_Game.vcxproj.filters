@@ -205,5 +205,11 @@
     <Image Include="resources\Spaceship.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="resources\Bullet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\EnemyAlien.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

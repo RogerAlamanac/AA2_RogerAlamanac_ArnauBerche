@@ -5,6 +5,6 @@ class ExplodingEnemy : public Enemy
 public:
 	ExplodingEnemy();
 	~ExplodingEnemy();
-	void Movement() override;
+	void BaseMovement() override;
 };
 

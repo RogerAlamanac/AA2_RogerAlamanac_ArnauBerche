@@ -1,15 +1,15 @@
 #pragma once
-#include "Scene.h"
-
-class Gameplay : public Scene {
+#include "Gameplay.h"
+class SpaceInvaders : public Gameplay
+{
 private:
-	int game;
 	bool enemySpawned = false;
 public:
-	Gameplay(int type) : game(type) {};
+	SpaceInvaders() = default;
 	void OnEnter() override;
 	void Update() override;
 	void OnExit() override;
 	void Render() override;
 	void SpawnObjectRandomly();
 };
+

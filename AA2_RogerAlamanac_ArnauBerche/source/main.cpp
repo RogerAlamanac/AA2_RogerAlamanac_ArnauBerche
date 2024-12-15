@@ -24,7 +24,8 @@ int main(int argc, char* args[]) {
 	while (playing) {
 		TIME.Update();
 		if (TIME.ShouldUpdateGame()) {
-			std::cout << TIME.GetDeltaTime() << std::endl;
+			//std::cout << TIME.GetDeltaTime() << std::endl;
+			std::cout << TIME.GetElapsedTime() << std::endl;
 			playing = !IM.Listen();
 			game.Update();
 			game.Render();

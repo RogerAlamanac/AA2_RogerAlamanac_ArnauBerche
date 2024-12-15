@@ -9,9 +9,12 @@ void Game::Init()
 	RM->Init();
 
 	RM->LoadTexture("resources/Spaceship.png");
+	RM->LoadTexture("resources/circle.png");
+	RM->LoadTexture("resources/basicenemy.png");
+	
 
 	assert(SM.AddScene("Main Menu", new MainMenu()));
-	assert(SM.AddScene("Gameplay", new Gameplay()));
+	assert(SM.AddScene("Gameplay", new Gameplay(0)));
 	assert(SM.InitFirstScene("Gameplay"));
 
 }

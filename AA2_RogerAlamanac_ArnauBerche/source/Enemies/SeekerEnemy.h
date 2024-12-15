@@ -5,6 +5,6 @@ class SeekerEnemy : public Enemy
 public:
 	SeekerEnemy();
 	~SeekerEnemy();
-	void Movement() override;
+	void BaseMovement() override;
 };
 

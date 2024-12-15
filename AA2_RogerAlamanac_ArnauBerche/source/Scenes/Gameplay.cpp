@@ -1,13 +1,28 @@
 #include "Gameplay.h"
-#include "../Object/TestObject.h"
-#include "../Object/TextObject.h"
+#include "../Spawner/Spawner.h"
 #include "../Audio/AudioManager.h"
 #include "../InputManager/InputManager.h"
+#include "../InputManager/TimeManager.h"
 #include "../Player/Spaceship.h"
-#include "../Elements/Bullet.h"
+#include "../InputManager/TimeManager.h"
+#include "../Enemies/BasicEnemy.h"
+
 
 void Gameplay::OnEnter()
 {
+	switch (game)
+	{
+	case 0:
+		SPAWN.SpawnObject(new Spaceship(Vector2(100, 700)));
+		break;
+	case 1:
+		break;
+	case 2:
+		break;
+	default:
+		break;
+	}
+
 	//for(int i = 0; i < 50; i++)
 	//	SpawnObjectRandomly();
 	//SPAWN.SpawnObject(new TestObject(Vector2(100, 100), Vector2(1000, 0)));
@@ -17,18 +32,35 @@ void Gameplay::OnEnter()
 	//textObj->GetTransform()->position = Vector2(100, 100);
 	//SPAWN.SpawnObject(textObj);
 
-	SPAWN.SpawnObject(new Spaceship(Vector2(100, 700)));
-	SPAWN.SpawnObject(new Bullet(Vector2(100, 700),Vector2(0,100)));
+	//AM.LoadSong("illuminati");
+	//AM.PlaySong("illuminati");
 
-	AM.LoadSong("illuminati");
-	AM.PlaySong("illuminati");
-
-	AM.LoadClip("d");
+	//AM.LoadClip("d");
 }
 
 void Gameplay::Update()
 {
 	Scene::Update();
+	switch (game)
+	{
+	case 0:
+		if ((int)TIME.GetElapsedTime() % 5 == 0 && !enemySpawned)
+		{
+			SPAWN.SpawnObject(new BasicEnemy(Vector2(90, -90), 100, 10, 1, true));
+			enemySpawned = true;
+		}
+		else if ((int)TIME.GetElapsedTime() % 5 != 0)
+		{
+			enemySpawned = false;
+		}
+		break;
+	case 1:
+		break;
+	case 2:
+		break;
+	default:
+		break;
+	}
 }
 
 void Gameplay::OnExit()

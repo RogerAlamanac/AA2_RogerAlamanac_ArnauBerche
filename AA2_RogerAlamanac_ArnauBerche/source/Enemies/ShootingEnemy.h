@@ -8,7 +8,7 @@ private:
 public:
 	ShootingEnemy();
 	~ShootingEnemy();
-	void Movement() override;
+	void BaseMovement() override;
 	void Shoot();
 };
 
