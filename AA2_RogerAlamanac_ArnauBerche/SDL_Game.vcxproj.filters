@@ -206,6 +206,9 @@
     <ClInclude Include="source\Player\Damager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\Object\UIObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\guitar.jpg">

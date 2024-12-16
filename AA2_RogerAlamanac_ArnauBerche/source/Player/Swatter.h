@@ -2,7 +2,7 @@
 #include "Player.h"
 #include "../Object/ImageObject.h"
 #include "../Enemies/BasicEnemy.h"
-class Swatter : public ImageObject, Player
+class Swatter : public ImageObject, public Player
 {
 private:
 	float currentTime;
@@ -10,7 +10,7 @@ private:
 	const float maxVelocity = 200.0f;
 	bool isStuck = false;
 public:
-	Swatter(Vector2 pos) : ImageObject("resources/Swatter.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0) {
+	Swatter(Vector2 pos) : ImageObject("resources/Swatter.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "PLAYER"), Player() {
 		ImageObject::transform->position = pos;
 		ImageObject::transform->scale = Vector2(1.f, 1.f);
 		stuckTime = 0;

@@ -1,11 +1,9 @@
 #pragma once
 #include "Object.h"
 #include "../Renderers/ImageRenderer.h"
-class ImageObject : public Object {
+class UIObject : public Object {
 public:
-	ImageObject(std::string texturePath, Vector2 sourceOffset, Vector2 sourceSize, int imgType, std::string _tag) : Object() {
-		physics->AddCollider(new AABB(sourceOffset , sourceSize));
-		tag = _tag;
+	UIObject(std::string texturePath, Vector2 sourceOffset, Vector2 sourceSize, int imgType) : Object() {
 		if (imgType == 0)
 		{
 			renderer = new ImageRenderer(transform, texturePath, sourceOffset, sourceSize);

@@ -15,7 +15,7 @@ enum class PlayerDirections
 	DOWNRIGHT = 8
 };
 
-class Player : public IAttacker, IDamager {
+class Player : public IAttacker, public IDamager {
 public:
 	Player() = default;
 	Vector2 DirectionToVector(PlayerDirections direction) {

@@ -14,6 +14,8 @@ protected:
 	Rigidbody* physics;
 	Renderer* renderer;
 public:
+	std::string tag;
+
 	Object()
 	{
 		//isPendingDestroy = false;
