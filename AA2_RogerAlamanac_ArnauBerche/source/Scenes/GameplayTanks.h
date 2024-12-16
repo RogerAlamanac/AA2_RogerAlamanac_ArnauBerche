@@ -1,10 +1,12 @@
 #pragma once
 #include "Scene.h"
-#include "../Object/TextObject.h"
-#include "../Renderers/TextRenderer.h"
-class MainMenu : public Scene {
+
+class GameplayTanks : public Scene {
+private:
+	bool enemySpawned = false;
+	int amountEnemies = 20;
 public:
-	MainMenu() = default;
+	GameplayTanks() = default;
 	void OnEnter() override;
 	void OnExit() override;
 	void Update() override;

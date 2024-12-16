@@ -1,12 +1,17 @@
 #pragma once
 #include "Enemy.h"
 #include "../Object/ImageObject.h"
+#include "../Player/Player.h"
 class SeekerEnemy : public ImageObject, Enemy
 {
 private:
     float rangeToSeek;
+    Object* target;
+
+    float timeToMove = 3.f;
+    float currentTimeToMove;
 public:
-    SeekerEnemy(Vector2 pos, float _movementSpeed, int _health, int _damage, float _rangeToSeek, bool _loops) :
+    SeekerEnemy(Vector2 pos, float _movementSpeed, int _health, int _damage, float _rangeToSeek, bool _loops, Player* player) :
         ImageObject("resources/basicenemy.png", Vector2(0.f, 0.f), Vector2(180.f, 180.f), 0, "ENEMY"), Enemy(_health, _damage, _loops) {
 
         pathPattern.push(Directions::DOWN);
@@ -16,6 +21,7 @@ public:
         transform->position = pos;
         movementSpeed = _movementSpeed;
         rangeToSeek = _rangeToSeek;
+        target = dynamic_cast<Object*>(player);
         ImageObject::transform->scale = Vector2(1.f, 1.f);
     };
 	~SeekerEnemy();
@@ -26,15 +32,16 @@ public:
         return sqrt(dx * dx + dy * dy);
     }
 
-    // Método auxiliar para calcular la dirección normalizada del enemigo hacia el jugador
-    Vector2 CalculateDirection(const Vector2& from, const Vector2& to) {
-        Vector2 direction = { to.x - from.x, to.y - from.y };
-        float length = sqrt(direction.x * direction.y + direction.y * direction.y);
+    Vector2 DirectionToPlayer(){
+        Vector2 direction = target->GetTransform()->position - transform->position;
+        float length = CalculateDistance(transform->position, target->GetTransform()->position);
         if (length != 0) {
-            direction.x /= length;
-            direction.y /= length;
+            direction.Normalize();
         }
         return direction;
-    }
+    };
+
+    void Update() override;
+
 };
 

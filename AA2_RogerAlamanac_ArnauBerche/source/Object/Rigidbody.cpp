@@ -24,26 +24,25 @@ bool Rigidbody::CheckOverlappingPoint(const Vector2& point) const
 
 void Rigidbody::Update(float dt)
 {
-    //1. Update velocity
     velocity = velocity + acceleration * dt;
     angularVelocity = angularVelocity + angularAcceleration * dt;
-    //2. Update DRAG
+
     velocity = velocity * (1.0f / (1.0f + dt * linearDrag));
     angularVelocity = angularVelocity * (1.0f / (1.0f + dt * angularDrag));
 
-    //3. Update position
+
     transform->position = transform->position + velocity * dt;
     transform->rotation = transform->rotation + angularVelocity * dt;
 
-    //4. Reset acceleration
+
     acceleration = Vector2();
     angularAcceleration = 0.0f;
 
-    //5. Check Collision
+
     Vector2 offset = (Vector2(-transform->size.x, -transform->size.y) / 2.0f) * transform->scale;
 
     for (AABB* col : colliders) {
-        col->SetTopLeft(transform->position);
+        col->SetTopLeft(transform->position + offset);
         col->SetSize(transform->size * transform->scale);
     }
 

@@ -5,24 +5,25 @@
 class Swatter : public ImageObject, public Player
 {
 private:
-	float currentTime;
-	float stuckTime;
-	const float maxVelocity = 200.0f;
-	bool isStuck = false;
+	enum class SwatterState { MOVING, ATTACKING, STUNNED };
+	SwatterState currentState;
+	
+	const float stopThreshold = 5.0f;
+	const float movementMultiplyer = 100.0f;
+	
+	const float maxStunTime = 2.0f;
+	float currentStunTime = 0.0f;
+	
 public:
 	Swatter(Vector2 pos) : ImageObject("resources/Swatter.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "PLAYER"), Player() {
 		ImageObject::transform->position = pos;
 		ImageObject::transform->scale = Vector2(1.f, 1.f);
-		stuckTime = 0;
-		currentTime = 0;
 	};
 	~Swatter() {};
-	Vector2 DirectionToAim(Vector2 relativeOffset);
-	void Movement() override;
 	void Attack() override;
-	bool IsFlyHit();
+	void Movement() override;
 	void ReceiveDamage() override;
 	void Update() override;
-	bool CheckCollision(const Vector2& swatterPos, const Vector2& targetPos, float size);
+	void OnCollisionEnter(Object* other) override;
 };
 

@@ -1,7 +1,9 @@
 #include "Game.h"
 #include "../Renderers/RenderManager.h"
 #include "../Scenes/SceneManager.h"
-#include "../Scenes/Gameplay.h"
+#include "../Scenes/GameplaySpaceInvaders.h"
+#include "../Scenes/GameplaySplat.h"
+#include "../Scenes/GameplayTanks.h"
 #include "../Scenes/MainMenu.h"
 #include "../InputManager/InputManager.h"
 void Game::Init()
@@ -17,9 +19,12 @@ void Game::Init()
 	RM->LoadTexture("resources/tank body.png");
 	RM->LoadTexture("resources/Swatter.png");
 	RM->LoadTexture("resources/none.png");
+
 	assert(SM.AddScene("Main Menu", new MainMenu()));
-	assert(SM.AddScene("Gameplay", new Gameplay(0)));
-	assert(SM.InitFirstScene("Gameplay"));
+	assert(SM.AddScene("SpaceInvaders", new GameplaySpaceInvaders()));
+	assert(SM.AddScene("Tanks", new GameplayTanks()));
+	assert(SM.AddScene("Splat", new GameplaySplat()));
+	assert(SM.InitFirstScene("SpaceInvaders"));
 
 }
 

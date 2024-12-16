@@ -31,7 +31,7 @@ public:
 		return spawnedObjects.size();
 	}
 	inline void ClearSpawnedObjects() {
-		while (spawnedObjects.empty()) {
+		while (!spawnedObjects.empty()) {
 			delete spawnedObjects.front();
 			spawnedObjects.pop();
 		}

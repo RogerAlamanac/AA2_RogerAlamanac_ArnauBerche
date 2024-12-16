@@ -3,6 +3,7 @@
 void BasicEnemy::BaseMovement()
 {
 	ImageObject::physics->SetVelocity(DirectionToVector(pathPattern.front()) * movementSpeed);
+
 	switch (pathPattern.front())
 	{
 	case Directions::DOWN:

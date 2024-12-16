@@ -32,7 +32,6 @@ public:
 	}
 
 	void Update() {
-		//SDL time
 		elapsedTime = (double)SDL_GetTicks() / 1000.0;
 		deltaTime += elapsedTime - previousElapsedTime;
 		previousElapsedTime = elapsedTime;

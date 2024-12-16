@@ -18,9 +18,6 @@ public:
     }
 	~BasicEnemy();
 
-    //void OnCollisionEnter(Object* other) override {
-    //    Destroy();
-    //}
     void BaseMovement() override;
 	void Update() override;
     Vector2 GetPosition() { return transform->position; }

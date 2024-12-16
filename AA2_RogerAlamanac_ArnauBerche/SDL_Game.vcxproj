@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClCompile Include="source\Player\Damager.cpp" />
     <ClCompile Include="source\Player\Attacker.cpp" />
-    <ClCompile Include="source\Audio\AudioManager.cpp" />
     <ClCompile Include="source\Elements\Background.cpp" />
     <ClCompile Include="source\Elements\Explosion.cpp" />
     <ClCompile Include="source\Elements\Bullet.cpp" />
@@ -31,7 +30,6 @@
     <ClCompile Include="source\Enemies\SeekerEnemy.cpp" />
     <ClCompile Include="source\Enemies\BasicEnemy.cpp" />
     <ClCompile Include="source\Renderers\AnimatedImageRenderer.cpp" />
-    <ClCompile Include="source\Scenes\Gameplay.cpp" />
     <ClCompile Include="source\Renderers\ImageRenderer.cpp" />
     <ClCompile Include="source\Scenes\MainMenu.cpp" />
     <ClCompile Include="source\Object\Object.cpp" />
@@ -44,6 +42,9 @@
     <ClCompile Include="source\Player\Spaceship.cpp" />
     <ClCompile Include="source\Player\Tank.cpp" />
     <ClCompile Include="source\Player\Swatter.cpp" />
+    <ClCompile Include="source\Scenes\GameplaySpaceInvaders.cpp" />
+    <ClCompile Include="source\Scenes\GameplaySplat.cpp" />
+    <ClCompile Include="source\Scenes\GameplayTanks.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Object\UIObject.h" />
@@ -64,7 +65,6 @@
     <ClInclude Include="source\Object\TextObject.h" />
     <ClInclude Include="source\Renderers\AnimatedImageRenderer.h" />
     <ClInclude Include="source\Renderers\TextRenderer.h" />
-    <ClInclude Include="source\Scenes\Gameplay.h" />
     <ClInclude Include="source\Renderers\ImageRenderer.h" />
     <ClInclude Include="source\Scenes\MainMenu.h" />
     <ClInclude Include="source\Object\Object.h" />
@@ -77,8 +77,10 @@
     <ClInclude Include="source\Scenes\Scene.h" />
     <ClInclude Include="source\Scenes\SceneManager.h" />
     <ClInclude Include="source\Player\Player.h" />
+    <ClInclude Include="source\Scenes\GameplaySpaceInvaders.h" />
+    <ClInclude Include="source\Scenes\GameplaySplat.h" />
+    <ClInclude Include="source\Scenes\GameplayTanks.h" />
     <ClInclude Include="source\Spawner\Spawner.h" />
-    <ClInclude Include="source\Object\TestObject.h" />
     <ClInclude Include="source\InputManager\TimeManager.h" />
     <ClInclude Include="source\Object\Transform.h" />
     <ClInclude Include="source\Object\Vector2.h" />

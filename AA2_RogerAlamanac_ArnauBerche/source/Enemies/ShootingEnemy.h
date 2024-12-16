@@ -5,15 +5,17 @@
 class ShootingEnemy : public ImageObject, Enemy
 {
 private:
-	float timeToShoot = 5.f;
-	float currentTime;
+	float timeToShoot = 4.f;
+	float timeToMove = 3.f;
+	float currentTimeToMove;
+	float currentTimeToShoot;
 public:
 	ShootingEnemy(Vector2 pos, float _movementSpeed, int _health, int _damage, bool _loops) :
         ImageObject("resources/basicenemy.png", Vector2(0.f, 0.f), Vector2(180.f, 180.f), 0, "ENEMY"), Enemy(_health, _damage, _loops) {
 
         pathPattern.push(Directions::DOWN);
         pathPattern.push(Directions::RIGHT);
-        pathPattern.push(Directions::DOWN);
+        pathPattern.push(Directions::UP);
         pathPattern.push(Directions::LEFT);
         transform->position = pos;
         movementSpeed = _movementSpeed;

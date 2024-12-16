@@ -1,5 +1,4 @@
 //#include <SDL.h>
-//#include <random>
 //#include <SDL_image.h>
 #include "Game/Game.h"
 #include <iostream>
@@ -24,17 +23,11 @@ int main(int argc, char* args[]) {
 	while (playing) {
 		TIME.Update();
 		if (TIME.ShouldUpdateGame()) {
-			//std::cout << TIME.GetDeltaTime() << std::endl;
-			std::cout << TIME.GetElapsedTime() << std::endl;
 			playing = !IM.Listen();
 			game.Update();
 			game.Render();
 			TIME.ResetDeltaTime();
 		}
-
-		//if (IM.GetEvent(SDLK_SPACE, DOWN)) {
-		//	std::cout << "Pressed Space" << std::endl;
-		//}
 	}
 
 	game.Release();

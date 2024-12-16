@@ -2,40 +2,51 @@
 
 void SeekerEnemy::BaseMovement()
 {
-	if (rangeToSeek > 100.f) {
+	if (CalculateDistance(transform->position, target->GetTransform()->position) > rangeToSeek) {
 		ImageObject::physics->SetVelocity(DirectionToVector(pathPattern.front()) * movementSpeed);
 		switch (pathPattern.front())
 		{
 		case Directions::DOWN:
-			if ((int)transform->position.y % (int)transform->size.y / 2 == 0 && (int)transform->position.y / 2 != 0) {
+			if (currentTimeToMove >= timeToMove) {
 				Directions d = pathPattern.front();
 				pathPattern.pop();
 				if (Loops())
 				{
 					pathPattern.push(d);
 				}
+				currentTimeToMove = 0;
 			}
 			break;
 		case Directions::RIGHT:
-			if ((int)transform->position.x >= RM->WINDOW_WIDTH - (int)transform->size.x / 2)
-			{
+			if (currentTimeToMove >= timeToMove) {
 				Directions d = pathPattern.front();
 				pathPattern.pop();
 				if (Loops())
 				{
 					pathPattern.push(d);
 				}
+				currentTimeToMove = 0;
 			}
 			break;
 		case Directions::LEFT:
-			if ((int)transform->position.x <= (int)transform->size.x / 2)
-			{
+			if (currentTimeToMove >= timeToMove) {
 				Directions d = pathPattern.front();
 				pathPattern.pop();
 				if (Loops())
 				{
 					pathPattern.push(d);
 				}
+				currentTimeToMove = 0;
+			}
+		case Directions::UP:
+			if (currentTimeToMove >= timeToMove) {
+				Directions d = pathPattern.front();
+				pathPattern.pop();
+				if (Loops())
+				{
+					pathPattern.push(d);
+				}
+				currentTimeToMove = 0;
 			}
 			break;
 		default:
@@ -43,6 +54,12 @@ void SeekerEnemy::BaseMovement()
 		}
 	}
 	else {
-
+		ImageObject::physics->SetVelocity(DirectionToPlayer() * movementSpeed);
 	}
+}
+
+void SeekerEnemy::Update(){
+	Object::Update();
+	currentTimeToMove += TIME.GetDeltaTime();
+	BaseMovement();
 }

@@ -18,7 +18,6 @@ public:
 
 	Object()
 	{
-		//isPendingDestroy = false;
 		transform = new Transform();
 		physics = new Rigidbody(transform);
 	}
@@ -31,9 +30,7 @@ public:
 	inline virtual void Render() {renderer->Render();}
 	inline Transform* GetTransform() { return transform; }
 	inline Rigidbody* GetRigidBody() { return physics; }
-	//inline void SetTransform(Transform* t) { transform = t; }
 
-	//NO FAN RES DE MOMENT
 	inline bool IsPendingDestroy() { return isPendingDestroy; }
 	inline virtual void Destroy() { isPendingDestroy = true; }
 	virtual void OnCollisionEnter(Object* other) {}

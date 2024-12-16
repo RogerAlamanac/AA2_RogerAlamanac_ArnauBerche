@@ -83,17 +83,14 @@ void Tank::Attack()
 
 
 		Vector2 bulletSpawnPosition = ImageObject::transform->position + CalculateOfset();
-		// Spawn the bullet
-		SPAWN.SpawnObject(new Bullet(bulletSpawnPosition, 500, DirectionToAim(CalculateOfset())));
+		SPAWN.SpawnObject(new Bullet(bulletSpawnPosition, 500, DirectionToAim(CalculateOfset()), true));
 		body->timeSinceLastFire = 0.f;
 	}
 }
 
 Vector2 Tank::CalculateOfset()
 {
-	//Math to make the bullet spawn at the tip of the canon
-
-	float rotationAngle = canon->GetTransform()->rotation; // Needs to be swaped by Canon later;
+	float rotationAngle = canon->GetTransform()->rotation;
 	float radians = rotationAngle * (M_PI / 180.0f);
 
 	Vector2 rotatedOffset(

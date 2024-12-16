@@ -14,20 +14,19 @@ private:
     float angularDrag;
 
 public:
-    // Constructor
+
     Rigidbody(Transform* _transform)
         : transform(_transform), velocity (Vector2()), acceleration(Vector2()),
         angularVelocity(0.0f), angularAcceleration(0.0f), 
         linearDrag(0.0f), angularDrag(0.0f) {}
 
-    // Destructor
+
     ~Rigidbody() {
         for (AABB* collider : colliders) {
             delete collider;
         }
     }
 
-    // Métodos
     inline void AddCollider(AABB* collider) {colliders.push_back(collider);}
     bool CheckCollision(const Rigidbody* other);
     bool CheckOverlappingPoint(const Vector2& point) const; 

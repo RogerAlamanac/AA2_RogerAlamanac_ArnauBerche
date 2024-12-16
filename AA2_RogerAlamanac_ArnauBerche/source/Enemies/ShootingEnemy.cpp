@@ -7,35 +7,46 @@ void ShootingEnemy::BaseMovement()
 	switch (pathPattern.front())
 	{
 	case Directions::DOWN:
-		if ((int)transform->position.y % (int)transform->size.y / 2 == 0 && (int)transform->position.y / 2 != 0) {
+		if (currentTimeToMove >= timeToMove) {
 			Directions d = pathPattern.front();
 			pathPattern.pop();
 			if (Loops())
 			{
 				pathPattern.push(d);
 			}
+			currentTimeToMove = 0;
 		}
 		break;
 	case Directions::RIGHT:
-		if ((int)transform->position.x >= RM->WINDOW_WIDTH - (int)transform->size.x / 2)
-		{
+		if (currentTimeToMove >= timeToMove) {
 			Directions d = pathPattern.front();
 			pathPattern.pop();
 			if (Loops())
 			{
 				pathPattern.push(d);
 			}
+			currentTimeToMove = 0;
 		}
 		break;
 	case Directions::LEFT:
-		if ((int)transform->position.x <= (int)transform->size.x / 2)
-		{
+		if (currentTimeToMove >= timeToMove) {
 			Directions d = pathPattern.front();
 			pathPattern.pop();
 			if (Loops())
 			{
 				pathPattern.push(d);
 			}
+			currentTimeToMove = 0;
+		}
+	case Directions::UP:
+		if (currentTimeToMove >= timeToMove) {
+			Directions d = pathPattern.front();
+			pathPattern.pop();
+			if (Loops())
+			{
+				pathPattern.push(d);
+			}
+			currentTimeToMove = 0;
 		}
 		break;
 	default:
@@ -46,16 +57,18 @@ void ShootingEnemy::BaseMovement()
 
 void ShootingEnemy::Shoot()
 {
-	if (currentTime >= timeToShoot) {
-		SPAWN.SpawnObject(new Bullet(ImageObject::transform->position - Vector2(0, ImageObject::transform->size.y / 2), 
-			100, Vector2(ImageObject::transform->position.x, ImageObject::transform->position.y - 100)));
+	if (currentTimeToShoot >= timeToShoot) {
+		SPAWN.SpawnObject(new Bullet(ImageObject::transform->position, 
+			100, DirectionToVector(pathPattern.front())*5, false));
+		currentTimeToShoot = 0;
 	}
 }
 
 void ShootingEnemy::Update()
 {
 	Object::Update();
-	currentTime = TIME.GetDeltaTime();
+	currentTimeToMove += TIME.GetDeltaTime();
+	currentTimeToShoot += TIME.GetDeltaTime();
 	BaseMovement();
 	Shoot();
 }

@@ -36,9 +36,6 @@
     <ClCompile Include="source\Renderers\ImageRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Scenes\Gameplay.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\Scenes\MainMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -81,13 +78,19 @@
     <ClCompile Include="source\Elements\Background.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Audio\AudioManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\Player\Attacker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Player\Damager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Scenes\GameplaySpaceInvaders.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Scenes\GameplaySplat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Scenes\GameplayTanks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -131,16 +134,10 @@
     <ClInclude Include="source\Scenes\MainMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Scenes\Gameplay.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="source\Scenes\SceneManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Spawner\Spawner.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Object\TestObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Renderers\AnimatedImageRenderer.h">
@@ -207,6 +204,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Object\UIObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Scenes\GameplaySpaceInvaders.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Scenes\GameplaySplat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Scenes\GameplayTanks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
