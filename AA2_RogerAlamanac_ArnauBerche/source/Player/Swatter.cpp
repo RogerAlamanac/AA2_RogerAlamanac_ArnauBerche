@@ -19,7 +19,7 @@ void Swatter::Movement()
 {
     InputManager& input = IM;
     if (isStuck) {
-        if (currentTime - stuckTime >= 1.0f) {
+        if (currentTime - stuckTime >= 5.0f) {
             isStuck = false;
         }
         else {
@@ -45,11 +45,53 @@ void Swatter::Movement()
     else {
         ImageObject::physics->SetVelocity(direction * maxVelocity);
     }
+
+
+    // Ensure the player does not go off the screen
+    if (transform->position.x < 0) {
+        transform->position.x = 0;
+    }
+    else if (transform->position.x > RM->WINDOW_WIDTH - transform->size.x) {
+        transform->position.x = RM->WINDOW_WIDTH - transform->size.x;
+    }
+
+    if (transform->position.y < 0) {
+        transform->position.y = 0;
+    }
+    else if (transform->position.y > RM->WINDOW_HEIGHT - transform->size.y) {
+        transform->position.y = RM->WINDOW_HEIGHT - transform->size.y;
+    }
+
+    // Ensure the player always faces upper left (-1, -1)
+    ImageObject::transform->rotation = -90.0f;  // Set rotation to face upper left
 }
 
-void Swatter::Attack()
-{
+void Swatter::Attack() {
+    InputManager& input = IM;
+
+    if (input.GetEvent(SDL_BUTTON_LEFT, DOWN) && !isStuck) {
+
+        if (!IsFlyHit()) {
+            isStuck = true;
+            stuckTime = currentTime; 
+        }
+        else {
+            //destruir enemy
+           
+        }
+    }
 }
+
+bool Swatter::IsFlyHit() {
+
+    // for (const auto& fly : flies) {
+    //     if (CheckCollision(fly)) {
+    //         return true;
+    //     }
+    // }
+    return false;
+}
+
 
 void Swatter::ReceiveDamage()
 {
@@ -60,6 +102,10 @@ void Swatter::Update()
     Object::Update();
     currentTime = TIME.GetDeltaTime();
     Movement();
+    if (isStuck && (currentTime - stuckTime >= 5.0f)) {
+        isStuck = false;
+    }
+    Attack();
 }
 
 bool Swatter::CheckCollision(const Vector2& swatterPos, const Vector2& targetPos, float size)

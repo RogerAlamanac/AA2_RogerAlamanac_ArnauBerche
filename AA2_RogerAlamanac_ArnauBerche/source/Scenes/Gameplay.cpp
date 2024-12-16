@@ -8,6 +8,7 @@
 #include "../Player/Swatter.h"
 #include "../InputManager/TimeManager.h"
 #include "../Enemies/BasicEnemy.h"
+#include "../Elements/Background.h"
 
 
 void Gameplay::OnEnter()
@@ -15,13 +16,14 @@ void Gameplay::OnEnter()
 	switch (game)
 	{
 	case 0:
+		SPAWN.SpawnObject(new Background(Vector2(10.f,10.f)));
 		SPAWN.SpawnObject(new Spaceship(Vector2(100, 700)));
 		break;
 	case 1:
 		SPAWN.SpawnObject(new Tank(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), 100));
 		break;
 	case 2:
-		SPAWN.SpawnObject(new Swatter(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), 3.f));
+		SPAWN.SpawnObject(new Swatter(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2)));
 		break;
 	default:
 		break;

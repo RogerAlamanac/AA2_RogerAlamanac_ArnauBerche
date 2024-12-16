@@ -241,6 +241,9 @@
     <Image Include="resources\Swatter.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="resources\background_space.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="source\WavesEnemies.xml" />

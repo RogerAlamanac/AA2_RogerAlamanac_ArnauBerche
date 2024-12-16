@@ -8,6 +8,7 @@ void Game::Init()
 {
 	RM->Init();
 
+	RM->LoadTexture("resources/background_space.jpg");
 	RM->LoadTexture("resources/Spaceship.png");
 	RM->LoadTexture("resources/circle.png");
 	RM->LoadTexture("resources/basicenemy.png");
@@ -17,7 +18,7 @@ void Game::Init()
 	RM->LoadTexture("resources/Swatter.png");
 	RM->LoadTexture("resources/none.png");
 	assert(SM.AddScene("Main Menu", new MainMenu()));
-	assert(SM.AddScene("Gameplay", new Gameplay(1)));
+	assert(SM.AddScene("Gameplay", new Gameplay(0)));
 	assert(SM.InitFirstScene("Gameplay"));
 
 }

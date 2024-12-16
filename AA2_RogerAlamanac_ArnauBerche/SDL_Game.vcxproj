@@ -86,6 +86,7 @@
     <ClInclude Include="source\Player\Swatter.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="resources\background_space.jpg" />
     <Image Include="resources\basicenemy.png" />
     <Image Include="resources\Bullet.png" />
     <Image Include="resources\circle.png" />

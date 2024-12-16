@@ -89,7 +89,6 @@ void Tank::Attack()
 	}
 }
 
-
 Vector2 Tank::CalculateOfset()
 {
 	//Math to make the bullet spawn at the tip of the canon
