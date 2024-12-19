@@ -15,7 +15,6 @@ void AimingEnemy::BaseMovement()
 				{
 					pathPattern.push(d);
 				}
-				
 			}
 			break;
 		case Directions::RIGHT:
@@ -55,7 +54,6 @@ void AimingEnemy::BaseMovement()
 	else 
 	{
 		Shoot();
-		currentTimeToMove = 0;
 	}
 }
 bool AimingEnemy::IsStopped(){
@@ -66,13 +64,16 @@ void AimingEnemy::Shoot()
 	if (currentTimeToShoot >= timeToShoot) {
 		SPAWN.SpawnObject(new Bullet(ImageObject::transform->position - Vector2(0, ImageObject::transform->size.y / 2), 
 			100, DirectionToPlayer() * 2, false));
+		currentTimeToMove = 0;
+		currentTimeToShoot = 0;
 	}
-	currentTimeToShoot = 0;
+	
 }
 
 void AimingEnemy::Update()
 {
 	Object::Update();
+	if (target == nullptr) { return;  }
 	currentTimeToMove += TIME.GetDeltaTime();
 	currentTimeToShoot += TIME.GetDeltaTime();
 	BaseMovement();

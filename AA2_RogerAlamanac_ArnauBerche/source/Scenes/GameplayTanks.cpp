@@ -1,11 +1,14 @@
 #include "GameplayTanks.h"
+#include "../Elements/Background.h"
 #include "../Spawner/Spawner.h"
 #include "../Enemies/ShootingEnemy.h"
 #include "../Enemies/AimingEnemy.h"
 #include "../Player/Tank.h"
+#include "SceneManager.h"
 
 void GameplayTanks::OnEnter()
 {
+	SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2)));
 	player = new Tank(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), 100);
 	SPAWN.SpawnObject(dynamic_cast<Object*>(player));
 }

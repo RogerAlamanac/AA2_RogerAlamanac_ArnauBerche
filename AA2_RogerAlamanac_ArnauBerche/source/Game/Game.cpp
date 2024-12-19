@@ -14,7 +14,6 @@ void Game::Init()
 	RM->LoadTexture("resources/Spaceship.png");
 	RM->LoadTexture("resources/circle.png");
 	RM->LoadTexture("resources/basicenemy.png");
-	RM->LoadTexture("resources/guitar.jpg");
 	RM->LoadTexture("resources/tank turret.png");
 	RM->LoadTexture("resources/tank body.png");
 	RM->LoadTexture("resources/Swatter.png");
@@ -24,7 +23,7 @@ void Game::Init()
 	assert(SM.AddScene("SpaceInvaders", new GameplaySpaceInvaders()));
 	assert(SM.AddScene("Tanks", new GameplayTanks()));
 	assert(SM.AddScene("Splat", new GameplaySplat()));
-	assert(SM.InitFirstScene("SpaceInvaders"));
+	assert(SM.InitFirstScene("Tanks"));
 
 }
 
