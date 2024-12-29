@@ -3,6 +3,7 @@
 #include "../Player/Player.h"
 #include <vector>
 
+#define MAX_LIFES 3
 class Scene {
 protected:
 	Player* player;

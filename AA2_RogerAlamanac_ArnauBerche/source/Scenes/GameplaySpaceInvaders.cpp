@@ -6,7 +6,7 @@
 
 void GameplaySpaceInvaders::OnEnter()
 {
-	player = new Spaceship(Vector2(100, 700));
+	player = new Spaceship(Vector2(100, 700), MAX_LIFES);
 	SPAWN.SpawnObject(dynamic_cast<Object*>(player));
 }
 

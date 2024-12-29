@@ -114,7 +114,11 @@ Vector2 Tank::DirectionToAim(Vector2 relativeOffset) {
 	return direction;
 }
 void Tank::ReceiveDamage() {
-
+	lifes--;
+	if (GetCurrentLifes() <= 0) {
+		Destroy();
+	}
+	std::cout << lifes << std::endl;
 }
 void Tank::Update()
 {

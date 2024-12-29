@@ -55,10 +55,11 @@ private:
 	Canon* canon;
 	Body* body;
 	float movementSpeed;
-
+	int lifes;
 public:
-	Tank(Vector2 pos, float velocity) : ImageObject("resources/none.png", Vector2(0.f, 0.f), Vector2(1.f, 1.f), 0, "PLAYER"), Player() {
+	Tank(Vector2 pos, float velocity, int _lifes) : ImageObject("resources/none.png", Vector2(0.f, 0.f), Vector2(1.f, 1.f), 0, "PLAYER"), Player() {
 		movementSpeed = velocity;
+		lifes = _lifes;
 		ImageObject::transform->position = pos;
 		ImageObject::transform->scale = Vector2(1.f, 1.f);
 		canon = new Canon(pos);
@@ -74,5 +75,6 @@ public:
 	void Attack() override;
 	void ReceiveDamage() override;
 	void Update() override;
+	inline int GetCurrentLifes() override { return lifes; }
 };
 

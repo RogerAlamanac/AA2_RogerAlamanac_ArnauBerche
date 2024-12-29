@@ -5,7 +5,7 @@
 
 void GameplaySplat::OnEnter()
 {
-	player = new Swatter(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2));
+	player = new Swatter(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), MAX_LIFES);
 	SPAWN.SpawnObject(dynamic_cast<Object*>(player));
 }
 

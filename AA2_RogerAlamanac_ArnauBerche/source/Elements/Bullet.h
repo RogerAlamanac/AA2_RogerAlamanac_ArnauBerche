@@ -1,5 +1,6 @@
 #pragma once
 #include "../Object/ImageObject.h"
+#include "../Player/Player.h"
 #include <iostream>
 class Bullet : public ImageObject
 {
@@ -26,6 +27,9 @@ public:
 			{
 				return;
 			}
+			if (other->tag == "ENEMY") {
+				other->Destroy();
+			}
 		}
 		else
 		{
@@ -34,9 +38,16 @@ public:
 			{
 				return;
 			}
+			if (other->tag == "PLAYER")
+			{
+				// Convertimos el objeto a tipo Player y le quitamos vida
+				Player* player = dynamic_cast<Player*>(other);
+				if (player != nullptr) {
+					player->ReceiveDamage(); // Ajusta la cantidad de daño según sea necesario
+				}
+			}
 		}
-
-		other->Destroy();
+		Destroy();
 	}
 };
 

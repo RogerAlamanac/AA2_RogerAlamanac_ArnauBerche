@@ -7,6 +7,21 @@
 
 void MainMenu::OnEnter()
 {
+    /*title->SetText("MAIN MENU");
+    option1->SetText("SPACE INVADERS");
+    option2->SetText("TANKS");
+    option3->SetText("SPLAT!");*/
+
+
+
+    title->GetTransform()->position = Vector2(400,100); // Ajusta la posición según sea necesario
+    SPAWN.SpawnObject(title);
+    option1->GetTransform()->position = Vector2( 400, 200 );
+    SPAWN.SpawnObject(option1);
+    option2->GetTransform()->position = Vector2(400, 300);
+    SPAWN.SpawnObject(option2);
+    option3->GetTransform()->position = Vector2(400, 400);
+    SPAWN.SpawnObject(option3);
 
 }
 
@@ -34,4 +49,8 @@ void MainMenu::Update()
 void MainMenu::Render()
 {
     Scene::Render();
+    title->Render();
+    option1->Render();
+    option2->Render();
+    option3->Render();
 }

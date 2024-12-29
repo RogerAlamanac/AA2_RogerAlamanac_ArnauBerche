@@ -9,7 +9,7 @@
 void GameplayTanks::OnEnter()
 {
 	SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2)));
-	player = new Tank(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), 100);
+	player = new Tank(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), 100, MAX_LIFES);
 	SPAWN.SpawnObject(dynamic_cast<Object*>(player));
 }
 

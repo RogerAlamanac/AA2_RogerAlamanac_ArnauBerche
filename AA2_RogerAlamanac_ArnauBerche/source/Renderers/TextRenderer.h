@@ -15,6 +15,10 @@ public:
 	TextRenderer(Transform* transform, std::string _text) : Renderer(transform, FONT_PATH) {
 		SetText(_text);
 	}
+	void SetColor(SDL_Color color) override {
+		Renderer::SetColor(color);
+		SetText(text);
+	}
 	virtual void Update(float dt) override {
 		Vector2 offset = (Vector2(-transform->size.x, -transform->size.y) / 2.0f) * transform->scale;
 
@@ -28,15 +32,20 @@ public:
 			destRect.w = transform->size.x * transform->scale.x;
 			destRect.h = transform->size.y * transform->scale.y;
 		}
-	}
-	void SetColor(SDL_Color color) override {
-		Renderer::SetColor(color);
-		SetText(text);
+
 	}
 
 	virtual void Render() override {
-		SDL_RenderCopyEx(RM->GetRenderer(), textTexture, &sourceRect, &destRect, transform->rotation, NULL, SDL_FLIP_NONE);
+		SDL_RenderCopyEx(
+			RM->GetRenderer(),
+			textTexture,
+			&sourceRect,
+			&destRect,
+			transform->rotation,
+			NULL,
+			SDL_FLIP_NONE);
 	}
+
 	void SetText(std::string newText) {
 		RM->LoadFont(FONT_PATH);
 

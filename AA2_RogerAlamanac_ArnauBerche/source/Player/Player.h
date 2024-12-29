@@ -34,4 +34,5 @@ public:
 	virtual void Movement() = 0;
 	virtual void Attack() = 0;
 	virtual void ReceiveDamage() = 0;
+	virtual int GetCurrentLifes() = 0;
 };

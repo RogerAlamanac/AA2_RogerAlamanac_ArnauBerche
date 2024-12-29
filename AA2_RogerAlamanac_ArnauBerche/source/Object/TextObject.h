@@ -15,4 +15,7 @@ public:
 	void SetText(std::string text) {
 		tr->SetText(text);
 	}
+	void Render() {
+		tr->Render();
+	}
 };
