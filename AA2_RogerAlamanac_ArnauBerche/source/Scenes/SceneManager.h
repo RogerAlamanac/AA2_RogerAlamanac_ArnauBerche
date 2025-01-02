@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include <string>
 #include "Scene.h"
+#include <iostream>
 
 #define SM SceneManager::Instance()
 class SceneManager {
@@ -44,8 +45,11 @@ public:
 	inline Scene* GetCurrentScene() const { return currentScene; }
 
 	inline bool SetNextScene(std::string name) {
-		if (scenes.find(name) == scenes.end()) return false;
-		
+		if (scenes.find(name) == scenes.end()) {
+			std::cout << "Scene Not Found" << std::endl;
+			return false;
+		}
+		std::cout << "Scene Found" << std::endl;
 		nextScene = name;
 		return true;
 	}
@@ -53,12 +57,13 @@ public:
 	inline void UpdateCurrentScene() {
 		if (nextScene != "") {
 			currentScene->OnExit();
-			currentScene = scenes[nextScene];
-			currentScene->OnEnter();
-			nextScene = " ";
+			auto it = scenes.find(nextScene);
+			if (it != scenes.end()) {
+				currentScene = it->second;	
+				currentScene->OnEnter();
+			}
+			nextScene = "";
 		}
 		currentScene->Update();
 	}
-
-	/*	*/
 };

@@ -13,14 +13,13 @@ void MainMenu::OnEnter()
     option3->SetText("SPLAT!");*/
 
 
-
-    title->GetTransform()->position = Vector2(400,100); // Ajusta la posición según sea necesario
+    title->GetTransform()->position = Vector2((RM->WINDOW_WIDTH/2),100); // Ajusta la posición según sea necesario
     SPAWN.SpawnObject(title);
-    option1->GetTransform()->position = Vector2( 400, 200 );
+    option1->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 2), 200 );
     SPAWN.SpawnObject(option1);
-    option2->GetTransform()->position = Vector2(400, 300);
+    option2->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 2), 300);
     SPAWN.SpawnObject(option2);
-    option3->GetTransform()->position = Vector2(400, 400);
+    option3->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 2), 400);
     SPAWN.SpawnObject(option3);
 
 }
@@ -33,6 +32,7 @@ void MainMenu::OnExit()
 void MainMenu::Update()
 {
     // No va;
+    Scene::Update();
      InputManager& input = IM;
      if(input.GetEvent(SDLK_1, DOWN)){
         SM.SetNextScene("SpaceInvaders");
