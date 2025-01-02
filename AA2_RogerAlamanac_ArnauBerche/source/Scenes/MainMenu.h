@@ -4,10 +4,10 @@
 #include "../Renderers/TextRenderer.h"
 class MainMenu : public Scene {
 private:
-	Object* title;
-	Object* option1;
-	Object* option2;
-	Object* option3;
+	TextObject* title;
+	TextObject* option1;
+	TextObject* option2;
+	TextObject* option3;
 public:
 	MainMenu() {
 		title = new TextObject("Main Menu");
@@ -25,4 +25,10 @@ public:
 	void OnExit() override;
 	void Update() override;
 	void Render() override;
+	bool IsMouseOverButton(SDL_Rect buttonRect, int mouseX, int mouseY) {
+		return (mouseX > buttonRect.x &&
+			mouseX < (buttonRect.x + buttonRect.w) &&
+			mouseY > buttonRect.y &&
+			mouseY < (buttonRect.y + buttonRect.h));
+	}
 };
