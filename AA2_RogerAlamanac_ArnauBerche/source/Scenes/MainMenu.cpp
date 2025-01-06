@@ -13,21 +13,25 @@ void MainMenu::OnEnter()
     //option3->SetText("SPLAT!");
 
 
-    int optionWidth = 200; // Ajusta el ancho del botón según sea necesario
+    int optionWidth = 400; // Ajusta el ancho del botón según sea necesario
     int optionHeight = 50; // Ajusta la altura del botón según sea necesario
 
     title->GetTransform()->position = Vector2((RM->WINDOW_WIDTH/2),100); // Ajusta la posición según sea necesario
 
     SPAWN.SpawnObject(title);
     option1->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 2), 200 );
-    option1->SetRect({ ((option1->GetTransform()->position.x) - (optionWidth / 2), 200, optionWidth, optionHeight) });
+    option1->SetRect({static_cast<int>(option1->GetTransform()->position.x - (optionWidth / 2)), 150, optionWidth, optionHeight });
+    option1->SetButtonColor(SDL_Color{ 255, 0, 0, 255 }); // Rojo
     SPAWN.SpawnObject(option1);
     option2->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 2), 300);
-    option2->SetRect({ ((option2->GetTransform()->position.x) - (optionWidth / 2), 300, optionWidth, optionHeight) });
+    option2->SetRect({ static_cast<int>(option2->GetTransform()->position.x - (optionWidth / 2)), 250, optionWidth, optionHeight });
+    option2->SetButtonColor(SDL_Color{ 0, 255, 0, 255 }); // Verde
     SPAWN.SpawnObject(option2);
     option3->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 2), 400);
-    option3->SetRect({ ((option3->GetTransform()->position.x) - (optionWidth / 2), 400, optionWidth, optionHeight) });
+    option3->SetRect({ static_cast<int>(option3->GetTransform()->position.x - (optionWidth / 2)), 350, optionWidth, optionHeight });
+    option3->SetButtonColor(SDL_Color{ 0, 0, 255, 255 }); // Azul
     SPAWN.SpawnObject(option3);
+
 }
 
 void MainMenu::OnExit()
@@ -70,4 +74,5 @@ void MainMenu::Update()
 void MainMenu::Render()
 {
     Scene::Render();
+ 
 }
