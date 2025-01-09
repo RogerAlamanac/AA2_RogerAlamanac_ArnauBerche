@@ -5,6 +5,7 @@ class Spaceship : public ImageObject, public Player
 {
 private:
 	int lifes;
+	int score = 0;
 public:
 	float fireCooldown = 1.f;
 	float timeSinceLastFire = 0.f;
@@ -21,5 +22,6 @@ public:
 	void ReceiveDamage() override;
 	void Update() override;
 	inline int GetCurrentLifes() override { return lifes; }
+	inline int GetCurrentScore() override { return score; }
 };
 

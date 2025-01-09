@@ -56,6 +56,7 @@ private:
 	Body* body;
 	float movementSpeed;
 	int lifes;
+	int score = 0;
 public:
 	Tank(Vector2 pos, float velocity, int _lifes) : ImageObject("resources/none.png", Vector2(0.f, 0.f), Vector2(1.f, 1.f), 0, "PLAYER"), Player() {
 		movementSpeed = velocity;
@@ -76,5 +77,6 @@ public:
 	void ReceiveDamage() override;
 	void Update() override;
 	inline int GetCurrentLifes() override { return lifes; }
+	inline int GetCurrentScore() override { return score; }
 };
 

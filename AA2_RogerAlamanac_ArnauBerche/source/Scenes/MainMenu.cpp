@@ -74,5 +74,4 @@ void MainMenu::Update()
 void MainMenu::Render()
 {
     Scene::Render();
- 
 }

@@ -19,8 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\Player\Damager.cpp" />
-    <ClCompile Include="source\Player\Attacker.cpp" />
     <ClCompile Include="source\Elements\Background.cpp" />
     <ClCompile Include="source\Elements\Explosion.cpp" />
     <ClCompile Include="source\Elements\Bullet.cpp" />
@@ -45,6 +43,7 @@
     <ClCompile Include="source\Scenes\GameplaySpaceInvaders.cpp" />
     <ClCompile Include="source\Scenes\GameplaySplat.cpp" />
     <ClCompile Include="source\Scenes\GameplayTanks.cpp" />
+    <ClCompile Include="source\UI\Score.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Object\UIObject.h" />
@@ -87,6 +86,7 @@
     <ClInclude Include="source\Player\Spaceship.h" />
     <ClInclude Include="source\Player\Tank.h" />
     <ClInclude Include="source\Player\Swatter.h" />
+    <ClInclude Include="source\UI\Score.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\background_space.jpg" />

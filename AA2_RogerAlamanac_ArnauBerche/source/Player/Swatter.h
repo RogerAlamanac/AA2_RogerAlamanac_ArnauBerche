@@ -15,6 +15,7 @@ private:
 	float currentStunTime = 0.0f;
 
 	int lifes;
+	int score = 0;
 	
 public:
 	Swatter(Vector2 pos, int _lifes) : ImageObject("resources/Swatter.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "PLAYER"), Player() {
@@ -29,5 +30,6 @@ public:
 	void Update() override;
 	void OnCollisionEnter(Object* other) override;
 	inline int GetCurrentLifes() override { return lifes; }
+	inline int GetCurrentScore() override { return score; }
 };
 

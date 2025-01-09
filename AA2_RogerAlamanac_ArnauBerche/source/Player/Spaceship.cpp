@@ -29,12 +29,20 @@ void Spaceship::Attack()
 
     if (input.GetEvent(SDLK_SPACE, HOLD) && timeSinceLastFire >= fireCooldown) {
         SPAWN.SpawnObject(new Bullet(ImageObject::transform->position,500,Vector2(0,-1), true));
-       timeSinceLastFire = 0.f;
+        timeSinceLastFire = 0.f;
+    }
+    if(input.GetEvent(SDLK_SPACE, DOWN)) {
+        SPAWN.SpawnObject(new Bullet(ImageObject::transform->position, 500, Vector2(0, -1), true));
     }
 }
 
 void Spaceship::ReceiveDamage()
 {
+    lifes--;
+    if (GetCurrentLifes() <= 0) {
+        Destroy();
+    }
+    std::cout << lifes << std::endl;
 }
 
 void Spaceship::Update()

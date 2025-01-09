@@ -46,6 +46,10 @@ void Swatter::Update(){
         if (currentStunTime >= maxStunTime)
             currentState = SwatterState::MOVING;
     }
+    if (input.GetLeftClick()) {
+        std::cout << "CLICK";
+
+    }
 
 
     
