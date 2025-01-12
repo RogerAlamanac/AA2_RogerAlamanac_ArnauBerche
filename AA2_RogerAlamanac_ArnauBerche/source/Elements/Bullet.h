@@ -32,9 +32,7 @@ public:
 				return;
 			}
 			if (other->tag == "ENEMY") {
-				BasicEnemy* enemy = dynamic_cast<BasicEnemy*>(other);
-				enemy->isKilled = true;
-				enemy->Destroy();
+				other->Destroy();
 			}
 
 		}
@@ -47,10 +45,9 @@ public:
 			}
 			if (other->tag == "PLAYER")
 			{
-				// Convertimos el objeto a tipo Player y le quitamos vida
 				Player* player = dynamic_cast<Player*>(other);
 				if (player != nullptr) {
-					player->ReceiveDamage(); // Ajusta la cantidad de daño según sea necesario
+					player->ReceiveDamage(); 
 				}
 			}
 		}

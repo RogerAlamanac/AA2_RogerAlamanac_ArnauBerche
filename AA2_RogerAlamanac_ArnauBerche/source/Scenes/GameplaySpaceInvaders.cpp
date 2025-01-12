@@ -5,18 +5,21 @@
 #include "../Object/TextObject.h"
 #include "../Elements/Background.h"
 #include <iostream>
+#include "SceneManager.h"
 
 void GameplaySpaceInvaders::OnEnter()
 {
-	//SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2)));
+	SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2)));
 	player = new Spaceship(Vector2(100, 700), MAX_LIFES);
 	SPAWN.SpawnObject(dynamic_cast<Object*>(player));
-	score = new Score(Vector2(10, 10), 0);
+	score = new Score(Vector2(100, 100), 0);
+	score->SetText("Score: " + std::to_string(currentScore));
 	SPAWN.SpawnObject(score);
 
-	scoreText = new TextObject("Score: 0"); // Inicializa el texto con puntuación 0
-	scoreText->GetTransform()->position = Vector2(10, 10);
-	SPAWN.SpawnObject(scoreText);
+	//scoreText = new TextObject("Score"); // Inicializa el texto con puntuación 0
+	//scoreText->GetTransform()->position = Vector2(100, 100);
+	//scoreText->SetText("Score: " + std::to_string(currentScore));
+	//SPAWN.SpawnObject(scoreText);
 }
 
 void GameplaySpaceInvaders::OnExit()
@@ -42,17 +45,23 @@ void GameplaySpaceInvaders::Update()
 	{
 		enemySpawned = false;
 	}
-	/*score->GetCurrentScore() += 1;
-	score1->SetText("Score: " + std::to_string(currentScore));*/
+
 	IncreaseScore(1);
-	score->Update();
+	score->SetText("Score: " + std::to_string(currentScore));
+	if (currentScore >= 501) {
+		TextObject* end = new TextObject("End");
+		end->GetTransform()->position = Vector2(RM->WINDOW_WIDTH / 2 - 50, RM->WINDOW_HEIGHT / 2 + 50);
+		end->SetText("NEW BEST!");
+		end->GetTransform()->scale = Vector2(5, 5);
+		SPAWN.SpawnObject(end);
+		currentScore--;
+	}
 }
 
 void GameplaySpaceInvaders::Render()
 {
 	Scene::Render();
-	scoreText->SetText("Score: " + std::to_string(currentScore)); // Actualiza el puntaje en la pantalla
-	score->Render();
+
 }
 void GameplaySpaceInvaders::IncreaseScore(int points)
 {

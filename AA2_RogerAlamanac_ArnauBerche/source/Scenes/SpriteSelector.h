@@ -64,7 +64,7 @@ public:
 			static_cast<int>(object->GetTransform()->scale.x),
 			static_cast<int>(object->GetTransform()->scale.y)
 		};
-		return (mouseX > (rect.x - 50) && mouseX < (rect.x + rect.w) && mouseY > (rect.y-50) && mouseY < (rect.y + rect.w));
+		return (mouseX > (rect.x - 50) && mouseX < (rect.x + rect.w) && mouseY > (rect.y-50) && mouseY < (rect.y + rect.h));
 	}
 	bool IsMouseOverButton(SDL_Rect buttonRect, int mouseX, int mouseY) {
 		return (mouseX > buttonRect.x &&

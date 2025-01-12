@@ -10,7 +10,7 @@ void MainMenu::OnEnter()
     int optionWidth = 600; 
     int optionHeight = 75; 
 
-    title->GetTransform()->position = Vector2((RM->WINDOW_WIDTH/2)-50,100);
+    title->GetTransform()->position = Vector2((RM->WINDOW_WIDTH/2) - 50,100);
     title->GetTransform()->scale = Vector2(1.5f,1.5f);
     title->SetText("MAIN MENU");
     SPAWN.SpawnObject(title);

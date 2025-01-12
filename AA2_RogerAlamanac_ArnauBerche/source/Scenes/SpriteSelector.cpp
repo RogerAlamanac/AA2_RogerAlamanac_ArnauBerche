@@ -29,7 +29,7 @@ void SpriteSelector::OnEnter()
     back->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 2) -50, 700);
     back->GetTransform()->scale = Vector2(1.5f, 1.5f);
     back->SetText("MAIN MENU");
-    back->SetRect({ static_cast<int>(back->GetTransform()->position.x - (optionWidth / 2)), 650, optionWidth, optionHeight });
+    back->SetRect({ static_cast<int>(back->GetTransform()->position.x - (optionWidth / 2)), 600, optionWidth, optionHeight });
     back->SetButtonColor(SDL_Color{ 255, 0, 0, 255 }); // Rojo
     SPAWN.SpawnObject(back);
 }

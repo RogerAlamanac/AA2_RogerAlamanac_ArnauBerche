@@ -80,7 +80,6 @@ void Tank::Attack()
 {
 	InputManager& input = IM;
 	if (input.GetLeftClick() && body->timeSinceLastFire >= body->fireCooldown) {
-
 		Vector2 bulletSpawnPosition = ImageObject::transform->position + CalculateOfset();
 		SPAWN.SpawnObject(new Bullet(bulletSpawnPosition, 500, DirectionToAim(CalculateOfset()), true));
 		body->timeSinceLastFire = 0.f;
