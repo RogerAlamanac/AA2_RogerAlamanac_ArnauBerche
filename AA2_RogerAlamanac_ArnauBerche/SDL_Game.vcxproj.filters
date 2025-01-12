@@ -90,6 +90,9 @@
     <ClCompile Include="source\UI\Score.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\Scenes\SpriteSelector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Game\Game.h">
@@ -213,6 +216,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\UI\Score.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Scenes\SpriteSelector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,6 +4,7 @@
 #include "../Player/Spaceship.h"
 #include "../Object/TextObject.h"
 #include "../Elements/Background.h"
+#include <iostream>
 
 void GameplaySpaceInvaders::OnEnter()
 {
@@ -12,6 +13,10 @@ void GameplaySpaceInvaders::OnEnter()
 	SPAWN.SpawnObject(dynamic_cast<Object*>(player));
 	score = new Score(Vector2(10, 10), 0);
 	SPAWN.SpawnObject(score);
+
+	scoreText = new TextObject("Score: 0"); // Inicializa el texto con puntuación 0
+	scoreText->GetTransform()->position = Vector2(10, 10);
+	SPAWN.SpawnObject(scoreText);
 }
 
 void GameplaySpaceInvaders::OnExit()
@@ -37,14 +42,25 @@ void GameplaySpaceInvaders::Update()
 	{
 		enemySpawned = false;
 	}
-	//if (/*enemyDead*/) {
-	//	
-	//}
 	/*score->GetCurrentScore() += 1;
 	score1->SetText("Score: " + std::to_string(currentScore));*/
+	IncreaseScore(1);
+	score->Update();
 }
 
 void GameplaySpaceInvaders::Render()
 {
 	Scene::Render();
+	scoreText->SetText("Score: " + std::to_string(currentScore)); // Actualiza el puntaje en la pantalla
+	score->Render();
+}
+void GameplaySpaceInvaders::IncreaseScore(int points)
+{
+	currentScore += points;
+	std::cout << "Score: " << currentScore << std::endl;
+}
+void GameplaySpaceInvaders::EnemyDestroyed()
+{
+	currentScore += 10;  // Incrementamos el puntaje por cada enemigo destruido
+	std::cout << "Score: " << currentScore << std::endl;
 }

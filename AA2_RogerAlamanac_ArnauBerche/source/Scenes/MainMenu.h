@@ -8,12 +8,13 @@ private:
 	TextObject* option1;
 	TextObject* option2;
 	TextObject* option3;
+	TextObject* sprites;
 public:
 	MainMenu() {
-		title = new TextObject("Main Menu");
-		option1 = new TextObject("1. Space Invaders");
-		option2 = new TextObject("2. Tanks");
-		option3 = new TextObject("3. Splat");
+		title = new TextObject("MainMenu");
+		option1 = new TextObject("Space Invaders");
+		option2 = new TextObject("Tanks");
+		option3 = new TextObject("Splat");
 	}
 	~MainMenu() {
 		delete title;

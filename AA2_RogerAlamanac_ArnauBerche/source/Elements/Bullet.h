@@ -2,6 +2,10 @@
 #include "../Object/ImageObject.h"
 #include "../Player/Player.h"
 #include <iostream>
+#include "../Spawner/Spawner.h"
+#include "../Scenes/GameplaySpaceInvaders.h"
+#include "../Scenes/SceneManager.h"
+#include "../Enemies/BasicEnemy.h"
 class Bullet : public ImageObject
 {
 private:
@@ -28,8 +32,11 @@ public:
 				return;
 			}
 			if (other->tag == "ENEMY") {
-				other->Destroy();
+				BasicEnemy* enemy = dynamic_cast<BasicEnemy*>(other);
+				enemy->isKilled = true;
+				enemy->Destroy();
 			}
+
 		}
 		else
 		{

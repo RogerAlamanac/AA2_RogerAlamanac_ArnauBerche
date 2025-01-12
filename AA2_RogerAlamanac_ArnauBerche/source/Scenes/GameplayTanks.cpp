@@ -48,6 +48,9 @@ void GameplayTanks::Update()
 	{
 		enemySpawned = false;
 	}
+	if (player->GetCurrentLifes() <= 0) {
+		SM.SetNextScene("Main Menu");
+	}
 }
 
 void GameplayTanks::Render()

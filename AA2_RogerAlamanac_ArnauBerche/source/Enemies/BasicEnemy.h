@@ -4,7 +4,9 @@
 #include "../Renderers/RenderManager.h"
 class BasicEnemy : public ImageObject, Enemy
 {
+
 public:
+    bool isKilled = false;
 	BasicEnemy(Vector2 pos, float _movementSpeed, int _health, int _damage, bool _loops) : 
         ImageObject("resources/basicenemy.png", Vector2(0.f, 0.f), Vector2(180.f, 180.f), 0, "ENEMY"), Enemy(_health, _damage, _loops) {
 
@@ -21,5 +23,6 @@ public:
     void BaseMovement() override;
 	void Update() override;
     Vector2 GetPosition() { return transform->position; }
+    bool IsKilled() { return isKilled; }
 };
 
