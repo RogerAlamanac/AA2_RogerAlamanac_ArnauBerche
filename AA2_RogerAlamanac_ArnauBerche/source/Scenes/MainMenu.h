@@ -9,18 +9,19 @@ private:
 	TextObject* option2;
 	TextObject* option3;
 	TextObject* sprites;
+	std::vector<TextObject*> options;
 public:
 	MainMenu() {
 		title = new TextObject("MainMenu");
 		option1 = new TextObject("Space Invaders");
 		option2 = new TextObject("Tanks");
 		option3 = new TextObject("Splat");
+		sprites = new TextObject("Sprite Selector");
 	}
 	~MainMenu() {
-		delete title;
-		delete option1;
-		delete option2;
-		delete option3;
+		for (TextObject* option : options) {
+			delete option;
+		}
 	}
 	void OnEnter() override;
 	void OnExit() override;

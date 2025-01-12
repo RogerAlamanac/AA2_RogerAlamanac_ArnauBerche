@@ -24,7 +24,7 @@ void Game::Init()
 	assert(SM.AddScene("SpaceInvaders", new GameplaySpaceInvaders()));
 	assert(SM.AddScene("Tanks", new GameplayTanks()));
 	assert(SM.AddScene("Splat", new GameplaySplat()));
-	//assert(SM.AddScene("Sprite Selector", new SpriteSelector()));
+	assert(SM.AddScene("Sprite Selector", new SpriteSelector()));
 	assert(SM.InitFirstScene("Main Menu"));
 
 }
