@@ -24,8 +24,9 @@ void Spaceship::Attack()
 {
     InputManager& input = IM;
 
-    if(input.GetEvent(SDLK_SPACE, DOWN)) {
+    if(input.GetEvent(SDLK_SPACE, DOWN) && timeSinceLastFire >= fireCooldown) {
         SPAWN.SpawnObject(new Bullet(ImageObject::transform->position, 500, Vector2(0, -1), true));
+        timeSinceLastFire = 0.f;
         return;
     }
     else if (input.GetEvent(SDLK_SPACE, HOLD) && timeSinceLastFire >= fireCooldown) {

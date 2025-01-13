@@ -84,11 +84,6 @@ void Tank::Attack()
 		SPAWN.SpawnObject(new Bullet(bulletSpawnPosition, 500, DirectionToAim(CalculateOfset()), true));
 		body->timeSinceLastFire = 0.f;
 	}
-	if (input.GetLeftClick()) {
-		Vector2 bulletSpawnPosition = ImageObject::transform->position + CalculateOfset();
-		SPAWN.SpawnObject(new Bullet(bulletSpawnPosition, 500, DirectionToAim(CalculateOfset()), true));
-		body->timeSinceLastFire = 0.f;
-	}
 }
 
 Vector2 Tank::CalculateOfset()
