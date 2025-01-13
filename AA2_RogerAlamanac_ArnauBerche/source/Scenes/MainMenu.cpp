@@ -20,7 +20,6 @@ void MainMenu::OnEnter()
     option1->GetTransform()->scale = Vector2(1.5f, 1.5f);
     option1->SetText("1. SPACE INVADERS");
     option1->SetRect({static_cast<int>(option1->GetTransform()->position.x - (optionWidth / 2)), 100, optionWidth, optionHeight });
-    option1->SetButtonColor(SDL_Color{ 255, 0, 0, 255 }); // Rojo
     SPAWN.SpawnObject(option1);
     options.push_back(option1);
 

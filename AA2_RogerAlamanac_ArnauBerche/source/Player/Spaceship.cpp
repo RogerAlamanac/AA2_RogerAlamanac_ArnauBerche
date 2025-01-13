@@ -18,24 +18,19 @@ void Spaceship::Movement()
             ImageObject::transform->position.x += 5.f;
         }
     }
-
-
-
 }
 
 void Spaceship::Attack()
 {
     InputManager& input = IM;
 
-    if (input.GetEvent(SDLK_SPACE, HOLD) && timeSinceLastFire >= fireCooldown) {
-        SPAWN.SpawnObject(new Bullet(ImageObject::transform->position,500,Vector2(0,-1), true));
-        timeSinceLastFire = 0.f;
-        std::cout << "HOLD" << std::endl;
+    if(input.GetEvent(SDLK_SPACE, DOWN)) {
+        SPAWN.SpawnObject(new Bullet(ImageObject::transform->position, 500, Vector2(0, -1), true));
         return;
     }
-    else if(input.GetEvent(SDLK_SPACE, DOWN)) {
+    else if (input.GetEvent(SDLK_SPACE, HOLD) && timeSinceLastFire >= fireCooldown) {
         SPAWN.SpawnObject(new Bullet(ImageObject::transform->position, 500, Vector2(0, -1), true));
-        std::cout << "DOWN" << std::endl;
+        timeSinceLastFire = 0.f;
         return;
     }
 }

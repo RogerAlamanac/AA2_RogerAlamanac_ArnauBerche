@@ -4,6 +4,7 @@
 #include "../Player/Spaceship.h"
 #include "../Object/TextObject.h"
 #include "../Elements/Background.h"
+#include "../Elements/Bullet.h"
 #include <iostream>
 #include "SceneManager.h"
 
@@ -16,10 +17,11 @@ void GameplaySpaceInvaders::OnEnter()
 	score->SetText("Score: " + std::to_string(currentScore));
 	SPAWN.SpawnObject(score);
 
-	//scoreText = new TextObject("Score"); // Inicializa el texto con puntuación 0
-	//scoreText->GetTransform()->position = Vector2(100, 100);
-	//scoreText->SetText("Score: " + std::to_string(currentScore));
-	//SPAWN.SpawnObject(scoreText);
+	end = new TextObject("End");
+	end->GetTransform()->position = Vector2(RM->WINDOW_WIDTH / 2 - 50, RM->WINDOW_HEIGHT / 2 + 50);
+	end->SetText(" ");
+	end->GetTransform()->scale = Vector2(5, 5);
+	SPAWN.SpawnObject(end);
 }
 
 void GameplaySpaceInvaders::OnExit()
@@ -29,8 +31,15 @@ void GameplaySpaceInvaders::OnExit()
 
 void GameplaySpaceInvaders::Update()
 {
+		for (int i = _objects.size() - 1; i >= 0; i--) {
+		if (_objects[i]->IsPendingDestroy()) {
+			if (_objects[i]->tag == "ENEMY") {
+				currentScore += 100;
+			}
+		}
+	}
 	Scene::Update();
-
+	
 	int spawnPosX;
 	int spawnPosY;
 	if ((int)TIME.GetElapsedTime() % 5 == 0 && !enemySpawned && amountEnemies > 0)
@@ -45,31 +54,18 @@ void GameplaySpaceInvaders::Update()
 	{
 		enemySpawned = false;
 	}
-
-	IncreaseScore(1);
 	score->SetText("Score: " + std::to_string(currentScore));
-	if (currentScore >= 501) {
-		TextObject* end = new TextObject("End");
-		end->GetTransform()->position = Vector2(RM->WINDOW_WIDTH / 2 - 50, RM->WINDOW_HEIGHT / 2 + 50);
+
+	if (currentScore >= 500) {
 		end->SetText("NEW BEST!");
-		end->GetTransform()->scale = Vector2(5, 5);
-		SPAWN.SpawnObject(end);
-		currentScore--;
+	}
+	if (player->GetCurrentLifes() <= 0) {
+		SM.SetNextScene("Main Menu");
 	}
 }
 
 void GameplaySpaceInvaders::Render()
 {
 	Scene::Render();
+}
 
-}
-void GameplaySpaceInvaders::IncreaseScore(int points)
-{
-	currentScore += points;
-	std::cout << "Score: " << currentScore << std::endl;
-}
-void GameplaySpaceInvaders::EnemyDestroyed()
-{
-	currentScore += 10;  // Incrementamos el puntaje por cada enemigo destruido
-	std::cout << "Score: " << currentScore << std::endl;
-}

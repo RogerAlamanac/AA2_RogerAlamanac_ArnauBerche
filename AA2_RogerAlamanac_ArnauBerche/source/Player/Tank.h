@@ -30,7 +30,7 @@ public:
 
 	PlayerDirections currentDirection;
 
-	float fireCooldown = 1.f;
+	float fireCooldown = 10.f;
 	float timeSinceLastFire = 0.f;
 
 	Body(Vector2 pos, float velocity) : ImageObject("resources/tank body.png", Vector2(0.f, 0.f), Vector2(142.f, 195.f), 0, "PLAYER") {

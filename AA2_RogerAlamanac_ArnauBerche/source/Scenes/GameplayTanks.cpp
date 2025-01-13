@@ -11,6 +11,10 @@ void GameplayTanks::OnEnter()
 	SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2)));
 	player = new Tank(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), 100, MAX_LIFES);
 	SPAWN.SpawnObject(dynamic_cast<Object*>(player));
+
+	score = new Score(Vector2(100, 100), 0);
+	score->SetText("Score: " + std::to_string(currentScore));
+	SPAWN.SpawnObject(score);
 }
 
 void GameplayTanks::OnExit()
@@ -20,6 +24,13 @@ void GameplayTanks::OnExit()
 
 void GameplayTanks::Update() 
 {
+	for (int i = _objects.size() - 1; i >= 0; i--) {
+		if (_objects[i]->IsPendingDestroy()) {
+			if (_objects[i]->tag == "ENEMY") {
+				currentScore += 100;
+			}
+		}
+	}
 	Scene::Update();
 
 	int spawnPosX;
@@ -48,6 +59,7 @@ void GameplayTanks::Update()
 	{
 		enemySpawned = false;
 	}
+	score->SetText("Score: " + std::to_string(currentScore));
 	if (player->GetCurrentLifes() <= 0) {
 		SM.SetNextScene("Main Menu");
 	}

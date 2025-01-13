@@ -1,12 +1,14 @@
 #pragma once
 #include "Player.h"
 #include "../Object/ImageObject.h"
+#include "../Elements/Bullet.h"
 class Spaceship : public ImageObject, public Player
 {
 private:
 	int lifes;
 	int score = 0;
 public:
+	
 	float fireCooldown = 1.f;
 	float timeSinceLastFire = 0.f;
 	float timeToStartHolding = 0.2f;

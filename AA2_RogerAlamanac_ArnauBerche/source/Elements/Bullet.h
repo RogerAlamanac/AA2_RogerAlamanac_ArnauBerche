@@ -10,6 +10,7 @@ class Bullet : public ImageObject
 {
 private:
 	bool friendly;
+
 public:
 	Bullet(Vector2 initialPos, float velocity, Vector2 finalPos, bool _friendly) : ImageObject("resources/circle.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "BULLET") {
 		friendly = _friendly;
