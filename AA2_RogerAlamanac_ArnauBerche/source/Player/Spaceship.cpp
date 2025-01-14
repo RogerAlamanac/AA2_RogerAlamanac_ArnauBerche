@@ -3,7 +3,7 @@
 #include "../Elements/Bullet.h"
 #include "../Spawner/Spawner.h"
 #include "../InputManager/TimeManager.h"
-
+#include "../Audio/AudioManager.h"
 void Spaceship::Movement()
 {
     InputManager& input = IM;
@@ -25,15 +25,22 @@ void Spaceship::Attack()
     InputManager& input = IM;
 
     if(input.GetEvent(SDLK_SPACE, DOWN) && timeSinceLastFire >= fireCooldown) {
+        
         SPAWN.SpawnObject(new Bullet(ImageObject::transform->position, 500, Vector2(0, -1), true));
+        AM.PlayClip("d", 0);
         timeSinceLastFire = 0.f;
+        
         return;
     }
     else if (input.GetEvent(SDLK_SPACE, HOLD) && timeSinceLastFire >= fireCooldown) {
+
         SPAWN.SpawnObject(new Bullet(ImageObject::transform->position, 500, Vector2(0, -1), true));
-        timeSinceLastFire = 0.f;
+        AM.PlayClip("d", 0);
+        timeSinceLastFire = 0.f;       
         return;
     }
+
+    
 }
 
 void Spaceship::ReceiveDamage()

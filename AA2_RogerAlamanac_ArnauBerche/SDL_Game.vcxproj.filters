@@ -263,4 +263,10 @@
   <ItemGroup>
     <Xml Include="source\WavesEnemies.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="resources\audio\music\illuminati.mp3" />
+    <Media Include="resources\audio\sfx\d.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
 </Project>

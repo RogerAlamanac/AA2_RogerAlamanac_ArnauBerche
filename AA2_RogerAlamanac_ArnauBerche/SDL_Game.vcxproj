@@ -107,6 +107,10 @@
   <ItemGroup>
     <Xml Include="source\WavesEnemies.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="resources\audio\music\illuminati.mp3" />
+    <Media Include="resources\audio\sfx\d.wav" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

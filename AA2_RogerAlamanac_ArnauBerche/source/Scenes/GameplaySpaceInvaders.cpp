@@ -7,11 +7,13 @@
 #include "../Elements/Bullet.h"
 #include <iostream>
 #include "SceneManager.h"
+#include "../Audio/AudioManager.h"
 
 void GameplaySpaceInvaders::OnEnter()
 {
 	SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2)));
 	player = new Spaceship(Vector2(100, 700), MAX_LIFES);
+	dynamic_cast<Object*>(player)->GetTransform()->scale = Vector2(0.7f, 0.7f);
 	SPAWN.SpawnObject(dynamic_cast<Object*>(player));
 	score = new Score(Vector2(100, 100), 0);
 	score->SetText("Score: " + std::to_string(currentScore));
@@ -22,6 +24,10 @@ void GameplaySpaceInvaders::OnEnter()
 	end->SetText(" ");
 	end->GetTransform()->scale = Vector2(5, 5);
 	SPAWN.SpawnObject(end);
+
+	AM.LoadSong("illuminati");
+	AM.PlaySong("illuminati");
+	AM.LoadClip("d");
 }
 
 void GameplaySpaceInvaders::OnExit()
