@@ -11,13 +11,7 @@ private:
 	TextObject* sprites;
 	std::vector<TextObject*> options;
 public:
-	MainMenu() {
-		title = new TextObject("MainMenu");
-		option1 = new TextObject("Space Invaders");
-		option2 = new TextObject("Tanks");
-		option3 = new TextObject("Splat");
-		sprites = new TextObject("Sprite Selector");
-	}
+	MainMenu() = default;
 	~MainMenu() {
 		for (TextObject* option : options) {
 			delete option;

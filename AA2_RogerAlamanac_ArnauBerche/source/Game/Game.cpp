@@ -11,14 +11,17 @@ void Game::Init()
 {
 	RM->Init();
 
-	RM->LoadTexture("resources/background_space.jpg");
-	RM->LoadTexture("resources/Spaceship.png");
-	RM->LoadTexture("resources/circle.png");
-	RM->LoadTexture("resources/basicenemy.png");
-	RM->LoadTexture("resources/tank turret.png");
-	RM->LoadTexture("resources/tank body.png");
-	RM->LoadTexture("resources/Swatter.png");
-	RM->LoadTexture("resources/none.png");
+	RM->LoadTexture("resources/images/SpaceInvaders/background_space.jpg");
+	RM->LoadTexture("resources/images/SpaceInvaders/Spaceship.png");
+	RM->LoadTexture("resources/images/circle.png");
+	RM->LoadTexture("resources/images/basicenemy.png");
+	RM->LoadTexture("resources/images/Tanks/tank turret.png");
+	RM->LoadTexture("resources/images/Tanks/tank body.png");
+	RM->LoadTexture("resources/images/Swatter/Swatter.png");
+	RM->LoadTexture("resources/images/Tanks/background-tanks1.png");
+	RM->LoadTexture("resources/images/none.png");
+
+
 
 	assert(SM.AddScene("Main Menu", new MainMenu()));
 	assert(SM.AddScene("SpaceInvaders", new GameplaySpaceInvaders()));

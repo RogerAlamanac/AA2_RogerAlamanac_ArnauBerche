@@ -12,7 +12,7 @@ private:
     float currentTimeToMove;
 public:
     SeekerEnemy(Vector2 pos, float _movementSpeed, int _health, int _damage, float _rangeToSeek, bool _loops, Player* player) :
-        ImageObject("resources/basicenemy.png", Vector2(0.f, 0.f), Vector2(180.f, 180.f), 0, "ENEMY"), Enemy(_health, _damage, _loops) {
+        ImageObject("resources/images/basicenemy.png", Vector2(0.f, 0.f), Vector2(180.f, 180.f), 0, "ENEMY"), Enemy(_health, _damage, _loops) {
 
         pathPattern.push(Directions::DOWN);
         pathPattern.push(Directions::RIGHT);

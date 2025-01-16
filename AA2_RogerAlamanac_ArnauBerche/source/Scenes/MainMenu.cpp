@@ -7,6 +7,23 @@
 
 void MainMenu::OnEnter()
 {
+	//AddDefault Sprites  : ORDER: BG,PLAYER,ENEMYS
+    if (needsDefault) 
+    {
+        ClearITU();
+		imagesToUse[0].push_back("resources/images/Tanks/background-tanks1.png");
+		imagesToUse[0].push_back("resources/images/Tanks/background-tanks1.png");
+		imagesToUse[0].push_back("resources/images/Tanks/background-tanks1.png");
+        needsDefault = false;
+    }
+
+    //MainMenu
+	title = new TextObject("MainMenu");
+	option1 = new TextObject("Space Invaders");
+	option2 = new TextObject("Tanks");
+	option3 = new TextObject("Splat");
+	sprites = new TextObject("Sprite Selector");
+
     int optionWidth = 600; 
     int optionHeight = 75; 
 
@@ -45,11 +62,11 @@ void MainMenu::OnEnter()
     sprites->SetRect({ static_cast<int>(sprites->GetTransform()->position.x - (optionWidth / 2)), 400, optionWidth, optionHeight });
     sprites->SetButtonColor(SDL_Color{ 0, 0, 255, 255 }); // Azul
     SPAWN.SpawnObject(sprites);
+    options.push_back(option3);
 }
 
 void MainMenu::OnExit()
 {
-    options.clear(); 
     Scene::OnExit();
 }
 

@@ -50,3 +50,11 @@ void Scene::Render()
 	for (Object* go : _objects) go->Render();
 	RM->RenderScreen();
 }
+
+void Scene::ClearITU() 
+{
+	for (int i = 0; i < imagesToUse.size(); i++) 
+	{
+		imagesToUse.pop_back();
+	}
+}

@@ -221,6 +221,21 @@
     <ClInclude Include="source\Scenes\SpriteSelector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\WaveManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\dep\inc\xml\rapidxml.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\dep\inc\xml\rapidxml_iterators.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\dep\inc\xml\rapidxml_print.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\dep\inc\xml\rapidxml_utils.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\guitar.jpg">
@@ -229,7 +244,7 @@
     <Image Include="resources\SpriteSheet.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="resources\Spaceship.png">
+    <Image Include="resources\images\SpaceInvaders\Spaceship.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="resources\Bullet.png">
@@ -238,25 +253,25 @@
     <Image Include="resources\EnemyAlien.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="resources\tank turret.png">
+    <Image Include="resources\images\Tanks\tank turret.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="resources\tank body.png">
+    <Image Include="resources\images\Tanks\tank body.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="resources\none.png">
+    <Image Include="resources\images\circle.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="resources\circle.png">
+    <Image Include="resources\images\basicenemy.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="resources\basicenemy.png">
+    <Image Include="resources\images\Swatter\Swatter.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="resources\Swatter.png">
+    <Image Include="resources\images\SpaceInvaders\background_space.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="resources\background_space.jpg">
+    <Image Include="resources\images\none.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
@@ -268,5 +283,8 @@
     <Media Include="resources\audio\sfx\d.wav">
       <Filter>Resource Files</Filter>
     </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\Tanks\background-tanks1.avif" />
   </ItemGroup>
 </Project>

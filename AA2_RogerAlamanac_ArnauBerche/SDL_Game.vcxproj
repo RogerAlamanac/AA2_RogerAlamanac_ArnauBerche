@@ -47,6 +47,10 @@
     <ClCompile Include="source\UI\Score.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\dep\inc\xml\rapidxml.hpp" />
+    <ClInclude Include="source\dep\inc\xml\rapidxml_iterators.hpp" />
+    <ClInclude Include="source\dep\inc\xml\rapidxml_print.hpp" />
+    <ClInclude Include="source\dep\inc\xml\rapidxml_utils.hpp" />
     <ClInclude Include="source\Object\UIObject.h" />
     <ClInclude Include="source\Player\Damager.h" />
     <ClInclude Include="source\Player\Attacker.h" />
@@ -89,20 +93,21 @@
     <ClInclude Include="source\Player\Tank.h" />
     <ClInclude Include="source\Player\Swatter.h" />
     <ClInclude Include="source\UI\Score.h" />
+    <ClInclude Include="source\WaveManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="resources\background_space.jpg" />
-    <Image Include="resources\basicenemy.png" />
+    <Image Include="resources\images\none.png" />
+    <Image Include="resources\images\SpaceInvaders\background_space.jpg" />
+    <Image Include="resources\images\basicenemy.png" />
     <Image Include="resources\Bullet.png" />
-    <Image Include="resources\circle.png" />
+    <Image Include="resources\images\circle.png" />
     <Image Include="resources\EnemyAlien.png" />
     <Image Include="resources\guitar.jpg" />
-    <Image Include="resources\none.png" />
-    <Image Include="resources\Spaceship.png" />
+    <Image Include="resources\images\SpaceInvaders\Spaceship.png" />
     <Image Include="resources\SpriteSheet.png" />
-    <Image Include="resources\Swatter.png" />
-    <Image Include="resources\tank body.png" />
-    <Image Include="resources\tank turret.png" />
+    <Image Include="resources\images\Swatter\Swatter.png" />
+    <Image Include="resources\images\Tanks\tank body.png" />
+    <Image Include="resources\images\Tanks\tank turret.png" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="source\WavesEnemiesSpaceInvaders.xml" />
@@ -110,6 +115,9 @@
   <ItemGroup>
     <Media Include="resources\audio\music\illuminati.mp3" />
     <Media Include="resources\audio\sfx\d.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\Tanks\background-tanks1.avif" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

@@ -15,12 +15,12 @@ class InputManager {
 private:
 	int mouseX, mouseY;
 	bool leftClick;
-
+	float lastTimeClick = 0.0f;
+	bool playing = true;
 	std::unordered_map<Sint32, KeyState> keyReference;
 
 	InputManager() {
 		SDL_GetMouseState(&mouseX, &mouseY);
-		leftClick = false;
 	}
 	InputManager(const InputManager& im) = delete;
 	InputManager& operator=(const InputManager& val) = delete;
@@ -34,35 +34,46 @@ public:
 	bool Listen() {
 
 		//Update the keys from the previous frame
+
+		lastTimeClick += TIME.GetDeltaTime();
+
 		for (std::unordered_map<Sint32, KeyState>::iterator it = keyReference.begin(); it != keyReference.end(); it++) {
-			if (it->second == DOWN) {
+			if (it->second == DOWN)
 				it->second = HOLD;
-			}
-			else if (it->second == UP) {
+			else if (it->second == UP)
 				it->second = RELEASED;
-			}
 		}
 		SDL_GetMouseState(&mouseX, &mouseY);
 
 		SDL_Event event;
 
 		while (SDL_PollEvent(&event)) {
-			if (event.type == SDL_QUIT) return true;
+			if (event.type == SDL_QUIT) {
+				playing = false;
+				return true;
+			}
+
 			else if (event.type == SDL_MOUSEBUTTONDOWN) {
-				if (event.button.button == SDL_BUTTON_LEFT) leftClick = true;
+				if (event.button.button == SDL_BUTTON_LEFT) {
+					leftClick = true;
+					lastTimeClick = 0.0f;
+				}
 			}
 			else if (event.type == SDL_MOUSEBUTTONUP) {
-				if (event.button.button == SDL_BUTTON_LEFT) leftClick = false;
-			} 
-			else if (event.type == SDL_KEYDOWN) {
-				if(keyReference[event.key.keysym.sym] != HOLD)
-				keyReference[event.key.keysym.sym] = DOWN;
-			} 
+				if (event.button.button == SDL_BUTTON_LEFT)
+					leftClick = false;
+			}
+			else if (event.type == SDL_KEYDOWN) { //Clica qualsevol tecla
+				if (keyReference[event.key.keysym.sym] != HOLD)
+					keyReference[event.key.keysym.sym] = DOWN;
+			}
 			else if (event.type == SDL_KEYUP) {
 				if (keyReference[event.key.keysym.sym] != RELEASED)
-				keyReference[event.key.keysym.sym] = UP;
+					keyReference[event.key.keysym.sym] = UP;
 			}
 		}
+		return false;
+	
 	}
 
 	inline int GetMouseX() const { return mouseX; }

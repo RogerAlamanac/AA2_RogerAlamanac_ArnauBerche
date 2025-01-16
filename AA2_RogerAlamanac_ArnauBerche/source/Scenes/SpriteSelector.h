@@ -20,36 +20,23 @@ private:
 	TextObject* title;
 	std::vector<ImageObject*> sprites;
 
+	ImageObject* spaceInvaders;
+	ImageObject* tank;
+	ImageObject* swater;
+	std::vector<ImageObject*> hoverSprites;
+
 	
 public:
-	SpriteSelector() {
-		background1 = new ImageObject("resources/background_space.jpg", Vector2(0.f, 0.f), Vector2(2000.f, 1125.f), 0, "SPRITE");
-		sprites.push_back(background1);
-		background2 = new ImageObject("resources/Spaceship.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "SPRITE");
-		sprites.push_back(background2);
-		background3 = new ImageObject("resources/Spaceship.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "SPRITE");
-		sprites.push_back(background3);
-		enemies1 = new ImageObject("resources/basicenemy.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "SPRITE");
-		sprites.push_back(enemies1);
-		enemies2 = new ImageObject("resources/Swatter.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "SPRITE");
-		sprites.push_back(enemies2);
-		enemies3 = new ImageObject("resources/Swatter.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "SPRITE");
-		sprites.push_back(enemies3);
-		VFX1 = new ImageObject("resources/circle.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "SPRITE");
-		sprites.push_back(VFX1);
-		VFX2 = new ImageObject("resources/none.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "SPRITE");
-		sprites.push_back(VFX2);
-		VFX3 = new ImageObject("resources/tank body.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "SPRITE");
-		sprites.push_back(VFX3);
-
-		back = new TextObject("Main Menu");
-		title = new TextObject("Sprite Selector");
-	};
+	SpriteSelector() = default;
 	~SpriteSelector() {
 		for (ImageObject* sprite : sprites) {
 			delete sprite;
 		}
 		sprites.clear();
+		for (ImageObject* sprite : hoverSprites) {
+			delete sprite;
+		}
+		hoverSprites.clear();
 	}
 	void OnEnter() override;
 	void OnExit() override;

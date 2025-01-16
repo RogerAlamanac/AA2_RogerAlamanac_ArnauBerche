@@ -1,18 +1,28 @@
 #pragma once
 #include "Scene.h"
 #include "../UI/Score.h"
+#include "../WaveManager.h" 
 
 class GameplaySpaceInvaders : public Scene {
 private:
 	bool enemySpawned = false;
 	int amountEnemies = 20;
 	int currentScore = 0;
+	Wave currentWave;
+	int currentWaveIndex = 0;
 	Score* score;
 	TextObject* end;
+	WaveManager* waveManager = new WaveManager();
+	//ImageObject* background1;
 public:
 	GameplaySpaceInvaders() = default;
 	void OnEnter() override;
 	void OnExit() override;
 	void Update() override;
 	void Render() override;
+	int GetTotalEnemies(const Wave& wave); // Calcula el total de enemigos en una oleada
+	void SpawnEnemiesFromWave(const Wave& wave); // Genera enemigos basados en la oleada actual
+	//void AdvanceToNextWave();
+	Vector2 GenerateSpawnPosition();
+	//std::vector<EnemyConfig>GetCurrentWaveEnemies();
 };
