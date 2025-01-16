@@ -12,7 +12,7 @@
 		<amount>5</amount>
 	</enemy>
 	<enemy>
-		<id>1</id>
+		<id>2</id>
 		<pattern>66778877</pattern>
 		<amount>5</amount>
 	</enemy>

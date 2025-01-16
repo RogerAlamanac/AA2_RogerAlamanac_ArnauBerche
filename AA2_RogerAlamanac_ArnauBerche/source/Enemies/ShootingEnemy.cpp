@@ -66,9 +66,24 @@ void ShootingEnemy::Shoot()
 
 void ShootingEnemy::Update()
 {
+	timeSinceLastMove += TIME.GetDeltaTime();
+
+	// Solo mover si ha pasado 1 segundo
+	if (timeSinceLastMove >= 1.0f) {
+		if (!pattern.empty()) {
+			int direction = pattern[patternIndex] - '0'; // Convertir carácter a número
+			MoveAccordingToPattern(direction);
+
+			// Avanzar al siguiente paso del patrón
+			patternIndex = (patternIndex + 1) % pattern.size();
+		}
+
+		// Reiniciar el temporizador
+		timeSinceLastMove = 0.0f;
+	}
 	Object::Update();
 	currentTimeToMove += TIME.GetDeltaTime();
 	currentTimeToShoot += TIME.GetDeltaTime();
-	BaseMovement();
+	//BaseMovement();
 	Shoot();
 }

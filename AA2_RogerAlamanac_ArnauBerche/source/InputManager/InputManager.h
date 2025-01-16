@@ -43,6 +43,7 @@ public:
 			else if (it->second == UP)
 				it->second = RELEASED;
 		}
+
 		SDL_GetMouseState(&mouseX, &mouseY);
 
 		SDL_Event event;

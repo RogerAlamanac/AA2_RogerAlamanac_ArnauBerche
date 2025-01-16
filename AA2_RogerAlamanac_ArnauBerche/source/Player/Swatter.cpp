@@ -2,69 +2,95 @@
 #include "../InputManager/InputManager.h"
 #include <iostream>
 
+void Swatter::Update() {
+	
+	switch (currentState) {
+	case SwatterState::MOVING:
+		std::cout << "IsMoving" << std::endl;
+		if (IM.GetLeftClick()) {
+			currentState = SwatterState::ATTACKING;
+			stateStartTime = TIME.GetElapsedTime();
+		}
+		else {
+			Movement();
+		}
+		break;
+
+	case SwatterState::ATTACKING:
+		std::cout << "IsAttacking" << std::endl;
+		stateStartTime = TIME.GetElapsedTime();
+		break;
+
+	case SwatterState::STUNNED:
+		std::cout << "IsStunned" << std::endl;
+		std::cout << TIME.GetElapsedTime() << std::endl;
+		if (TIME.GetElapsedTime() - stateStartTime >= 2.0f) {
+			currentState = SwatterState::MOVING;
+		}
+		break;
+	}
+
+	Object::Update();
+}
+
 void Swatter::Attack()
 {
 }
 
-void Swatter::Movement()
-{
+void Swatter::Movement() {
+	float mouseX = IM.GetMouseX();
+	float mouseY = IM.GetMouseY();
+	Vector2 mousePosition = Vector2(mouseX, mouseY);
+
+	Vector2 direction = mousePosition - transform->position;
+
+	float distanceSquared = direction.x * direction.x + direction.y * direction.y;
+
+	if (distanceSquared < 1.0f) {
+		return;
+	}
+
+	direction.Normalize();
+
+	float maxSpeed = 1000.0f;
+	float deltaTime = TIME.GetDeltaTime();
+	Vector2 velocity = direction * maxSpeed * deltaTime;
+
+	if (velocity.x * velocity.x + velocity.y * velocity.y > distanceSquared) {
+		transform->position = mousePosition;
+	}
+	else {
+		transform->position = transform->position + velocity;
+	}
 }
 
 void Swatter::ReceiveDamage()
 {
 }
 
-void Swatter::Update(){
-    InputManager& input = IM;
-    Object::Update();
+void Swatter::OnCollisionEnter(Object* other) {
+	std::cout << other->tag << std::endl;
+	if (other->tag == "ENEMY") {
+		if (currentState == SwatterState::ATTACKING) {
+			other->Destroy();
+			currentState = SwatterState::MOVING; // Return to Moving after successful attack
+		}
+		else if (currentState == SwatterState::STUNNED) {
+			lives--;
 
-    if (currentState == SwatterState::MOVING) {
-        Vector2 movementVector = Vector2(input.GetMouseX(), input.GetMouseY()) - transform->position;
-        if (GetRigidBody()->CheckOverlappingPoint(Vector2(input.GetMouseX(), input.GetMouseY())))
-        {
-            physics->SetLinearDrag(2);
-            return;
-        }
-        else
-        {
-            physics->SetLinearDrag(0);
-        }
-
-        movementVector.Normalize();
-        physics->AddForce(movementVector * movementMultiplyer);
-        if (input.GetLeftClick()) {
-            currentState = SwatterState::ATTACKING;
-        }
-    }
-    else if (currentState == SwatterState::ATTACKING) {
-        currentState = SwatterState::STUNNED;
-        currentStunTime = 0.0f;
-    }
-    else if (currentState == SwatterState::STUNNED) {
-        currentStunTime += TIME.GetDeltaTime();
-        physics->SetVelocity(Vector2(0, 0));
-        if (currentStunTime >= maxStunTime)
-            currentState = SwatterState::MOVING;
-    }
-    if (input.GetLeftClick()) {
-        std::cout << "CLICK";
-
-    }
+		}
+	}
+	else {
+		if (currentState == SwatterState::ATTACKING) {
+			currentState = SwatterState::STUNNED; // Become stunned if attack misses
+			stateStartTime = TIME.GetElapsedTime();
+		}
+	}
 
 
-    
+	// if (Bullet* bullet = dynamic_cast<Bullet*>(other)) {
+	// 	if (!bullet->IsFriendly()) {
+	// 		lives--;
+	// 	}
+	// }
 }
-void Swatter::OnCollisionEnter(Object* other)
-{
-    if (currentState == SwatterState::MOVING)
-        return;
-
-    if (other->tag == "ENEMY")
-    {
-        if (currentState == SwatterState::ATTACKING) {
-            other->Destroy();
-            currentState = SwatterState::MOVING;
-        }
-    }
-}
-

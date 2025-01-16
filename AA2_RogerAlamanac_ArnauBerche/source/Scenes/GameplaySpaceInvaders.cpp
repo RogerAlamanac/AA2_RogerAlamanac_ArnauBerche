@@ -8,6 +8,7 @@
 #include <iostream>
 #include "SceneManager.h"
 #include "../Audio/AudioManager.h"
+#include "../Enemies/ShootingEnemy.h"
 void GameplaySpaceInvaders::OnEnter()
 {
 	
@@ -80,13 +81,15 @@ void GameplaySpaceInvaders::Update()
 	//	enemySpawned = false;
 	//}
 	if (amountEnemies > 0) {
-		if ((int)TIME.GetElapsedTime() % 5 == 0 && !enemySpawned) {
-			// Generar enemigos
-			SpawnEnemiesFromWave(currentWave);
-			enemySpawned = true;
-		}
-		else if ((int)TIME.GetElapsedTime() % 5 != 0) {
-			enemySpawned = false;
+		for (const auto& enemy : currentWave.enemies) {
+			if ((int)TIME.GetElapsedTime() % 5 == 0 && !enemySpawned) {
+				// Generar enemigos
+				SpawnEnemiesFromWave(currentWave);
+				enemySpawned = true;
+			}
+			else if ((int)TIME.GetElapsedTime() % 5 != 0) {
+				enemySpawned = false;
+			}
 		}
 	}
 	//bool allEnemiesDefeated = true;
@@ -124,15 +127,31 @@ void GameplaySpaceInvaders::SpawnEnemiesFromWave(const Wave& wave) {
 	}
 
 	// Generar enemigos fijos
-	for (const auto& enemy : wave.enemies) {
+	for(auto enemy : wave.enemies)
 		for (int i = 0; i < enemy.amount; ++i) {
-			BasicEnemy* enemy1 = new BasicEnemy(Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT), 10, 10, enemy.id, true);
-			enemy1->SetPattern(enemy.pattern); // Patrón obtenido del XML
-			SPAWN.SpawnObject(enemy1);
+			SpawnEnemyById(enemy);
 			amountEnemies--;
 		}
+
+}
+void GameplaySpaceInvaders::SpawnEnemyById(EnemyConfig enemy)
+{
+	switch (enemy.id) {
+	case 1: {
+		BasicEnemy* enemyBasic = new BasicEnemy(Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT), 10, 10, 1, true);
+		enemyBasic->SetPattern(enemy.pattern);
+		SPAWN.SpawnObject(enemyBasic);
+		break;
+	}
+	case 2: {
+		ShootingEnemy* enemyShoot = new ShootingEnemy(Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT), 10, 10, 1, true);
+		enemyShoot->SetPattern(enemy.pattern);
+		SPAWN.SpawnObject(enemyShoot);
+		break;
+	}
 	}
 }
+
 Vector2 GameplaySpaceInvaders::GenerateSpawnPosition() {
 	return Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT / 3); // Genera en la parte superior
 }

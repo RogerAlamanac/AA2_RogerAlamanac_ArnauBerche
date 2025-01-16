@@ -6,13 +6,10 @@ class Swatter : public ImageObject, public Player
 {
 private:
 	enum class SwatterState { MOVING, ATTACKING, STUNNED };
-	SwatterState currentState;
+	SwatterState currentState = SwatterState::MOVING;
 	
-	const float stopThreshold = 5.0f;
-	const float movementMultiplyer = 100.0f;
-	
-	const float maxStunTime = 2.0f;
-	float currentStunTime = 0.0f;
+	float stateStartTime = 0.0f;
+	int lives = 3;
 
 	int lifes;
 	int score = 0;

@@ -22,6 +22,7 @@ public:
 	void Render() override;
 	int GetTotalEnemies(const Wave& wave); // Calcula el total de enemigos en una oleada
 	void SpawnEnemiesFromWave(const Wave& wave); // Genera enemigos basados en la oleada actual
+	void SpawnEnemyById(EnemyConfig enemy);
 	//void AdvanceToNextWave();
 	Vector2 GenerateSpawnPosition();
 	//std::vector<EnemyConfig>GetCurrentWaveEnemies();
