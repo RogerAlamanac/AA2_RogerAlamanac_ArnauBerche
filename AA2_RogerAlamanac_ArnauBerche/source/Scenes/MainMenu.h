@@ -22,6 +22,7 @@ public:
 		for (TextObject* option : options) {
 			delete option;
 		}
+		options.clear(); 
 	}
 	void OnEnter() override;
 	void OnExit() override;

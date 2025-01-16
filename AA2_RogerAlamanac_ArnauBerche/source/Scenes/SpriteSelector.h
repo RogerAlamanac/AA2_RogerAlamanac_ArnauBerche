@@ -20,8 +20,6 @@ private:
 	TextObject* title;
 	std::vector<ImageObject*> sprites;
 
-	Vector2 initialPos = Vector2((RM->WINDOW_WIDTH / 5), 200);
-	Vector2 previousSpritePos = initialPos;
 	
 public:
 	SpriteSelector() {
@@ -51,6 +49,7 @@ public:
 		for (ImageObject* sprite : sprites) {
 			delete sprite;
 		}
+		sprites.clear();
 	}
 	void OnEnter() override;
 	void OnExit() override;

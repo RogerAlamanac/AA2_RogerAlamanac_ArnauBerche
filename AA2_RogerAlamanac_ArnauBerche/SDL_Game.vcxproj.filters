@@ -261,7 +261,7 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="source\WavesEnemies.xml" />
+    <Xml Include="source\WavesEnemiesSpaceInvaders.xml" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="resources\audio\music\illuminati.mp3" />

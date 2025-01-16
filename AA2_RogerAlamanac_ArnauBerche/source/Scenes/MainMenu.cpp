@@ -49,6 +49,7 @@ void MainMenu::OnEnter()
 
 void MainMenu::OnExit()
 {
+    options.clear(); 
     Scene::OnExit();
 }
 

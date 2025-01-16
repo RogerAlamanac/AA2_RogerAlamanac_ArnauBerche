@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level>
+  <wave>
+    <random_enemy>
+      <id>2</id>
+      <pattern>011055</pattern>
+      <amount>1</amount>
+    </random_enemy>
+    <enemy>
+      <id>1</id>
+      <pattern>12345678</pattern>
+      <amount>5</amount>
+    </enemy>
+    <enemy>
+      <id>1</id>
+      <pattern>66778877</pattern>
+      <amount>5</amount>
+    </enemy>
+  </wave>
+	<wave>
+		<random_enemy>
+			<id>2</id>
+			<pattern>011055</pattern>
+			<amount>1</amount>
+		</random_enemy>
+		<enemy>
+			<id>1</id>
+			<pattern>135135</pattern>
+			<amount>7</amount>
+		</enemy>
+		<enemy>
+			<id>1</id>
+			<pattern>4482211</pattern>
+			<amount>7</amount>
+		</enemy>
+	</wave>
+	<wave>
+		<random_enemy>
+			<id>2</id>
+			<pattern>011055</pattern>
+			<amount>1</amount>
+		</random_enemy>
+		<enemy>
+			<id>1</id>
+			<pattern>1188772</pattern>
+			<amount>10</amount>
+		</enemy>
+		<enemy>
+			<id>1</id>
+			<pattern>29988334</pattern>
+			<amount>10</amount>
+		</enemy>
+	</wave>
+
+
+</level>

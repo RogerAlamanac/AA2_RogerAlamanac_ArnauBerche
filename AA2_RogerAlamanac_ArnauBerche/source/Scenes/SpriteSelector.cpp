@@ -8,20 +8,28 @@ void SpriteSelector::OnEnter()
     title->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 2) - 120, 150);
     title->GetTransform()->scale = Vector2(2.f, 2.f);
     title->SetText("SPRITE SELECTOR");
-    SPAWN.SpawnObject(title);
 
-    int spritesRow = 0;
-    int spritesCol = 0;
+    background1->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5), 200);
+
+    background2->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5) + 400, 200);
+
+    background3->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5) + 800, 200);
+
+    enemies1->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5), 350);
+
+    enemies2->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5) + 400, 350);
+
+    enemies3->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5) + 800, 350);
+
+    VFX1->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5), 500);
+
+    VFX2->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5) + 400, 500);
+
+    VFX3->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5) + 800, 500);
+
     for (ImageObject* sprite : sprites) {
-        sprite->GetTransform()->position = previousSpritePos;
-        SPAWN.SpawnObject(sprite);
-        spritesRow++;
-        previousSpritePos.x += 400;
-        if (spritesRow >= 3) {
-            previousSpritePos.y += 150;
-            previousSpritePos.x = initialPos.x;
-            spritesRow = 0;
-            spritesCol++;
+        if (sprite != nullptr) {
+            SPAWN.SpawnObject(sprite);
         }
     }
     int optionWidth = 400;
@@ -36,6 +44,8 @@ void SpriteSelector::OnEnter()
 
 void SpriteSelector::OnExit()
 {
+    SPAWN.ClearSpawnedObjects();
+    sprites.clear();
 	Scene::OnExit();
 }
 
@@ -49,6 +59,7 @@ void SpriteSelector::Update()
     // Verificar si el mouse está sobre algún sprite
     for (ImageObject* sprite : sprites) {
         if (IsMouseOverObject(sprite, mouseX, mouseY)) {
+            if (sprite == nullptr) continue; // Evita acceder a punteros nulos
             std::cout << "Mouse está sobre el sprite: " << sprite << std::endl;
 
             // Puedes realizar acciones adicionales, como cambiar el color del sprite,
