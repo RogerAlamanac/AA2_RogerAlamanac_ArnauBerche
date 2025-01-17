@@ -26,7 +26,7 @@ void GameplaySpaceInvaders::OnEnter()
 	}
 
 	// Resto de inicializaciones
-	//SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), imagesToUse[currentScene][0]));
+	SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), "resources/images/SpaceShip/BG/Space_Draw.png"));
 
 	player = new Spaceship(Vector2(100, 700), MAX_LIFES);
 	dynamic_cast<Object*>(player)->GetTransform()->scale = Vector2(0.7f, 0.7f);
@@ -34,11 +34,7 @@ void GameplaySpaceInvaders::OnEnter()
 	score = new Score(Vector2(100, 100), 0);
 	score->SetText("Score: " + std::to_string(currentScore));
 	SPAWN.SpawnObject(score);
-	end = new TextObject("End");
-	end->GetTransform()->position = Vector2(RM->WINDOW_WIDTH / 2 - 50, RM->WINDOW_HEIGHT / 2 + 50);
-	end->SetText(" ");
-	end->GetTransform()->scale = Vector2(5, 5);
-	SPAWN.SpawnObject(end);
+
 	AM.LoadSong("illuminati");
 	AM.PlaySong("illuminati");
 	AM.LoadClip("d");
@@ -102,9 +98,6 @@ void GameplaySpaceInvaders::Update()
 	
 	score->SetText("Score: " + std::to_string(currentScore));
 
-	if (currentScore >= 500) {
-		end->SetText("NEW BEST!");
-	}
 	if (player->GetCurrentLifes() <= 0) {
 		SM.SetNextScene("Main Menu");
 	}

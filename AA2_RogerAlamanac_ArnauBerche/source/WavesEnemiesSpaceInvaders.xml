@@ -27,12 +27,12 @@
 		<enemy>
 			<id>2</id>
 			<pattern>13571357</pattern>
-			<amount>10</amount>
+			<amount>7</amount>
 		</enemy>
 		<enemy>
 			<id>2</id>
 			<pattern>4482211</pattern>
-			<amount>10</amount>
+			<amount>4</amount>
 		</enemy>
 	</wave>
 	<wave>
@@ -44,12 +44,12 @@
 		<enemy>
 			<id>1</id>
 			<pattern>1188772</pattern>
-			<amount>10</amount>
+			<amount>5</amount>
 		</enemy>
 		<enemy>
 			<id>2</id>
 			<pattern>250788334</pattern>
-			<amount>10</amount>
+			<amount>5</amount>
 		</enemy>
 	</wave>
 	<wave>
