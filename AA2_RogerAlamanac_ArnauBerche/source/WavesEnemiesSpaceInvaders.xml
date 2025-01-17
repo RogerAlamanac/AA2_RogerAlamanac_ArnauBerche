@@ -2,19 +2,19 @@
 <level>
 	<wave>
 	<random_enemy>
-		<id>2</id>
+		<id>1</id>
 		<pattern>011055</pattern>
 		<amount>1</amount>
 	</random_enemy>
 	<enemy>
 		<id>1</id>
 		<pattern>12345678</pattern>
-		<amount>5</amount>
+		<amount>2</amount>
 	</enemy>
 	<enemy>
-		<id>2</id>
+		<id>1</id>
 		<pattern>66778877</pattern>
-		<amount>5</amount>
+		<amount>3</amount>
 	</enemy>
 	</wave>
 	
@@ -23,16 +23,33 @@
 			<id>2</id>
 			<pattern>011055</pattern>
 			<amount>1</amount>
-		</random_enemy>
+		</random_enemy> 
 		<enemy>
-			<id>1</id>
-			<pattern>135135</pattern>
+			<id>2</id>
+			<pattern>13571357</pattern>
 			<amount>7</amount>
 		</enemy>
 		<enemy>
-			<id>1</id>
+			<id>2</id>
 			<pattern>4482211</pattern>
 			<amount>7</amount>
+		</enemy>
+	</wave>
+	<wave>
+		<random_enemy>
+			<id>2</id>
+			<pattern>011055</pattern>
+			<amount>1</amount>
+		</random_enemy>
+		<enemy>
+			<id>1</id>
+			<pattern>1188772</pattern>
+			<amount>10</amount>
+		</enemy>
+		<enemy>
+			<id>1</id>
+			<pattern>250788334</pattern>
+			<amount>10</amount>
 		</enemy>
 	</wave>
 	<wave>
@@ -52,4 +69,5 @@
 			<amount>10</amount>
 		</enemy>
 	</wave>
+	
 </level>

@@ -31,7 +31,9 @@ public:
             currentWaveIndex++;
         }
     }
-
+    std::vector<EnemyConfig>GetCurrentWaveEnemies() const {
+        return waves[currentWaveIndex].enemies;
+    }
 
     bool LoadFromXML(const std::string& filepath) {
         try {

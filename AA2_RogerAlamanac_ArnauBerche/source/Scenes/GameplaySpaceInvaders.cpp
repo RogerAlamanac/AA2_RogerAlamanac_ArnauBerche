@@ -11,15 +11,22 @@
 #include "../Enemies/ShootingEnemy.h"
 void GameplaySpaceInvaders::OnEnter()
 {
-	
+	//AddDefault Sprites  : ORDER: BG,PLAYER,ENEMYS
+	if (needsDefault)
+	{
+		ClearITU();
+		imagesToUse[0].push_back("resources/images/Tanks/background-tanks1.png");
+		imagesToUse[0].push_back("resources/images/Tanks/background-tanks1.png");
+		imagesToUse[0].push_back("resources/images/Tanks/background-tanks1.png");
+		needsDefault = false;
+	}
 	if (!waveManager->LoadFromXML("source/WavesEnemiesSpaceInvaders.xml")) {
-		std::cout<< "No se pudo cargar la configuración de oleadas.\n";
 		return;
 	}
 
-	currentWaveIndex = 0;
+	waveManager->currentWaveIndex = 0;
 	if (!waveManager->waves.empty()) {
-		currentWave = waveManager->waves[currentWaveIndex];
+		currentWave = waveManager->waves[waveManager->currentWaveIndex];
 		amountEnemies = GetTotalEnemies(currentWave);
 	}
 
@@ -43,10 +50,11 @@ void GameplaySpaceInvaders::OnEnter()
 
 void GameplaySpaceInvaders::OnExit()
 {
+	//AM.StopAudio();
 	Scene::OnExit();
 }
 int GameplaySpaceInvaders::GetTotalEnemies(const Wave& wave) {
-	int total = wave.randomEnemy.amount;
+	int total = 0;
 	for (const auto& enemy : wave.enemies) {
 		total += enemy.amount;
 	}
@@ -58,6 +66,7 @@ void GameplaySpaceInvaders::Update()
 			if (_objects[i]->IsPendingDestroy()) {
 				if (_objects[i]->tag == "ENEMY") {
 					currentScore += 100;
+					amountEnemies--;
 				}
 			}
 			if (_objects[i]->tag == "ENEMY") {
@@ -65,43 +74,36 @@ void GameplaySpaceInvaders::Update()
 			}
 		}
 	Scene::Update();
-	
-	//int spawnPosX;
-	//int spawnPosY;
-	//if ((int)TIME.GetElapsedTime() % 5 == 0 && !enemySpawned && amountEnemies > 0)
-	//{
-	//	spawnPosX = rand() % RM->WINDOW_WIDTH + 1;
-	//	spawnPosY = rand() % RM->WINDOW_HEIGHT + 1;
-	//	SPAWN.SpawnObject(new BasicEnemy(Vector2(90, -90), 50, 10, 1, true));
-	//	enemySpawned = true;
-	//	amountEnemies--;
-	//}
-	//else if ((int)TIME.GetElapsedTime() % 5 != 0)
-	//{
-	//	enemySpawned = false;
-	//}
+	std::cout << amountEnemies << std::endl;
 	if (amountEnemies > 0) {
 		for (const auto& enemy : currentWave.enemies) {
-			if ((int)TIME.GetElapsedTime() % 5 == 0 && !enemySpawned) {
+			if (!enemySpawned) {
 				// Generar enemigos
 				SpawnEnemiesFromWave(currentWave);
 				enemySpawned = true;
-			}
-			else if ((int)TIME.GetElapsedTime() % 5 != 0) {
-				enemySpawned = false;
-			}
+			}		
 		}
 	}
-	//bool allEnemiesDefeated = true;
-	//for (Object* obj : _objects) {
-	//	if (obj->tag == "ENEMY") {
-	//		allEnemiesDefeated = false;
-	//		break;
-	//	}
-	//}
-	//if (allEnemiesDefeated) {
-	//	AdvanceToNextWave();
-	//}
+	else 
+	{
+		AdvanceToNextWave();
+		if (!waveManager->waves.empty()) {
+			currentWave = waveManager->waves[waveManager->currentWaveIndex];
+			amountEnemies = GetTotalEnemies(currentWave);
+		}
+	}
+
+	if ((int)TIME.GetElapsedTime() % 3 == 0 && !randomSpawned) {
+		amountEnemies++;
+		SpawnEnemyById(currentWave.randomEnemy);
+		randomSpawned = true;
+	}
+	else 
+	{
+		randomSpawned = false;
+	}
+	
+	
 	score->SetText("Score: " + std::to_string(currentScore));
 
 	if (currentScore >= 500) {
@@ -118,19 +120,10 @@ void GameplaySpaceInvaders::Render()
 }
 
 void GameplaySpaceInvaders::SpawnEnemiesFromWave(const Wave& wave) {
-	// Generar enemigos aleatorios
-	if (wave.randomEnemy.amount > 0) {
-		BasicEnemy* enemy = new BasicEnemy(Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT), 10, 10, wave.randomEnemy.id, true);
-		enemy->SetPattern(wave.randomEnemy.pattern); // Patrón obtenido del XML
-		SPAWN.SpawnObject(enemy);
-		amountEnemies--;
-	}
-
 	// Generar enemigos fijos
 	for(auto enemy : wave.enemies)
 		for (int i = 0; i < enemy.amount; ++i) {
 			SpawnEnemyById(enemy);
-			amountEnemies--;
 		}
 
 }
@@ -138,13 +131,15 @@ void GameplaySpaceInvaders::SpawnEnemyById(EnemyConfig enemy)
 {
 	switch (enemy.id) {
 	case 1: {
-		BasicEnemy* enemyBasic = new BasicEnemy(Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT), 10, 10, 1, true);
+		Vector2 spawnPos = GenerateSpawnPosition(); 
+		BasicEnemy* enemyBasic = new BasicEnemy(spawnPos, 10, 10, 1, true);
 		enemyBasic->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(enemyBasic);
 		break;
 	}
 	case 2: {
-		ShootingEnemy* enemyShoot = new ShootingEnemy(Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT), 10, 10, 1, true);
+		Vector2 spawnPos = GenerateSpawnPosition(); 
+		ShootingEnemy* enemyShoot = new ShootingEnemy(spawnPos, 10, 20, 1, true);
 		enemyShoot->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(enemyShoot);
 		break;
@@ -152,29 +147,26 @@ void GameplaySpaceInvaders::SpawnEnemyById(EnemyConfig enemy)
 	}
 }
 
+void GameplaySpaceInvaders::AdvanceToNextWave()
+{
+	if (waveManager->HasNextWave()) {
+		waveManager->LoadNextWave(); // Carga la siguiente oleada desde el WaveManager
+		enemySpawned = false;
+		
+		std::cout << "NEXT WAVE";
+	}
+	else {
+		// Si no hay más oleadas, mostrar un mensaje o terminar el nivel
+		end->SetText("YOU WIN!");
+	}
+}
+
 Vector2 GameplaySpaceInvaders::GenerateSpawnPosition() {
 	return Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT / 3); // Genera en la parte superior
 }
-//std::vector<EnemyConfig> GameplaySpaceInvaders::GetCurrentWaveEnemies(){
-//{
-//	return std::vector<EnemyConfig>();
-//}
-//void GameplaySpaceInvaders::AdvanceToNextWave() {
-//	if (waveManager->HasNextWave()) {
-//		waveManager->LoadNextWave(); // Carga la siguiente oleada desde el WaveManager
-//
-//		// Generar los enemigos de la nueva oleada
-//		for (auto enemyData : waveManager->GetCurrentWaveEnemies()) {
-//			for (int i = 0; i < enemyData.amount; i++) {
-//				Vector2 spawnPos = GenerateSpawnPosition(); // Genera una posición inicial válida
-//				BasicEnemy* enemy = new BasicEnemy(spawnPos, 50.0f, enemyData.health, enemyData.damage, true);
-//				SPAWN.SpawnObject(enemy);
-//			}
-//		}
-//	}
-//	else {
-//		// Si no hay más oleadas, mostrar un mensaje o terminar el nivel
-//		end->SetText("YOU WIN!");
-//	}
-//}
+std::vector<EnemyConfig> GameplaySpaceInvaders::GetCurrentWaveEnemies()
+{
+	return std::vector<EnemyConfig>();
+}
+
 

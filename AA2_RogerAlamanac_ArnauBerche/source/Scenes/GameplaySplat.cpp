@@ -2,9 +2,11 @@
 #include "../Spawner/Spawner.h"
 #include "../Enemies/SeekerEnemy.h"
 #include "../Player/Swatter.h"
+#include "../Elements/Background.h"
 
 void GameplaySplat::OnEnter()
 {
+	SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), "resources/images/Tanks/background-tanks1.png"));
 	player = new Swatter(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), MAX_LIFES);
 	SPAWN.SpawnObject(dynamic_cast<Object*>(player));
 }

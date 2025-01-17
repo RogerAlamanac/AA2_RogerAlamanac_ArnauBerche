@@ -6,10 +6,10 @@
 class GameplaySpaceInvaders : public Scene {
 private:
 	bool enemySpawned = false;
-	int amountEnemies = 20;
+	bool randomSpawned = false;
+	int amountEnemies = 10;
 	int currentScore = 0;
 	Wave currentWave;
-	int currentWaveIndex = 0;
 	Score* score;
 	TextObject* end;
 	WaveManager* waveManager = new WaveManager();
@@ -23,7 +23,7 @@ public:
 	int GetTotalEnemies(const Wave& wave); // Calcula el total de enemigos en una oleada
 	void SpawnEnemiesFromWave(const Wave& wave); // Genera enemigos basados en la oleada actual
 	void SpawnEnemyById(EnemyConfig enemy);
-	//void AdvanceToNextWave();
+	void AdvanceToNextWave();
 	Vector2 GenerateSpawnPosition();
-	//std::vector<EnemyConfig>GetCurrentWaveEnemies();
+	std::vector<EnemyConfig>GetCurrentWaveEnemies();
 };

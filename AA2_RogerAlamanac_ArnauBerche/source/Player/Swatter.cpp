@@ -18,6 +18,7 @@ void Swatter::Update() {
 
 	case SwatterState::ATTACKING:
 		std::cout << "IsAttacking" << std::endl;
+		currentState = SwatterState::STUNNED;
 		stateStartTime = TIME.GetElapsedTime();
 		break;
 
@@ -69,23 +70,23 @@ void Swatter::ReceiveDamage()
 }
 
 void Swatter::OnCollisionEnter(Object* other) {
-	std::cout << other->tag << std::endl;
-	if (other->tag == "ENEMY") {
-		if (currentState == SwatterState::ATTACKING) {
+	if (currentState == SwatterState::MOVING) { return; }
+	
+	if (currentState == SwatterState::ATTACKING) {
+		currentState = SwatterState::MOVING;
+		if (other->tag == "ENEMY") {
+			std::cout << "DestroyNow" << std::endl;
 			other->Destroy();
-			currentState = SwatterState::MOVING; // Return to Moving after successful attack
 		}
-		else if (currentState == SwatterState::STUNNED) {
-			lives--;
+		else if (other->tag == "BG") {
+			std::cout << "BG" << std::endl;
+			currentState = SwatterState::STUNNED;
+		}
+	}
+	else if (currentState == SwatterState::STUNNED) {
+		lives--;
+	}
 
-		}
-	}
-	else {
-		if (currentState == SwatterState::ATTACKING) {
-			currentState = SwatterState::STUNNED; // Become stunned if attack misses
-			stateStartTime = TIME.GetElapsedTime();
-		}
-	}
 
 
 	// if (Bullet* bullet = dynamic_cast<Bullet*>(other)) {
