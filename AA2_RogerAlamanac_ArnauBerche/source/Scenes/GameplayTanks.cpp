@@ -9,7 +9,7 @@
 
 void GameplayTanks::OnEnter()
 {
-	currentScene = 2;
+	SM.currentSceneInt = 2;
 
 	if (!waveManager->LoadFromXML("source/WavesEnemiesTanks.xml")) {
 		return;
@@ -19,7 +19,7 @@ void GameplayTanks::OnEnter()
 		currentWave = waveManager->waves[waveManager->currentWaveIndex];
 		amountEnemies = GetTotalEnemies(currentWave);
 	}
-	SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), "resources/images/Tank/BG/Battle_Draw.png"));
+	SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), SM.imagesToUse[SM.currentSceneInt][0]));
 	player = new Tank(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), 100, MAX_LIFES);
 	SPAWN.SpawnObject(dynamic_cast<Object*>(player));
 
@@ -60,7 +60,6 @@ void GameplayTanks::Update()
 	if (amountEnemies > 0) {
 		for (const auto& enemy : currentWave.enemies) {
 			if (!enemySpawned) {
-				// Generar enemigos
 				SpawnEnemiesFromWave(currentWave);
 				enemySpawned = true;
 			}
@@ -76,15 +75,7 @@ void GameplayTanks::Update()
 		
 	}
 
-	/*if ((int)TIME.GetElapsedTime() % 3 == 0 && !randomSpawned) {
-		amountEnemies++;
-		SpawnEnemyById(currentWave.randomEnemy);
-		randomSpawned = true;
-	}
-	else
-	{
-		randomSpawned = false;
-	}*/
+
 	score->SetText("Score: " + std::to_string(currentScore));
 	if (player->GetCurrentLifes() <= 0) {
 		SM.SetNextScene("Main Menu");
@@ -97,7 +88,6 @@ void GameplayTanks::Render()
 }
 
 void GameplayTanks::SpawnEnemiesFromWave(const Wave& wave) {
-	// Generar enemigos fijos
 	for (EnemyConfig enemy : wave.enemies)
 		for (int i = 0; i < enemy.amount; ++i) {
 			SpawnEnemyById(enemy);
@@ -108,14 +98,14 @@ void GameplayTanks::SpawnEnemyById(EnemyConfig enemy)
 	switch (enemy.id) {
 	case 1: {
 		Vector2 spawnPos = GenerateSpawnPosition();
-		BasicEnemy* enemyBasic = new BasicEnemy(spawnPos, 10, 10, 1, true, "resources/images/Tank/Enemies/TankEnemy_Draw.png"/*imagesToUse[currentScene][1]*/);
+		BasicEnemy* enemyBasic = new BasicEnemy(spawnPos, 10, 10, 1, true, SM.imagesToUse[SM.currentSceneInt][1]);
 		enemyBasic->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(enemyBasic);
 		break;
 	}
 	case 2: {
 		Vector2 spawnPos = GenerateSpawnPosition();
-		ShootingEnemy* enemyShoot = new ShootingEnemy(spawnPos, 10, 20, 1, true, "resources/images/Tank/Enemies/TankEnemy_Draw.png"/*imagesToUse[currentScene][1]*/);
+		ShootingEnemy* enemyShoot = new ShootingEnemy(spawnPos, 10, 20, 1, true, SM.imagesToUse[SM.currentSceneInt][1]);
 		enemyShoot->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(enemyShoot);
 		break;
@@ -126,7 +116,7 @@ void GameplayTanks::SpawnEnemyById(EnemyConfig enemy)
 void GameplayTanks::AdvanceToNextWave()
 {
 	if (waveManager->HasNextWave()) {
-		waveManager->LoadNextWave(); // Carga la siguiente oleada desde el WaveManager
+		waveManager->LoadNextWave(); 
 		enemySpawned = false;
 
 		std::cout << "NEXT WAVE";
@@ -136,14 +126,11 @@ void GameplayTanks::AdvanceToNextWave()
 		nextWave->SetText("NEW WAVE!");
 		
 	}
-	//else {
-	//	// Si no hay más oleadas, mostrar un mensaje o terminar el nivel
-	//	end->SetText("YOU WIN!");
-	//}
+
 }
 
 Vector2 GameplayTanks::GenerateSpawnPosition() {
-	return Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT / 3); // Genera en la parte superior
+	return Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT / 3); 
 }
 std::vector<EnemyConfig> GameplayTanks::GetCurrentWaveEnemies()
 {

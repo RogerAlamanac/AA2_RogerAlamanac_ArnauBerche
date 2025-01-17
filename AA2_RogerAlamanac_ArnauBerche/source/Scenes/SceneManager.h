@@ -16,6 +16,17 @@ private:
 	SceneManager& operator=(const SceneManager&) = delete;
 
 public:
+
+	std::vector<std::vector<std::string>> imagesToUse;
+	int currentSceneInt;
+	bool needsDefault = true;
+
+	void ClearITU() 
+	{
+		imagesToUse.clear();
+		imagesToUse.resize(3);
+	}
+
 	inline static SceneManager& Instance() {
 		static SceneManager sm;
 		return sm;

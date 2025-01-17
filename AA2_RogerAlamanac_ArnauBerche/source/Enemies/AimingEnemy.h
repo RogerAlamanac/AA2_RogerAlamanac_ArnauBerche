@@ -18,7 +18,7 @@ private:
 	float currentTimeToShoot;
 
 public:
-	AimingEnemy(Vector2 pos, float _movementSpeed, int _health, int _damage, bool _loops, Player* player, std::string path) : ImageObject(path, Vector2(0.f, 0.f), Vector2(180.f, 180.f), 0, "ENEMY"), Enemy(_health, _damage, _loops) {
+	AimingEnemy(Vector2 pos, float _movementSpeed, int _health, int _damage, bool _loops, Player* player, std::string path) : ImageObject(path, Vector2(0.f, 0.f), Vector2(1000.f, 1000.f), 0, "ENEMY"), Enemy(_health, _damage, _loops) {
 
         pathPattern.push(Directions::DOWN);
         pathPattern.push(Directions::RIGHT);

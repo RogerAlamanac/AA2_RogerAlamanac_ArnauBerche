@@ -3,9 +3,9 @@
 
 void Scene::OnExit()
 {
-	//Clear the spawner
+
 	SPAWN.ClearSpawnedObjects();
-	//Destroy ALL objects
+
 	for (Object* o : _objects) {
 		delete o;
 	}
@@ -14,23 +14,22 @@ void Scene::OnExit()
 
 void Scene::Update()
 {
-	//DESTRUCTION
+
 	for (int i = _objects.size() - 1; i >= 0; i--) {
 		if (_objects[i]->IsPendingDestroy()) {
 			delete _objects[i];
 			_objects.erase(_objects.begin() + i);
 		}
 	}
-	//SPAWNING
+
 	while (SPAWN.GetSpawnedObjectsCount() > 0) {
 		_objects.push_back(SPAWN.GetSpawnedObject());
 	}
-	//UPDATING
+
 	for (Object* o : _objects) {
 		o->Update();
 	}
 
-	//Updating physics
 	for (int i = 0; i < _objects.size(); i++)
 	{
 		for (int j = i + 1; j < _objects.size(); j++) 
@@ -49,10 +48,4 @@ void Scene::Render()
 	RM->ClearScreen();
 	for (Object* go : _objects) go->Render();
 	RM->RenderScreen();
-}
-
-void Scene::ClearITU() 
-{
-	imagesToUse.clear();
-	imagesToUse.resize(3);
 }

@@ -12,11 +12,6 @@ protected:
 	std::vector<Object> ui;
 	std::vector<Object*> _objects;
 
-	bool needsDefault = true;
-
-public:
-	std::vector<std::vector<std::string>> imagesToUse;
-	int currentScene = 0;
 
 public:
 	Scene() = default;
@@ -25,5 +20,5 @@ public:
 	virtual void Update();
 	virtual void Render();
 
-	void ClearITU();
+
 };

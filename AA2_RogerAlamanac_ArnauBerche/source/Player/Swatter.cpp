@@ -22,7 +22,6 @@ void Swatter::Update() {
 
 	case SwatterState::STUNNED:
 		std::cout << "IsStunned" << std::endl;
-		//std::cout << TIME.GetElapsedTime() << std::endl;
 		if (TIME.GetElapsedTime() - stateStartTime >= 2.0f) {
 			currentState = SwatterState::MOVING;
 		}
@@ -82,12 +81,4 @@ void Swatter::OnCollisionEnter(Object* other) {
 			currentState = SwatterState::STUNNED;
 		}
 	}
-
-
-
-	// if (Bullet* bullet = dynamic_cast<Bullet*>(other)) {
-	// 	if (!bullet->IsFriendly()) {
-	// 		lives--;
-	// 	}
-	// }
 }

@@ -9,11 +9,13 @@
 #include "SceneManager.h"
 #include "../Audio/AudioManager.h"
 #include "../Enemies/ShootingEnemy.h"
+#include "../Scenes/SceneManager.h"
+#include "../InputManager/InputManager.h"
+
 void GameplaySpaceInvaders::OnEnter()
 {
-	currentScene = 0;
+	SM.currentSceneInt = 0;
 
-	//AddDefault Sprites  : ORDER: BG,PLAYER,ENEMYS
 	if (!waveManager->LoadFromXML("source/WavesEnemiesSpaceInvaders.xml")) {
 		std::cout << "No se ha podido cargar el archivo" << std::endl;
 		return;
@@ -25,8 +27,7 @@ void GameplaySpaceInvaders::OnEnter()
 		amountEnemies = GetTotalEnemies(currentWave);
 	}
 
-	// Resto de inicializaciones
-	SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), "resources/images/SpaceShip/BG/Space_Draw.png"));
+	SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), SM.imagesToUse[SM.currentSceneInt][0]));
 
 	player = new Spaceship(Vector2(100, 700), MAX_LIFES);
 	dynamic_cast<Object*>(player)->GetTransform()->scale = Vector2(0.7f, 0.7f);
@@ -42,7 +43,9 @@ void GameplaySpaceInvaders::OnEnter()
 
 void GameplaySpaceInvaders::OnExit()
 {
-	//AM.StopAudio();
+	AM.StopAudio();
+	waveManager->currentWaveIndex = 0;
+	waveManager->waves.clear();
 	Scene::OnExit();
 }
 int GameplaySpaceInvaders::GetTotalEnemies(const Wave& wave) {
@@ -85,17 +88,11 @@ void GameplaySpaceInvaders::Update()
 		}
 	}
 
-	/*if ((int)TIME.GetElapsedTime() % 3 == 0 && !randomSpawned) {
-		amountEnemies++;
-		SpawnEnemyById(currentWave.randomEnemy);
-		randomSpawned = true;
-	}
-	else 
-	{
-		randomSpawned = false;
-	}*/
+
 	
-	
+	 if(IM.GetEvent(SDLK_ESCAPE, DOWN) ) {
+		SM.SetNextScene("Main Menu");
+	 }
 	score->SetText("Score: " + std::to_string(currentScore));
 
 	if (player->GetCurrentLifes() <= 0) {
@@ -109,7 +106,6 @@ void GameplaySpaceInvaders::Render()
 }
 
 void GameplaySpaceInvaders::SpawnEnemiesFromWave(const Wave& wave) {
-	// Generar enemigos fijos
 	for(auto enemy : wave.enemies)
 		for (int i = 0; i < enemy.amount; ++i) {
 			SpawnEnemyById(enemy);
@@ -121,14 +117,14 @@ void GameplaySpaceInvaders::SpawnEnemyById(EnemyConfig enemy)
 	switch (enemy.id) {
 	case 1: {
 		Vector2 spawnPos = GenerateSpawnPosition(); 
-		BasicEnemy* enemyBasic = new BasicEnemy(spawnPos, 5, 10, 1, true, "resources/images/SpaceShip/Enemies/SpaceEnemy_Draw.png"/*imagesToUse[currentScene][1]*/);
+		BasicEnemy* enemyBasic = new BasicEnemy(spawnPos, 5, 10, 1, true, SM.imagesToUse[SM.currentSceneInt][1]);
 		enemyBasic->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(enemyBasic);
 		break;
 	}
 	case 2: {
 		Vector2 spawnPos = GenerateSpawnPosition(); 
-		ShootingEnemy* enemyShoot = new ShootingEnemy(spawnPos, 5, 20, 1, true, "resources/images/SpaceShip/Enemies/SpaceEnemy_Draw.png"/*imagesToUse[currentScene][1]*/);
+		ShootingEnemy* enemyShoot = new ShootingEnemy(spawnPos, 5, 20, 1, true, SM.imagesToUse[SM.currentSceneInt][1]);
 		enemyShoot->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(enemyShoot);
 		break;
@@ -139,19 +135,19 @@ void GameplaySpaceInvaders::SpawnEnemyById(EnemyConfig enemy)
 void GameplaySpaceInvaders::AdvanceToNextWave()
 {
 	if (waveManager->HasNextWave()) {
-		waveManager->LoadNextWave(); // Carga la siguiente oleada desde el WaveManager
+		waveManager->LoadNextWave(); 
 		enemySpawned = false;
 		
 		std::cout << "NEXT WAVE";
 	}
 	else {
-		// Si no hay más oleadas, mostrar un mensaje o terminar el nivel
+
 		end->SetText("YOU WIN!");
 	}
 }
 
 Vector2 GameplaySpaceInvaders::GenerateSpawnPosition() {
-	return Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT / 3); // Genera en la parte superior
+	return Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT / 3); 
 }
 std::vector<EnemyConfig> GameplaySpaceInvaders::GetCurrentWaveEnemies()
 {

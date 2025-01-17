@@ -71,7 +71,7 @@ void SpriteSelector::OnEnter()
     back->GetTransform()->scale = Vector2(1.5f, 1.5f);
     back->SetText("MAIN MENU");
     back->SetRect({ static_cast<int>(back->GetTransform()->position.x - (optionWidth / 2)), 600, optionWidth, optionHeight });
-    back->SetButtonColor(SDL_Color{ 255, 0, 0, 255 }); // Rojo
+    back->SetButtonColor(SDL_Color{ 255, 0, 0, 255 });
     SPAWN.SpawnObject(back);
 }
 
@@ -89,61 +89,61 @@ void SpriteSelector::Update()
     int mouseX = IM.GetMouseX();
     int mouseY = IM.GetMouseY();
     std::cout << "Mouse: (" << mouseX << ", " << mouseY << ")" << std::endl;
-    // Verificar si el mouse está sobre algún sprite
+
     for (ImageObject* sprite : hoverSprites) 
     {
 		if (IsMouseOverObject(sprite, mouseX, mouseY)) {
-			if (sprite == nullptr) continue; // Evita acceder a punteros nulos
+			if (sprite == nullptr) continue; 
 			std::cout << "Mouse está sobre el sprite: " << sprite->tag << std::endl;
 			if (IM.GetLeftClick()) {
 				std::cout << "¡Sprite clickeado!" << std::endl;
                 if (sprite->tag == "TYPE1") 
                 {
-					ClearITU();
-					imagesToUse[0].push_back("resources/images/SpaceShip/BG/Space_Draw.png");
-					imagesToUse[0].push_back("resources/images/SpaceShip/Enemies/SpaceEnemy_Draw.png");
-					imagesToUse[0].push_back("resources/images/SpaceShip/VFX/SpaceShipBullet_Draw.png");
+					SM.ClearITU();
+					SM.imagesToUse[0].push_back("resources/images/SpaceShip/BG/Space_Draw.png");
+					SM.imagesToUse[0].push_back("resources/images/SpaceShip/Enemies/SpaceEnemy_Draw.png");
+					SM.imagesToUse[0].push_back("resources/images/SpaceShip/VFX/SpaceShipBullet_Draw.png");
 
-					imagesToUse[1].push_back("resources/images/Swater/BG/Kitchen_Draw.png");
-					imagesToUse[1].push_back("resources/images/Swater/Enemies/SwatterEnemy_Draw.png");
-					imagesToUse[1].push_back("resources/images/Swater/VFX/ExplosionSpritesheet_Draw.png");
+					SM.imagesToUse[1].push_back("resources/images/Swater/BG/Kitchen_Draw.png");
+					SM.imagesToUse[1].push_back("resources/images/Swater/Enemies/SwatterEnemy_Draw.png");
+					SM.imagesToUse[1].push_back("resources/images/Swater/VFX/ExplosionSpritesheet_Draw.png");
 
-					imagesToUse[2].push_back("resources/images/Swater/BG/Kitchen_Draw.png");
-					imagesToUse[2].push_back("resources/images/Swater/Enemies/SwatterEnemy_Draw.png");
-					imagesToUse[2].push_back("resources/images/Swater/VFX/ExplosionSpritesheet_Draw.png");
+					SM.imagesToUse[2].push_back("resources/images/Tank/BG/Battle_Draw.png");
+					SM.imagesToUse[2].push_back("resources/images/Tank/Enemies/TankEnemy_Draw.png");
+					SM.imagesToUse[2].push_back("resources/images/Tank/VFX/TankBullet_Draw.png");
 
                 }
                 else if (sprite->tag == "TYPE2")
                 {
-					ClearITU();
-					imagesToUse[0].push_back("resources/images/SpaceShip/BG/Space_Pixel.png");
-					imagesToUse[0].push_back("resources/images/SpaceShip/Enemies/SpaceEnemy_Pixel.png");
-					imagesToUse[0].push_back("resources/images/SpaceShip/VFX/SpaceShipBullet_Pixel.png");
+					SM.ClearITU();
+					SM.imagesToUse[0].push_back("resources/images/SpaceShip/BG/Space_Pixel.png");
+					SM.imagesToUse[0].push_back("resources/images/SpaceShip/Enemies/SpaceEnemy_Pixel.png");
+					SM.imagesToUse[0].push_back("resources/images/SpaceShip/VFX/SpaceShipBullet_Pixel.png");
 
-					imagesToUse[1].push_back("resources/images/Swater/BG/Kitchen_Pixel.png");
-					imagesToUse[1].push_back("resources/images/Swater/Enemies/SwatterEnemy_Pixel.png");
-					imagesToUse[1].push_back("resources/images/Swater/VFX/ExplosionSpritesheet_Pixel.png");
+					SM.imagesToUse[1].push_back("resources/images/Swater/BG/Kitchen_Pixel.png");
+					SM.imagesToUse[1].push_back("resources/images/Swater/Enemies/SwatterEnemy_Pixel.png");
+					SM.imagesToUse[1].push_back("resources/images/Swater/VFX/ExplosionSpritesheet_Pixel.png");
 
-					imagesToUse[2].push_back("resources/images/Swater/BG/Kitchen_Pixel.png");
-					imagesToUse[2].push_back("resources/images/Swater/Enemies/SwatterEnemy_Pixel.png");
-					imagesToUse[2].push_back("resources/images/Swater/VFX/ExplosionSpritesheet_Pixel.png");
+					SM.imagesToUse[2].push_back("resources/images/Tank/BG/Battle_Pixel.png");
+					SM.imagesToUse[2].push_back("resources/images/Tank/Enemies/TankEnemy_Pixel.png");
+					SM.imagesToUse[2].push_back("resources/images/Tank/VFX/TankBullet_Pixel.png");
                 }
                 else if (sprite->tag == "TYPE3")
                 {
-					ClearITU();
-					imagesToUse[0].push_back("resources/images/SpaceShip/BG/Space_Real.png");
-					imagesToUse[0].push_back("resources/images/SpaceShip/Enemies/SpaceEnemy_Real.png");
-					imagesToUse[0].push_back("resources/images/SpaceShip/VFX/SpaceShipBullet_Real.png");
+					SM.ClearITU();
+					SM.imagesToUse[0].push_back("resources/images/SpaceShip/BG/Space_Real.png");
+					SM.imagesToUse[0].push_back("resources/images/SpaceShip/Enemies/SpaceEnemy_Real.png");
+					SM.imagesToUse[0].push_back("resources/images/SpaceShip/VFX/SpaceShipBullet_Real.png");
 
-					imagesToUse[1].push_back("resources/images/Swater/BG/Kitchen_Real.png");
-					imagesToUse[1].push_back("resources/images/Swater/Enemies/SwatterEnemy_Real.png");
-					imagesToUse[1].push_back("resources/images/Swater/VFX/ExplosionSpritesheet_Real.png");
+					SM.imagesToUse[1].push_back("resources/images/Swater/BG/Kitchen_Real.png");
+					SM.imagesToUse[1].push_back("resources/images/Swater/Enemies/SwatterEnemy_Real.png");
+					SM.imagesToUse[1].push_back("resources/images/Swater/VFX/ExplosionSpritesheet_Real.png");
 
-					imagesToUse[2].push_back("resources/images/Swater/BG/Kitchen_Real.png");
-					imagesToUse[2].push_back("resources/images/Swater/Enemies/SwatterEnemy_Real.png");
-					imagesToUse[2].push_back("resources/images/Swater/VFX/ExplosionSpritesheet_Real.png");
+					SM.imagesToUse[2].push_back("resources/images/Tank/BG/Battle_Real.png");
+					SM.imagesToUse[2].push_back("resources/images/Tank/Enemies/TankEnemy_Real.png");
+					SM.imagesToUse[2].push_back("resources/images/Tank/VFX/TankBullet_Real.png");
                 }
-				needsDefault = false;
+				SM.needsDefault = false;
 			}
 		}
     }

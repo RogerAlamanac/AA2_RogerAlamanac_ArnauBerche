@@ -8,9 +8,8 @@
 
 void GameplaySplat::OnEnter()
 {
-	currentScene = 1;
+	SM.currentSceneInt = 1;
 
-	//AddDefault Sprites  : ORDER: BG,PLAYER,ENEMYS
 	if (!waveManager->LoadFromXML("source/WavesEnemiesSplat.xml")) {
 		std::cout << "No se ha podido cargar el archivo" << std::endl;
 		return;
@@ -22,7 +21,7 @@ void GameplaySplat::OnEnter()
 		amountEnemies = GetTotalEnemies(currentWave);
 	}
 
-	SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), "resources/images/Swater/BG/Kitchen_Draw.png"));
+	SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), SM.imagesToUse[SM.currentSceneInt][0]));
 	player = new Swatter(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), MAX_LIFES);
 	SPAWN.SpawnObject(dynamic_cast<Object*>(player));
 	score = new Score(Vector2(100, 100), 0);
@@ -60,33 +59,7 @@ void GameplaySplat::Update()
 		}
 	}
 	Scene::Update();
-	/*int spawnPosX;
-	int spawnPosY;
-	int randomEnemy;
-	if ((int)TIME.GetElapsedTime() % 1 == 0 && !enemySpawned && amountEnemies > 0)
-	{
-		spawnPosX = rand() % RM->WINDOW_WIDTH + 1;
-		spawnPosY = rand() % RM->WINDOW_HEIGHT + 1;
-		randomEnemy = (rand() % 2 + 1);
-		switch (randomEnemy)
-		{
-		case 1:
-			SPAWN.SpawnObject(new SeekerEnemy(Vector2(spawnPosX, spawnPosY), 100, 10, 10, 1000, true, player, imagesToUse[currentScene][1]));
-			break;
-		case 2:
-			SPAWN.SpawnObject(new BasicEnemy(Vector2(90, -90), 100, 10, 1, true, imagesToUse[currentScene][1]));
-			break;
-		default:
-			break;
-		}
-		
-		enemySpawned = true;
-		amountEnemies--;
-	}
-	else if ((int)TIME.GetElapsedTime() % 5 != 0)
-	{
-		enemySpawned = false;
-	}*/
+
 	std::cout << amountEnemies << std::endl;
 	if (amountEnemies > 0) {
 		for (const auto& enemy : currentWave.enemies) {
@@ -121,7 +94,7 @@ void GameplaySplat::Render()
 	Scene::Render();
 }
 void GameplaySplat::SpawnEnemiesFromWave(const Wave& wave) {
-	// Generar enemigos fijos
+
 	for (auto enemy : wave.enemies)
 		for (int i = 0; i < enemy.amount; ++i) {
 			SpawnEnemyById(enemy);
@@ -133,21 +106,21 @@ void GameplaySplat::SpawnEnemyById(EnemyConfig enemy)
 	switch (enemy.id) {
 	case 1: {
 		Vector2 spawnPos = GenerateSpawnPosition();
-		BasicEnemy* enemyBasic = new BasicEnemy(spawnPos, 5, 10, 1, true, "resources/images/SpaceShip/Enemies/SpaceEnemy_Draw.png"/*imagesToUse[currentScene][1]*/);
+		BasicEnemy* enemyBasic = new BasicEnemy(spawnPos, 5, 10, 1, true, SM.imagesToUse[SM.currentSceneInt][1]);
 		enemyBasic->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(enemyBasic);
 		break;
 	}
 	case 2: {
 		Vector2 spawnPos = GenerateSpawnPosition();
-		ShootingEnemy* enemyShoot = new ShootingEnemy(spawnPos, 5, 20, 1, true, "resources/images/SpaceShip/Enemies/SpaceEnemy_Draw.png"/*imagesToUse[currentScene][1]*/);
+		ShootingEnemy* enemyShoot = new ShootingEnemy(spawnPos, 5, 20, 1, true, SM.imagesToUse[SM.currentSceneInt][1]);
 		enemyShoot->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(enemyShoot);
 		break;
 	}
 	case 3: {
 		Vector2 spawnPos = GenerateSpawnPosition();
-		SeekerEnemy* seekEnemy = new SeekerEnemy(spawnPos, 100, 10, 10, 1000, true, player, "resources/images/SpaceShip/Enemies/SpaceEnemy_Draw.png");
+		SeekerEnemy* seekEnemy = new SeekerEnemy(spawnPos, 100, 10, 10, 1000, true, player, SM.imagesToUse[SM.currentSceneInt][1]);
 		seekEnemy->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(seekEnemy);
 		break;
@@ -158,19 +131,18 @@ void GameplaySplat::SpawnEnemyById(EnemyConfig enemy)
 void GameplaySplat::AdvanceToNextWave()
 {
 	if (waveManager->HasNextWave()) {
-		waveManager->LoadNextWave(); // Carga la siguiente oleada desde el WaveManager
+		waveManager->LoadNextWave();
 		enemySpawned = false;
 
 		std::cout << "NEXT WAVE";
 	}
 	else {
-		// Si no hay más oleadas, mostrar un mensaje o terminar el nivel
 		end->SetText("YOU WIN!");
 	}
 }
 
 Vector2 GameplaySplat::GenerateSpawnPosition() {
-	return Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT / 3); // Genera en la parte superior
+	return Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT / 3); 
 }
 std::vector<EnemyConfig> GameplaySplat::GetCurrentWaveEnemies()
 {

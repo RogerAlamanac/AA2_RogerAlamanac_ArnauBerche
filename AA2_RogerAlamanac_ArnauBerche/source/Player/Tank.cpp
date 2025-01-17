@@ -22,7 +22,6 @@ void Tank::Movement()
 		ImageObject::transform->position.y = 0 - transform->size.y / 2;
 	}
 
-	//Check Diagonal
 	if ((input.GetEvent(SDLK_a, DOWN) && input.GetEvent(SDLK_w, DOWN))
 		|| (input.GetEvent(SDLK_a, HOLD) && input.GetEvent(SDLK_w, HOLD))) {
 		body->currentDirection = PlayerDirections::UPERLEFT;
@@ -48,7 +47,6 @@ void Tank::Movement()
 		return;
 	}
 
-	//Chack Noraml
     if (input.GetEvent(SDLK_a, DOWN) || input.GetEvent(SDLK_a, HOLD)) {
 		body->currentDirection = PlayerDirections::LEFT;
         ImageObject::transform->rotation = -90.f;
