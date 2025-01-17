@@ -53,8 +53,6 @@ void Scene::Render()
 
 void Scene::ClearITU() 
 {
-	for (int i = 0; i < imagesToUse.size(); i++) 
-	{
-		imagesToUse.pop_back();
-	}
+	imagesToUse.clear();
+	imagesToUse.resize(3);
 }

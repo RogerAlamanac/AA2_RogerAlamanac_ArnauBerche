@@ -1,6 +1,7 @@
 #include "AimingEnemy.h"
 #include "../Spawner/Spawner.h"
 #include "../Elements/Bullet.h"
+
 void AimingEnemy::BaseMovement()
 {
 	if(!IsStopped()){
@@ -62,6 +63,7 @@ bool AimingEnemy::IsStopped(){
 void AimingEnemy::Shoot()
 {
 	if (currentTimeToShoot >= timeToShoot) {
+
 		SPAWN.SpawnObject(new Bullet(ImageObject::transform->position - Vector2(0, ImageObject::transform->size.y / 2), 
 			100, DirectionToPlayer() * 2, false));
 		currentTimeToMove = 0;

@@ -18,13 +18,11 @@ void Swatter::Update() {
 
 	case SwatterState::ATTACKING:
 		std::cout << "IsAttacking" << std::endl;
-		currentState = SwatterState::STUNNED;
-		stateStartTime = TIME.GetElapsedTime();
 		break;
 
 	case SwatterState::STUNNED:
 		std::cout << "IsStunned" << std::endl;
-		std::cout << TIME.GetElapsedTime() << std::endl;
+		//std::cout << TIME.GetElapsedTime() << std::endl;
 		if (TIME.GetElapsedTime() - stateStartTime >= 2.0f) {
 			currentState = SwatterState::MOVING;
 		}
@@ -70,21 +68,19 @@ void Swatter::ReceiveDamage()
 }
 
 void Swatter::OnCollisionEnter(Object* other) {
-	if (currentState == SwatterState::MOVING) { return; }
-	
-	if (currentState == SwatterState::ATTACKING) {
-		currentState = SwatterState::MOVING;
-		if (other->tag == "ENEMY") {
-			std::cout << "DestroyNow" << std::endl;
+	if (other->tag == "ENEMY") {
+		if (currentState == SwatterState::ATTACKING) {
 			other->Destroy();
 		}
-		else if (other->tag == "BG") {
-			std::cout << "BG" << std::endl;
-			currentState = SwatterState::STUNNED;
+		else if (currentState == SwatterState::STUNNED) {
+			lives--;
 		}
 	}
-	else if (currentState == SwatterState::STUNNED) {
-		lives--;
+	else {
+		if (currentState == SwatterState::ATTACKING)
+		{
+			currentState = SwatterState::STUNNED;
+		}
 	}
 
 

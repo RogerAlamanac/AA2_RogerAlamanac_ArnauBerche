@@ -12,7 +12,7 @@ private:
 	bool friendly;
 
 public:
-	Bullet(Vector2 initialPos, float velocity, Vector2 finalPos, bool _friendly) : ImageObject("resources/images/circle.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "BULLET") {
+	Bullet(Vector2 initialPos, float velocity, Vector2 finalPos, bool _friendly) : ImageObject("resources/images/SpaceShip/Player/SpaceShipBullet_Pixel", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "BULLET") {
 		friendly = _friendly;
 		ImageObject::transform->position = initialPos;
 		ImageObject::transform->scale = Vector2(0.2f,0.2f);

@@ -11,8 +11,7 @@ private:
 public:
     bool isKilled = false;
     void SetPattern(const std::string& p) { pattern = p; }
-    BasicEnemy(Vector2 pos, float _movementSpeed, int _health, int _damage, bool _loops) :
-        ImageObject("resources/images/basicenemy.png", Vector2(0.f, 0.f), Vector2(180.f, 180.f), 0, "ENEMY"), Enemy(_health, _damage, _loops) {
+    BasicEnemy(Vector2 pos, float _movementSpeed, int _health, int _damage, bool _loops, std::string path) : ImageObject(path, Vector2(0.f, 0.f), Vector2(180.f, 180.f), 0, "ENEMY"), Enemy(_health, _damage, _loops) {
 
 
         pathPattern.push(Directions::DOWN);

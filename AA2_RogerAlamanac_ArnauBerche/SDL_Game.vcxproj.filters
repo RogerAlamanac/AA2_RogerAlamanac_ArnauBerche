@@ -259,19 +259,106 @@
     <Image Include="resources\images\Tanks\tank body.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="resources\images\circle.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="resources\images\basicenemy.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="resources\images\Swatter\Swatter.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="resources\images\SpaceInvaders\background_space.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="resources\images\none.png">
+    <Image Include="resources\images\SpaceShip\BG\Space_Draw.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\SpaceShip\BG\Space_Pixel.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\SpaceShip\BG\Space_Real.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\SpaceShip\Enemies\SpaceEnemy_Draw.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\SpaceShip\Enemies\SpaceEnemy_Pixel.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\SpaceShip\Enemies\SpaceEnemy_Real.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\SpaceShip\Player\Spaceship.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\SpaceShip\VFX\SpaceShipBullet_Draw.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\SpaceShip\VFX\SpaceShipBullet_Pixel.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\SpaceShip\VFX\SpaceShipBullet_Real.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Swater\BG\Kitchen_Draw.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Swater\BG\Kitchen_Pixel.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Swater\BG\Kitchen_Real.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Swater\Enemies\SwatterEnemy_Draw.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Swater\Enemies\SwatterEnemy_Pixel.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Swater\Enemies\SwatterEnemy_Real.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Swater\Player\Swatter.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Swater\VFX\ExplosionSpritsheet_Draw.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Swater\VFX\ExplosionSpritsheet_Pixel.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Swater\VFX\ExplosionSpritsheet_Real.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Tank\BG\Battle_Draw.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Tank\BG\Battle_Pixel.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Tank\BG\Battle_Real.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Tank\Enemies\TankEnemy_Draw.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Tank\Enemies\TankEnemy_Pixel.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Tank\Enemies\TankEnemy_Real.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Tank\Player\none.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Tank\Player\tank body.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Tank\Player\tank turret.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Tank\VFX\TankBullet_Draw.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Tank\VFX\TankBullet_Pixel.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\Tank\VFX\TankBullet_Real.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

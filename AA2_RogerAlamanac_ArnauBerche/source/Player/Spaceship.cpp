@@ -4,6 +4,7 @@
 #include "../Spawner/Spawner.h"
 #include "../InputManager/TimeManager.h"
 #include "../Audio/AudioManager.h"
+
 void Spaceship::Movement()
 {
     InputManager& input = IM;
@@ -23,9 +24,8 @@ void Spaceship::Movement()
 void Spaceship::Attack()
 {
     InputManager& input = IM;
-
     if(input.GetEvent(SDLK_SPACE, DOWN) && timeSinceLastFire >= fireCooldown) {
-        
+
         SPAWN.SpawnObject(new Bullet(ImageObject::transform->position, 500, Vector2(0, -1), true));
         AM.PlayClip("d", 0);
         timeSinceLastFire = 0.f;

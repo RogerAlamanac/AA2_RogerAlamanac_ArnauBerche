@@ -9,14 +9,8 @@
 
 void GameplayTanks::OnEnter()
 {
-	if (needsDefault)
-	{
-		ClearITU();
-		imagesToUse[0].push_back("resources/images/Tanks/background-tanks1.png");
-		imagesToUse[0].push_back("resources/images/Tanks/background-tanks1.png");
-		imagesToUse[0].push_back("resources/images/Tanks/background-tanks1.png");
-		needsDefault = false;
-	}
+	currentScene = 2;
+
 	if (!waveManager->LoadFromXML("source/WavesEnemiesSpaceInvaders.xml")) {
 		return;
 	}
@@ -146,14 +140,14 @@ void GameplayTanks::SpawnEnemyById(EnemyConfig enemy)
 	switch (enemy.id) {
 	case 1: {
 		Vector2 spawnPos = GenerateSpawnPosition();
-		BasicEnemy* enemyBasic = new BasicEnemy(spawnPos, 10, 10, 1, true);
+		BasicEnemy* enemyBasic = new BasicEnemy(spawnPos, 10, 10, 1, true, imagesToUse[currentScene][1]);
 		enemyBasic->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(enemyBasic);
 		break;
 	}
 	case 2: {
 		Vector2 spawnPos = GenerateSpawnPosition();
-		ShootingEnemy* enemyShoot = new ShootingEnemy(spawnPos, 10, 20, 1, true);
+		ShootingEnemy* enemyShoot = new ShootingEnemy(spawnPos, 10, 20, 1, true, imagesToUse[currentScene][1]);
 		enemyShoot->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(enemyShoot);
 		break;

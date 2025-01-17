@@ -1,6 +1,7 @@
 #include "ShootingEnemy.h"
 #include "../Spawner/Spawner.h"
 #include "../Elements/Bullet.h"
+
 void ShootingEnemy::BaseMovement()
 {
 	ImageObject::physics->SetVelocity(DirectionToVector(pathPattern.front()) * movementSpeed);

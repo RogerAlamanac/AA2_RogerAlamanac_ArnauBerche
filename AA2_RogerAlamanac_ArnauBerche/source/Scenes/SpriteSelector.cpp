@@ -5,30 +5,30 @@
 
 void SpriteSelector::OnEnter()
 {
-	spaceInvaders = new ImageObject("resources/images/SpaceInvaders/background_space.jpg", Vector2(0.f, 0.f), Vector2(2000.f, 1125.f), 0, "TYPE1");
+	spaceInvaders = new ImageObject("resources/images/SpaceShip/BG/Space_Draw.png", Vector2(0.f, 0.f), Vector2(2000.f, 1125.f), 0, "TYPE1");
 	hoverSprites.push_back(spaceInvaders);
-	tank = new ImageObject("resources/images/SpaceInvaders/background_space.jpg", Vector2(0.f, 0.f), Vector2(2000.f, 1125.f), 0, "TYPE2");
+	tank = new ImageObject("resources/images/SpaceShip/BG/Space_Draw.png", Vector2(0.f, 0.f), Vector2(2000.f, 1125.f), 0, "TYPE2");
 	hoverSprites.push_back(tank);
-	swater = new ImageObject("resources/images/SpaceInvaders/background_space.jpg", Vector2(0.f, 0.f), Vector2(2000.f, 1125.f), 0, "TYPE3");
+	swater = new ImageObject("resources/images/SpaceShip/BG/Space_Draw.png", Vector2(0.f, 0.f), Vector2(2000.f, 1125.f), 0, "TYPE3");
 	hoverSprites.push_back(swater);
 
-	background1 = new ImageObject("resources/images/SpaceInvaders/background_space.jpg", Vector2(0.f, 0.f), Vector2(2000.f, 1125.f), 0, "SPRITE");
+	background1 = new ImageObject("resources/images/SpaceShip/BG/Space_Draw.png", Vector2(0.f, 0.f), Vector2(1000.f, 1000.f), 0, "SPRITE");
 	sprites.push_back(background1);
-	background2 = new ImageObject("resources/images/SpaceInvaders/Spaceship.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "SPRITE");
+	background2 = new ImageObject("resources/images/SpaceShip/BG/Space_Pixel.png", Vector2(0.f, 0.f), Vector2(1000.f, 1000.f), 0, "SPRITE");
 	sprites.push_back(background2);
-	background3 = new ImageObject("resources/images/SpaceInvaders/Spaceship.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "SPRITE");
+	background3 = new ImageObject("resources/images/SpaceShip/BG/Space_Real.png", Vector2(0.f, 0.f), Vector2(1000.f, 1000.f), 0, "SPRITE");
 	sprites.push_back(background3);
-	enemies1 = new ImageObject("resources/images/basicenemy.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "SPRITE");
+	enemies1 = new ImageObject("resources/images/SpaceShip/Enemies/SpaceEnemy_Draw.png", Vector2(0.f, 0.f), Vector2(1000.f, 1000.f), 0, "SPRITE");
 	sprites.push_back(enemies1);
-	enemies2 = new ImageObject("resources/images/Swatter/Swatter.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "SPRITE");
+	enemies2 = new ImageObject("resources/images/SpaceShip/Enemies/SpaceEnemy_Pixel.png", Vector2(0.f, 0.f), Vector2(1000.f, 1000.f), 0, "SPRITE");
 	sprites.push_back(enemies2);
-	enemies3 = new ImageObject("resources/images/Swatter/Swatter.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "SPRITE");
+	enemies3 = new ImageObject("resources/images/SpaceShip/Enemies/SpaceEnemy_Real.png", Vector2(0.f, 0.f), Vector2(1000.f, 1000.f), 0, "SPRITE");
 	sprites.push_back(enemies3);
-	VFX1 = new ImageObject("resources/images/circle.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "SPRITE");
+	VFX1 = new ImageObject("resources/images/SpaceShip/VFX/SpaceShipBullet_Draw.png", Vector2(0.f, 0.f), Vector2(1000.f, 1000.f), 0, "SPRITE");
 	sprites.push_back(VFX1);
-	VFX2 = new ImageObject("resources/images/circle.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "SPRITE");
+	VFX2 = new ImageObject("resources/images/SpaceShip/VFX/SpaceShipBullet_Pixel.png", Vector2(0.f, 0.f), Vector2(1000.f, 1000.f), 0, "SPRITE");
 	sprites.push_back(VFX2);
-	VFX3 = new ImageObject("resources/images/Tanks/tank body.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "SPRITE");
+	VFX3 = new ImageObject("resources/images/SpaceShip/VFX/SpaceShipBullet_Real.png", Vector2(0.f, 0.f), Vector2(1000.f, 1000.f), 0, "SPRITE");
 	sprites.push_back(VFX3);
 
 	back = new TextObject("Main Menu");
@@ -100,24 +100,50 @@ void SpriteSelector::Update()
                 if (sprite->tag == "TYPE1") 
                 {
 					ClearITU();
-					imagesToUse[0].push_back("resources/images/SpaceInvaders/background_space.jpg");
-					imagesToUse[0].push_back("resources/images/basicenemy.png");
-					imagesToUse[0].push_back("resources/images/circle.png");
+					imagesToUse[0].push_back("resources/images/SpaceShip/BG/Space_Draw.png");
+					imagesToUse[0].push_back("resources/images/SpaceShip/Enemies/SpaceEnemy_Draw.png");
+					imagesToUse[0].push_back("resources/images/SpaceShip/VFX/SpaceShipBullet_Draw.png");
+
+					imagesToUse[1].push_back("resources/images/Swater/BG/Kitchen_Draw.png");
+					imagesToUse[1].push_back("resources/images/Swater/Enemies/SwatterEnemy_Draw.png");
+					imagesToUse[1].push_back("resources/images/Swater/VFX/ExplosionSpritesheet_Draw.png");
+
+					imagesToUse[2].push_back("resources/images/Swater/BG/Kitchen_Draw.png");
+					imagesToUse[2].push_back("resources/images/Swater/Enemies/SwatterEnemy_Draw.png");
+					imagesToUse[2].push_back("resources/images/Swater/VFX/ExplosionSpritesheet_Draw.png");
+
                 }
                 else if (sprite->tag == "TYPE2")
                 {
 					ClearITU();
-					imagesToUse[0].push_back("resources/images/SpaceInvaders/Spaceship.png");
-					imagesToUse[0].push_back("resources/images/Swatter/Swatter.png");
-					imagesToUse[0].push_back("resources/images/circle.png");
+					imagesToUse[0].push_back("resources/images/SpaceShip/BG/Space_Pixel.png");
+					imagesToUse[0].push_back("resources/images/SpaceShip/Enemies/SpaceEnemy_Pixel.png");
+					imagesToUse[0].push_back("resources/images/SpaceShip/VFX/SpaceShipBullet_Pixel.png");
+
+					imagesToUse[1].push_back("resources/images/Swater/BG/Kitchen_Pixel.png");
+					imagesToUse[1].push_back("resources/images/Swater/Enemies/SwatterEnemy_Pixel.png");
+					imagesToUse[1].push_back("resources/images/Swater/VFX/ExplosionSpritesheet_Pixel.png");
+
+					imagesToUse[2].push_back("resources/images/Swater/BG/Kitchen_Pixel.png");
+					imagesToUse[2].push_back("resources/images/Swater/Enemies/SwatterEnemy_Pixel.png");
+					imagesToUse[2].push_back("resources/images/Swater/VFX/ExplosionSpritesheet_Pixel.png");
                 }
                 else if (sprite->tag == "TYPE3")
                 {
 					ClearITU();
-					imagesToUse[0].push_back("resources/images/SpaceInvaders/Spaceship.png");
-					imagesToUse[0].push_back("resources/images/Swatter/Swatter.png");
-					imagesToUse[0].push_back("resources/images/Tanks/tank body.png");
+					imagesToUse[0].push_back("resources/images/SpaceShip/BG/Space_Real.png");
+					imagesToUse[0].push_back("resources/images/SpaceShip/Enemies/SpaceEnemy_Real.png");
+					imagesToUse[0].push_back("resources/images/SpaceShip/VFX/SpaceShipBullet_Real.png");
+
+					imagesToUse[1].push_back("resources/images/Swater/BG/Kitchen_Real.png");
+					imagesToUse[1].push_back("resources/images/Swater/Enemies/SwatterEnemy_Real.png");
+					imagesToUse[1].push_back("resources/images/Swater/VFX/ExplosionSpritesheet_Real.png");
+
+					imagesToUse[2].push_back("resources/images/Swater/BG/Kitchen_Real.png");
+					imagesToUse[2].push_back("resources/images/Swater/Enemies/SwatterEnemy_Real.png");
+					imagesToUse[2].push_back("resources/images/Swater/VFX/ExplosionSpritesheet_Real.png");
                 }
+				needsDefault = false;
 			}
 		}
     }

@@ -7,7 +7,7 @@ class Swatter : public ImageObject, public Player
 private:
 	enum class SwatterState { MOVING, ATTACKING, STUNNED };
 	SwatterState currentState = SwatterState::MOVING;
-	
+	bool enemyhit = false;;
 	float stateStartTime = 0.0f;
 	int lives = 3;
 
@@ -15,7 +15,7 @@ private:
 	int score = 0;
 	
 public:
-	Swatter(Vector2 pos, int _lifes) : ImageObject("resources/images/Swatter/Swatter.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "PLAYER"), Player() {
+	Swatter(Vector2 pos, int _lifes) : ImageObject("resources/images/Swater/Player/Swatter.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "PLAYER"), Player() {
 		ImageObject::transform->position = pos;
 		ImageObject::transform->scale = Vector2(1.f, 1.f);
 		lifes = _lifes;

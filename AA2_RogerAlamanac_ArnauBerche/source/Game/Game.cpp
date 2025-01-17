@@ -11,15 +11,66 @@ void Game::Init()
 {
 	RM->Init();
 
-	RM->LoadTexture("resources/images/SpaceInvaders/background_space.jpg");
-	RM->LoadTexture("resources/images/SpaceInvaders/Spaceship.png");
-	RM->LoadTexture("resources/images/circle.png");
-	RM->LoadTexture("resources/images/basicenemy.png");
-	RM->LoadTexture("resources/images/Tanks/tank turret.png");
-	RM->LoadTexture("resources/images/Tanks/tank body.png");
-	RM->LoadTexture("resources/images/Swatter/Swatter.png");
-	RM->LoadTexture("resources/images/Tanks/background-tanks1.png");
-	RM->LoadTexture("resources/images/none.png");
+	//SpaceShip
+			//BG
+		RM->LoadTexture("resources/images/SpaceShip/BG/Space_Draw.png");
+		RM->LoadTexture("resources/images/SpaceShip/BG/Space_Pixel.png");
+		RM->LoadTexture("resources/images/SpaceShip/BG/Space_Real.png");
+
+			//Enemies
+		RM->LoadTexture("resources/images/SpaceShip/Enemies/SpaceEnemy_Draw.png");
+		RM->LoadTexture("resources/images/SpaceShip/Enemies/SpaceEnemy_Pixel.png");
+		RM->LoadTexture("resources/images/SpaceShip/Enemies/SpaceEnemy_Real.png");
+
+			//Player
+		RM->LoadTexture("resources/images/SpaceShip/Player/Spaceship.png");
+
+			//VFX
+		RM->LoadTexture("resources/images/SpaceShip/VFX/SpaceShipBullet_Draw.png");
+		RM->LoadTexture("resources/images/SpaceShip/VFX/SpaceShipBullet_Pixel.png");
+		RM->LoadTexture("resources/images/SpaceShip/VFX/SpaceShipBullet_Real.png");
+
+
+	//Swatter
+			//BG
+		RM->LoadTexture("resources/images/Swater/BG/Kitchen_Draw.png");
+		RM->LoadTexture("resources/images/Swater/BG/Kitchen_Pixel.png");
+		RM->LoadTexture("resources/images/Swater/BG/Kitchen_Real.png");
+
+			//Enemies
+		RM->LoadTexture("resources/images/Swater/Enemies/SwatterEnemy_Draw.png");
+		RM->LoadTexture("resources/images/Swater/Enemies/SwatterEnemy_Pixel.png");
+		RM->LoadTexture("resources/images/Swater/Enemies/SwatterEnemy_Real.png");
+
+			//Player
+		RM->LoadTexture("resources/images/Swater/Player/Swatter.png");
+
+			//VFX
+		RM->LoadTexture("resources/images/Swater/VFX/ExplosionSpritsheet_Draw.png");
+		RM->LoadTexture("resources/images/Swater/VFX/ExplosionSpritsheet_Pixel.png");
+		RM->LoadTexture("resources/images/Swater/VFX/ExplosionSpritsheet_Real.png");
+
+
+	//Tank
+			//BG
+		RM->LoadTexture("resources/images/Tank/BG/Battle_Draw.png");
+		RM->LoadTexture("resources/images/Tank/BG/Battle_Pixel.png");
+		RM->LoadTexture("resources/images/Tank/BG/Battle_Real.png");
+
+			//Enemies
+		RM->LoadTexture("resources/images/Tank/Enemies/TankEnemy_Draw.png");
+		RM->LoadTexture("resources/images/Tank/Enemies/TankEnemy_Pixel.png");
+		RM->LoadTexture("resources/images/Tank/Enemies/TankEnemy_Real.png");
+
+			//Player
+		RM->LoadTexture("resources/images/Tank/Player/none.png");
+		RM->LoadTexture("resources/images/Tank/Player/tank body.png");
+		RM->LoadTexture("resources/images/Tank/Player/tank turret.png");
+
+			//VFX
+		RM->LoadTexture("resources/images/Tank/VFX/TankBullet_Draw.png");
+		RM->LoadTexture("resources/images/Tank/VFX/TankBullet_Pixel.png");
+		RM->LoadTexture("resources/images/Tank/VFX/TankBullet_Real.png");
 
 
 

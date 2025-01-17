@@ -11,9 +11,18 @@ void MainMenu::OnEnter()
     if (needsDefault) 
     {
         ClearITU();
-		imagesToUse[0].push_back("resources/images/Tanks/background-tanks1.png");
-		imagesToUse[0].push_back("resources/images/Tanks/background-tanks1.png");
-		imagesToUse[0].push_back("resources/images/Tanks/background-tanks1.png");
+        imagesToUse.resize(3);
+        imagesToUse[0].push_back("resources/images/SpaceShip/BG/Space_Draw.png");
+        imagesToUse[0].push_back("resources/images/SpaceShip/Enemies/SpaceEnemy_Draw.png");
+        imagesToUse[0].push_back("resources/images/SpaceShip/VFX/SpaceShipBullet_Draw.png");
+
+        imagesToUse[1].push_back("resources/images/Swater/BG/Kitchen_Draw.png");
+        imagesToUse[1].push_back("resources/images/Swater/Enemies/SwatterEnemy_Draw.png");
+        imagesToUse[1].push_back("resources/images/Swater/VFX/ExplosionSpritesheet_Draw.png");
+
+        imagesToUse[2].push_back("resources/images/Swater/BG/Kitchen_Draw.png");
+        imagesToUse[2].push_back("resources/images/Swater/Enemies/SwatterEnemy_Draw.png");
+        imagesToUse[2].push_back("resources/images/Swater/VFX/ExplosionSpritesheet_Draw.png");
         needsDefault = false;
     }
 

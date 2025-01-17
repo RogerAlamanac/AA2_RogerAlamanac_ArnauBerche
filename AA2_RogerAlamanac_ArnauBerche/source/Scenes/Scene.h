@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 
+
 #define MAX_LIFES 3
 class Scene {
 protected:
@@ -11,8 +12,11 @@ protected:
 	std::vector<Object> ui;
 	std::vector<Object*> _objects;
 
-	bool needsDefault;
+	bool needsDefault = true;
+
+public:
 	std::vector<std::vector<std::string>> imagesToUse;
+	int currentScene = 0;
 
 public:
 	Scene() = default;

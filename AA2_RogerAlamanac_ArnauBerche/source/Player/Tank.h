@@ -8,7 +8,7 @@ class Canon : public ImageObject
 public:
 	Vector2 relativeOffset;
 	
-	Canon(Vector2 pos) : ImageObject("resources/images/Tanks/tank turret.png", Vector2(0.f, 0.f), Vector2(193.f, 193.f), 0, "PLAYER") {
+	Canon(Vector2 pos) : ImageObject("resources/images/Tank/Player/tank turret.png", Vector2(0.f, 0.f), Vector2(193.f, 193.f), 0, "PLAYER") {
 		ImageObject::transform->position = pos;
 		ImageObject::transform->scale = Vector2(1.f, 1.f);
 	}
@@ -33,7 +33,7 @@ public:
 	float fireCooldown = 1.f;
 	float timeSinceLastFire = 0.f;
 
-	Body(Vector2 pos, float velocity) : ImageObject("resources/images/Tanks/tank body.png", Vector2(0.f, 0.f), Vector2(142.f, 195.f), 0, "PLAYER") {
+	Body(Vector2 pos, float velocity) : ImageObject("resources/images/Tank/Player/tank body.png", Vector2(0.f, 0.f), Vector2(142.f, 195.f), 0, "PLAYER") {
 		currentDirection = PlayerDirections::NONE;
 		ImageObject::transform->position = pos;
 		ImageObject::transform->scale = Vector2(1.f, 1.f);
@@ -58,7 +58,7 @@ private:
 	int lifes;
 	int score = 0;
 public:
-	Tank(Vector2 pos, float velocity, int _lifes) : ImageObject("resources/images/none.png", Vector2(0.f, 0.f), Vector2(1.f, 1.f), 0, "PLAYER"), Player() {
+	Tank(Vector2 pos, float velocity, int _lifes) : ImageObject("resources/images/Tank/Player/none.png", Vector2(0.f, 0.f), Vector2(1.f, 1.f), 0, "PLAYER"), Player() {
 		movementSpeed = velocity;
 		lifes = _lifes;
 		ImageObject::transform->position = pos;
