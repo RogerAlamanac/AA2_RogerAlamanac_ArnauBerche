@@ -140,6 +140,8 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="source\WavesEnemiesSpaceInvaders.xml" />
+    <Xml Include="source\WavesEnemiesSplat.xml" />
+    <Xml Include="source\WavesEnemiesTanks.xml" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="resources\audio\music\illuminati.mp3" />

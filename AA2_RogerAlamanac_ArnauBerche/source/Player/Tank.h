@@ -58,7 +58,7 @@ private:
 	int lifes;
 	int score = 0;
 public:
-	Tank(Vector2 pos, float velocity, int _lifes) : ImageObject("resources/images/Tank/Player/none.png", Vector2(0.f, 0.f), Vector2(1.f, 1.f), 0, "PLAYER"), Player() {
+	Tank(Vector2 pos, float velocity, int _lifes) : ImageObject("resources/images/Tank/Player/none.png", Vector2(0.f, 0.f), Vector2(0.f, 0.f), 0, "PLAYER"), Player() {
 		movementSpeed = velocity;
 		lifes = _lifes;
 		ImageObject::transform->position = pos;

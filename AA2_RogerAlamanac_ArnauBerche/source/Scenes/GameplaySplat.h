@@ -1,15 +1,28 @@
 #pragma once
 #include "Scene.h"
+#include "../WaveManager.h"
+#include "../UI/Score.h"
 
 class GameplaySplat : public Scene {
 private:
 	bool enemySpawned = false;
-	int amountEnemies = 20;
+	bool randomSpawned = false;
+	int amountEnemies = 10;
+	int currentScore = 0;
+	Wave currentWave;
+	Score* score;
+	TextObject* end;
+	WaveManager* waveManager = new WaveManager();
 public:
 	GameplaySplat() = default;
 	void OnEnter() override;
 	void OnExit() override;
 	void Update() override;
 	void Render() override;
-
+	int GetTotalEnemies(const Wave& wave); // Calcula el total de enemigos en una oleada
+	void SpawnEnemiesFromWave(const Wave& wave); // Genera enemigos basados en la oleada actual
+	void SpawnEnemyById(EnemyConfig enemy);
+	void AdvanceToNextWave();
+	Vector2 GenerateSpawnPosition();
+	std::vector<EnemyConfig>GetCurrentWaveEnemies();
 };

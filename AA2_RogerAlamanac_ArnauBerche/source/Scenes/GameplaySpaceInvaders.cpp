@@ -11,11 +11,11 @@
 #include "../Enemies/ShootingEnemy.h"
 void GameplaySpaceInvaders::OnEnter()
 {
-
 	currentScene = 0;
 
 	//AddDefault Sprites  : ORDER: BG,PLAYER,ENEMYS
 	if (!waveManager->LoadFromXML("source/WavesEnemiesSpaceInvaders.xml")) {
+		std::cout << "No se ha podido cargar el archivo" << std::endl;
 		return;
 	}
 
@@ -26,7 +26,8 @@ void GameplaySpaceInvaders::OnEnter()
 	}
 
 	// Resto de inicializaciones
-	SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), imagesToUse[currentScene][0]));
+	//SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), imagesToUse[currentScene][0]));
+
 	player = new Spaceship(Vector2(100, 700), MAX_LIFES);
 	dynamic_cast<Object*>(player)->GetTransform()->scale = Vector2(0.7f, 0.7f);
 	SPAWN.SpawnObject(dynamic_cast<Object*>(player));
@@ -73,7 +74,7 @@ void GameplaySpaceInvaders::Update()
 	if (amountEnemies > 0) {
 		for (const auto& enemy : currentWave.enemies) {
 			if (!enemySpawned) {
-				// Generar enemigos
+
 				SpawnEnemiesFromWave(currentWave);
 				enemySpawned = true;
 			}		
@@ -88,7 +89,7 @@ void GameplaySpaceInvaders::Update()
 		}
 	}
 
-	if ((int)TIME.GetElapsedTime() % 3 == 0 && !randomSpawned) {
+	/*if ((int)TIME.GetElapsedTime() % 3 == 0 && !randomSpawned) {
 		amountEnemies++;
 		SpawnEnemyById(currentWave.randomEnemy);
 		randomSpawned = true;
@@ -96,7 +97,7 @@ void GameplaySpaceInvaders::Update()
 	else 
 	{
 		randomSpawned = false;
-	}
+	}*/
 	
 	
 	score->SetText("Score: " + std::to_string(currentScore));
@@ -127,14 +128,14 @@ void GameplaySpaceInvaders::SpawnEnemyById(EnemyConfig enemy)
 	switch (enemy.id) {
 	case 1: {
 		Vector2 spawnPos = GenerateSpawnPosition(); 
-		BasicEnemy* enemyBasic = new BasicEnemy(spawnPos, 10, 10, 1, true, imagesToUse[currentScene][1]);
+		BasicEnemy* enemyBasic = new BasicEnemy(spawnPos, 5, 10, 1, true, "resources/images/SpaceShip/Enemies/SpaceEnemy_Draw.png"/*imagesToUse[currentScene][1]*/);
 		enemyBasic->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(enemyBasic);
 		break;
 	}
 	case 2: {
 		Vector2 spawnPos = GenerateSpawnPosition(); 
-		ShootingEnemy* enemyShoot = new ShootingEnemy(spawnPos, 10, 20, 1, true, imagesToUse[currentScene][1]);
+		ShootingEnemy* enemyShoot = new ShootingEnemy(spawnPos, 5, 20, 1, true, "resources/images/SpaceShip/Enemies/SpaceEnemy_Draw.png"/*imagesToUse[currentScene][1]*/);
 		enemyShoot->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(enemyShoot);
 		break;
