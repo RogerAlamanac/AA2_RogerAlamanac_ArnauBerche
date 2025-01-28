@@ -48,7 +48,7 @@ void BasicEnemy::Update()
 {
 	timeSinceLastMove += TIME.GetDeltaTime();
 
-	if (timeSinceLastMove >= 1.0f) {
+	if (timeSinceLastMove >= 0.5f) {
 		if (!pattern.empty()) {
 			int direction = pattern[patternIndex] - '0'; 
 			MoveAccordingToPattern(direction);

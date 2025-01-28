@@ -40,7 +40,6 @@ void Spaceship::Attack()
         return;
     }
 
-    
 }
 
 void Spaceship::ReceiveDamage()
