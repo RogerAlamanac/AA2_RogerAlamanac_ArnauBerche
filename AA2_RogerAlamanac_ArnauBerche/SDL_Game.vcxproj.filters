@@ -93,6 +93,9 @@
     <ClCompile Include="source\Scenes\SpriteSelector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\Scenes\Ranking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Game\Game.h">
@@ -234,6 +237,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\dep\inc\xml\rapidxml_utils.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Scenes\Ranking.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

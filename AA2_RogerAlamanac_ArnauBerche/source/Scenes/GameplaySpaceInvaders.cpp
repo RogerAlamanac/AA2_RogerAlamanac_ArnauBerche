@@ -87,13 +87,10 @@ void GameplaySpaceInvaders::Update()
 			amountEnemies = GetTotalEnemies(currentWave);
 		}
 	}
-
-
 	
 	 if(IM.GetEvent(SDLK_ESCAPE, DOWN) ) {
 		SM.SetNextScene("Main Menu");
 	 }
-	score->SetText("Score: " + std::to_string(currentScore));
 
 	if (player->GetCurrentLifes() <= 0) {
 		SM.SetNextScene("Main Menu");
