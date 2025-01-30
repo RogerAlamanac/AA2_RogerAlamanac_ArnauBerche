@@ -44,6 +44,7 @@
     <ClCompile Include="source\Scenes\GameplaySpaceInvaders.cpp" />
     <ClCompile Include="source\Scenes\GameplaySplat.cpp" />
     <ClCompile Include="source\Scenes\GameplayTanks.cpp" />
+    <ClCompile Include="source\Scenes\SplashScreen.cpp" />
     <ClCompile Include="source\Scenes\SpriteSelector.cpp" />
     <ClCompile Include="source\UI\Score.cpp" />
   </ItemGroup>
@@ -86,6 +87,7 @@
     <ClInclude Include="source\Scenes\GameplaySpaceInvaders.h" />
     <ClInclude Include="source\Scenes\GameplaySplat.h" />
     <ClInclude Include="source\Scenes\GameplayTanks.h" />
+    <ClInclude Include="source\Scenes\SplashScreen.h" />
     <ClInclude Include="source\Scenes\SpriteSelector.h" />
     <ClInclude Include="source\Spawner\Spawner.h" />
     <ClInclude Include="source\InputManager\TimeManager.h" />
@@ -113,6 +115,7 @@
     <Image Include="resources\images\SpaceShip\VFX\SpaceShipBullet_Draw.png" />
     <Image Include="resources\images\SpaceShip\VFX\SpaceShipBullet_Pixel.png" />
     <Image Include="resources\images\SpaceShip\VFX\SpaceShipBullet_Real.png" />
+    <Image Include="resources\images\SplashScreen.png" />
     <Image Include="resources\images\Swater\BG\Kitchen_Draw.png" />
     <Image Include="resources\images\Swater\BG\Kitchen_Pixel.png" />
     <Image Include="resources\images\Swater\BG\Kitchen_Real.png" />

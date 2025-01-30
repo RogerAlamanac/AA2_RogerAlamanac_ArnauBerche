@@ -6,6 +6,7 @@
 #include "../Scenes/GameplayTanks.h"
 #include "../Scenes/MainMenu.h"
 #include "../Scenes/SpriteSelector.h"
+#include "../Scenes/SplashScreen.h"
 #include "../InputManager/InputManager.h"
 void Game::Init()
 {
@@ -60,14 +61,15 @@ void Game::Init()
 		RM->LoadTexture("resources/images/Tank/VFX/TankBullet_Pixel.png");
 		RM->LoadTexture("resources/images/Tank/VFX/TankBullet_Real.png");
 
-
+		RM->LoadTexture("resources/images/SplashScreen.png");
 
 	assert(SM.AddScene("Main Menu", new MainMenu()));
 	assert(SM.AddScene("SpaceInvaders", new GameplaySpaceInvaders()));
 	assert(SM.AddScene("Tanks", new GameplayTanks()));
 	assert(SM.AddScene("Splat", new GameplaySplat()));
 	assert(SM.AddScene("Sprite Selector", new SpriteSelector()));
-	assert(SM.InitFirstScene("Main Menu"));
+	assert(SM.AddScene("Splash Screen", new SplashScreen()));
+	assert(SM.InitFirstScene("Splash Screen"));
 
 }
 

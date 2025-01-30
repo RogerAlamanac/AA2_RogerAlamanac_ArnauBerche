@@ -96,6 +96,9 @@
     <ClCompile Include="source\Scenes\Ranking.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\Scenes\SplashScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Game\Game.h">
@@ -242,6 +245,9 @@
     <ClInclude Include="source\Scenes\Ranking.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\Scenes\SplashScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\guitar.jpg">
@@ -365,6 +371,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="resources\images\Tank\VFX\TankBullet_Real.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\images\SplashScreen.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -1,8 +1,8 @@
 #include "Ranking.h"
+#include "../Spawner/Spawner.h"
 
 void Ranking::OnEnter()
 {
-
 }
 
 void Ranking::OnExit()
