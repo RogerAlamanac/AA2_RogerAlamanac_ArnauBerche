@@ -8,6 +8,7 @@
 #include "../Scenes/SpriteSelector.h"
 #include "../Scenes/SplashScreen.h"
 #include "../InputManager/InputManager.h"
+#include "../Audio/AudioManager.h"
 void Game::Init()
 {
 	RM->Init();
@@ -71,6 +72,8 @@ void Game::Init()
 	assert(SM.AddScene("Splash Screen", new SplashScreen()));
 	assert(SM.InitFirstScene("Splash Screen"));
 
+	AM.LoadSong("illuminati");
+	AM.LoadClip("d");
 }
 
 

@@ -36,9 +36,9 @@ void GameplaySpaceInvaders::OnEnter()
 	score->SetText("Score: " + std::to_string(currentScore));
 	SPAWN.SpawnObject(score);
 
-	AM.LoadSong("illuminati");
+	
 	AM.PlaySong("illuminati");
-	AM.LoadClip("d");
+
 }
 
 void GameplaySpaceInvaders::OnExit()
