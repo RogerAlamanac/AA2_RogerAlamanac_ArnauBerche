@@ -21,14 +21,14 @@ void GameplaySplat::OnEnter()
 		amountEnemies = GetTotalEnemies(currentWave);
 	}
 
-	SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), SM.imagesToUse[SM.currentSceneInt][0]));
-	player = new Swatter(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), MAX_LIFES);
+	SPAWN.SpawnObject(new Background(Vector2((float)RM->WINDOW_WIDTH / 2, (float)RM->WINDOW_HEIGHT / 2), SM.imagesToUse[SM.currentSceneInt][0]));
+	player = new Swatter(Vector2((float)RM->WINDOW_WIDTH / 2, (float)RM->WINDOW_HEIGHT / 2), MAX_LIFES);
 	SPAWN.SpawnObject(dynamic_cast<Object*>(player));
 	score = new Score(Vector2(100, 100), 0);
 	score->SetText("Score: " + std::to_string(currentScore));
 	SPAWN.SpawnObject(score);
 	end = new TextObject("End");
-	end->GetTransform()->position = Vector2(RM->WINDOW_WIDTH / 2 - 50, RM->WINDOW_HEIGHT / 2 + 50);
+	end->GetTransform()->position = Vector2((float)RM->WINDOW_WIDTH / 2 - 50, (float)RM->WINDOW_HEIGHT / 2 + 50);
 	end->SetText(" ");
 	end->GetTransform()->scale = Vector2(5, 5);
 	SPAWN.SpawnObject(end);
@@ -47,7 +47,7 @@ int GameplaySplat::GetTotalEnemies(const Wave& wave) {
 }
 void GameplaySplat::Update() 
 {
-	for (int i = _objects.size() - 1; i >= 0; i--) {
+	for (int i = (int)_objects.size() - 1; i >= 0; i--) {
 		if (_objects[i]->IsPendingDestroy()) {
 			if (_objects[i]->tag == "ENEMY") {
 				currentScore += 100;
@@ -142,7 +142,7 @@ void GameplaySplat::AdvanceToNextWave()
 }
 
 Vector2 GameplaySplat::GenerateSpawnPosition() {
-	return Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT / 3); 
+	return Vector2((float)(rand() % RM->WINDOW_WIDTH), (float)(rand() % RM->WINDOW_HEIGHT / 3));
 }
 std::vector<EnemyConfig> GameplaySplat::GetCurrentWaveEnemies()
 {

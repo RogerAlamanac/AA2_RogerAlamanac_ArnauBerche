@@ -5,13 +5,13 @@
 void SplashScreen::OnEnter()
 {
 	companyLogo = new ImageObject("resources/images/SplashScreen.png", Vector2(0.f, 0.f), Vector2(960.f, 720.f), 0, "BG");
-	companyLogo->GetTransform()->position = Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT/10);
+	companyLogo->GetTransform()->position = Vector2((float)RM->WINDOW_WIDTH / 2, (float)RM->WINDOW_HEIGHT/10);
 	companyLogo->GetTransform()->scale = Vector2(10.f, 10.f);
 	SPAWN.SpawnObject(companyLogo);
 
 	presentTitle = new TextObject(" ");
 	presentTitle->SetText("PRESENTED BY");
-	presentTitle->GetTransform()->position = Vector2(RM->WINDOW_WIDTH / 2.15f, RM->WINDOW_HEIGHT / 6);
+	presentTitle->GetTransform()->position = Vector2((float)RM->WINDOW_WIDTH / 2.15f, (float)RM->WINDOW_HEIGHT / 6);
 	SPAWN.SpawnObject(presentTitle);
 }
 
@@ -34,7 +34,7 @@ void SplashScreen::Update()
 		presentTitle->GetTransform()->position.y += 2.5;
 	}
 
-	timeSinceStarted += TIME.GetDeltaTime();
+	timeSinceStarted += (float)TIME.GetDeltaTime();
 }
 
 void SplashScreen::Render()

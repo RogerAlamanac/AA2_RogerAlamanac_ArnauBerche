@@ -15,7 +15,7 @@ void Scene::OnExit()
 void Scene::Update()
 {
 
-	for (int i = _objects.size() - 1; i >= 0; i--) {
+	for (int i = (int)_objects.size() - 1; i >= 0; i--) {
 		if (_objects[i]->IsPendingDestroy()) {
 			delete _objects[i];
 			_objects.erase(_objects.begin() + i);

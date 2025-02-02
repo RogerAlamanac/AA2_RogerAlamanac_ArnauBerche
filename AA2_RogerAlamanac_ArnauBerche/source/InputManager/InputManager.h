@@ -35,7 +35,7 @@ public:
 
 		//Update the keys from the previous frame
 
-		lastTimeClick += TIME.GetDeltaTime();
+		lastTimeClick += (float)TIME.GetDeltaTime();
 
 		for (std::unordered_map<Sint32, KeyState>::iterator it = keyReference.begin(); it != keyReference.end(); it++) {
 			if (it->second == DOWN)

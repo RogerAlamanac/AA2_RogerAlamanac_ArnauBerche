@@ -67,7 +67,7 @@ void ShootingEnemy::Shoot()
 
 void ShootingEnemy::Update()
 {
-	timeSinceLastMove += TIME.GetDeltaTime();
+	timeSinceLastMove += (float)TIME.GetDeltaTime();
 
 	if (timeSinceLastMove >= 1.0f) {
 		if (!pattern.empty()) {
@@ -79,7 +79,7 @@ void ShootingEnemy::Update()
 		timeSinceLastMove = 0.0f;
 	}
 	Object::Update();
-	currentTimeToMove += TIME.GetDeltaTime();
-	currentTimeToShoot += TIME.GetDeltaTime();
+	currentTimeToMove += (float)TIME.GetDeltaTime();
+	currentTimeToShoot += (float)TIME.GetDeltaTime();
 	Shoot();
 }

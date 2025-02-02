@@ -27,7 +27,7 @@ void GameplaySpaceInvaders::OnEnter()
 		amountEnemies = GetTotalEnemies(currentWave);
 	}
 
-	SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), SM.imagesToUse[SM.currentSceneInt][0]));
+	SPAWN.SpawnObject(new Background(Vector2((float)RM->WINDOW_WIDTH / 2, (float)RM->WINDOW_HEIGHT / 2), SM.imagesToUse[SM.currentSceneInt][0]));
 
 	player = new Spaceship(Vector2(100, 700), MAX_LIFES);
 	dynamic_cast<Object*>(player)->GetTransform()->scale = Vector2(0.7f, 0.7f);
@@ -57,7 +57,7 @@ int GameplaySpaceInvaders::GetTotalEnemies(const Wave& wave) {
 }
 void GameplaySpaceInvaders::Update()
 {
-		for (int i = _objects.size() - 1; i >= 0; i--) {
+		for (int i = (int)_objects.size() - 1; i >= 0; i--) {
 			if (_objects[i]->IsPendingDestroy()) {
 				if (_objects[i]->tag == "ENEMY") {
 					currentScore += 100;
@@ -144,7 +144,7 @@ void GameplaySpaceInvaders::AdvanceToNextWave()
 }
 
 Vector2 GameplaySpaceInvaders::GenerateSpawnPosition() {
-	return Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT / 3); 
+	return Vector2((float)(rand() % RM->WINDOW_WIDTH), (float)(rand() % RM->WINDOW_HEIGHT / 3));
 }
 std::vector<EnemyConfig> GameplaySpaceInvaders::GetCurrentWaveEnemies()
 {

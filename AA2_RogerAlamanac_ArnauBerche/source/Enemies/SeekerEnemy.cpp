@@ -60,8 +60,8 @@ void SeekerEnemy::BaseMovement()
 
 void SeekerEnemy::Update(){
 	Object::Update();
-	currentTimeToMove += TIME.GetDeltaTime();
-	timeSinceLastMove += TIME.GetDeltaTime();
+	currentTimeToMove += (float)TIME.GetDeltaTime();
+	timeSinceLastMove += (float)TIME.GetDeltaTime();
 
 	if (timeSinceLastMove >= 1.0f) {
 		if (!pattern.empty()) {

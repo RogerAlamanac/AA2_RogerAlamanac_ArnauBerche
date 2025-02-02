@@ -54,7 +54,7 @@ void Spaceship::ReceiveDamage()
 void Spaceship::Update()
 {
     Object::Update();
-    timeSinceLastFire += TIME.GetDeltaTime();
+    timeSinceLastFire += (float)TIME.GetDeltaTime();
     Movement();
     Attack();
 }

@@ -46,7 +46,7 @@ void BasicEnemy::BaseMovement()
 
 void BasicEnemy::Update()
 {
-	timeSinceLastMove += TIME.GetDeltaTime();
+	timeSinceLastMove += (float)TIME.GetDeltaTime();
 
 	if (timeSinceLastMove >= 0.5f) {
 		if (!pattern.empty()) {

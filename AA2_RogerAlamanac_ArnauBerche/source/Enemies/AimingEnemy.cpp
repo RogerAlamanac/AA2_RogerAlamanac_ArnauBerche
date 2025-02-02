@@ -76,7 +76,7 @@ void AimingEnemy::Update()
 {
 	Object::Update();
 	if (target == nullptr) { return;  }
-	currentTimeToMove += TIME.GetDeltaTime();
-	currentTimeToShoot += TIME.GetDeltaTime();
+	currentTimeToMove += (float)TIME.GetDeltaTime();
+	currentTimeToShoot += (float)TIME.GetDeltaTime();
 	BaseMovement();
 }

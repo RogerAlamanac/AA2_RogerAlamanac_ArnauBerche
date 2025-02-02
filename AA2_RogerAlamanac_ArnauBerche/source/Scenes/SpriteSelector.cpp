@@ -34,40 +34,40 @@ void SpriteSelector::OnEnter()
 	back = new TextObject("Main Menu");
 	title = new TextObject("Sprite Selector");
 
-    title->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 2) - 120, 150);
+    title->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 2) - 120, 150);
     title->GetTransform()->scale = Vector2(2.f, 2.f);
     title->SetText("SPRITE SELECTOR");
     SPAWN.SpawnObject(title);
 
-	spaceInvaders->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5), 100);
+	spaceInvaders->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 5), 100);
 	SPAWN.SpawnObject(spaceInvaders);
-	tank->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5) + 400, 100);
+	tank->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 5) + 400, 100);
 	SPAWN.SpawnObject(tank);
-	swater->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5) + 800, 100);
+	swater->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 5) + 800, 100);
 	SPAWN.SpawnObject(swater);
 
-    background1->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5), 200);
+    background1->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 5), 200);
     SPAWN.SpawnObject(background1);
-    background2->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5) + 400, 200);
+    background2->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 5) + 400, 200);
     SPAWN.SpawnObject(background2);
-    background3->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5) + 800, 200);
+    background3->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 5) + 800, 200);
     SPAWN.SpawnObject(background3);
-    enemies1->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5), 350);
+    enemies1->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 5), 350);
     SPAWN.SpawnObject(enemies1);
-    enemies2->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5) + 400, 350);
+    enemies2->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 5) + 400, 350);
     SPAWN.SpawnObject(enemies2);
-    enemies3->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5) + 800, 350);
+    enemies3->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 5) + 800, 350);
     SPAWN.SpawnObject(enemies3);
-    VFX1->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5), 500);
+    VFX1->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 5), 500);
     SPAWN.SpawnObject(VFX1);
-    VFX2->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5) + 400, 500);
+    VFX2->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 5) + 400, 500);
     SPAWN.SpawnObject(VFX2);
-    VFX3->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 5) + 800, 500);
+    VFX3->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 5) + 800, 500);
     SPAWN.SpawnObject(VFX3);
 
     int optionWidth = 400;
     int optionHeight = 100;
-    back->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 2) -50, 700);
+    back->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 2) -50, 700);
     back->GetTransform()->scale = Vector2(1.5f, 1.5f);
     back->SetText("MAIN MENU");
     back->SetRect({ static_cast<int>(back->GetTransform()->position.x - (optionWidth / 2)), 600, optionWidth, optionHeight });

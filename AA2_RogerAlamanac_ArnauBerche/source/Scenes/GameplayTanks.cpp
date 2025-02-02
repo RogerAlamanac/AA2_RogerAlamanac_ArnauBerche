@@ -19,8 +19,8 @@ void GameplayTanks::OnEnter()
 		currentWave = waveManager->waves[waveManager->currentWaveIndex];
 		amountEnemies = GetTotalEnemies(currentWave);
 	}
-	SPAWN.SpawnObject(new Background(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), SM.imagesToUse[SM.currentSceneInt][0]));
-	player = new Tank(Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2), 100, MAX_LIFES);
+	SPAWN.SpawnObject(new Background(Vector2((float)RM->WINDOW_WIDTH / 2, (float)RM->WINDOW_HEIGHT / 2), SM.imagesToUse[SM.currentSceneInt][0]));
+	player = new Tank(Vector2((float)RM->WINDOW_WIDTH / 2, (float)RM->WINDOW_HEIGHT / 2), 100, MAX_LIFES);
 	SPAWN.SpawnObject(dynamic_cast<Object*>(player));
 
 	score = new Score(Vector2(100, 100), 0);
@@ -43,7 +43,7 @@ int GameplayTanks::GetTotalEnemies(const Wave& wave) {
 
 void GameplayTanks::Update() 
 {
-	for (int i = _objects.size() - 1; i >= 0; i--) {
+	for (int i = (int)_objects.size() - 1; i >= 0; i--) {
 		if (_objects[i]->IsPendingDestroy()) {
 			if (_objects[i]->tag == "ENEMY") {
 				currentScore += 100;
@@ -121,7 +121,7 @@ void GameplayTanks::AdvanceToNextWave()
 
 		std::cout << "NEXT WAVE";
 		TextObject* nextWave = new TextObject("Wave");
-		nextWave->GetTransform()->position = Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2);
+		nextWave->GetTransform()->position = Vector2((float)RM->WINDOW_WIDTH / 2, (float)RM->WINDOW_HEIGHT / 2);
 		nextWave->GetTransform()->scale = Vector2(5, 5);
 		nextWave->SetText("NEW WAVE!");
 		
@@ -130,7 +130,7 @@ void GameplayTanks::AdvanceToNextWave()
 }
 
 Vector2 GameplayTanks::GenerateSpawnPosition() {
-	return Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT / 3); 
+	return Vector2((float)(rand() % RM->WINDOW_WIDTH), (float)(rand() % RM->WINDOW_HEIGHT / 3));
 }
 std::vector<EnemyConfig> GameplayTanks::GetCurrentWaveEnemies()
 {

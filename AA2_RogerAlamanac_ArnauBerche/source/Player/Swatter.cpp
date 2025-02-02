@@ -9,7 +9,7 @@ void Swatter::Update() {
 		std::cout << "IsMoving" << std::endl;
 		if (IM.GetLeftClick()) {
 			currentState = SwatterState::ATTACKING;
-			stateStartTime = TIME.GetElapsedTime();
+			stateStartTime = (float)TIME.GetElapsedTime();
 		}
 		else {
 			Movement();
@@ -36,9 +36,9 @@ void Swatter::Attack()
 }
 
 void Swatter::Movement() {
-	float mouseX = IM.GetMouseX();
-	float mouseY = IM.GetMouseY();
-	Vector2 mousePosition = Vector2(mouseX, mouseY);
+	int mouseX = IM.GetMouseX();
+	int mouseY = IM.GetMouseY();
+	Vector2 mousePosition = Vector2((float)mouseX, (float)mouseY);
 
 	Vector2 direction = mousePosition - transform->position;
 
@@ -51,7 +51,7 @@ void Swatter::Movement() {
 	direction.Normalize();
 
 	float maxSpeed = 1000.0f;
-	float deltaTime = TIME.GetDeltaTime();
+	float deltaTime = (float)TIME.GetDeltaTime();
 	Vector2 velocity = direction * maxSpeed * deltaTime;
 
 	if (velocity.x * velocity.x + velocity.y * velocity.y > distanceSquared) {

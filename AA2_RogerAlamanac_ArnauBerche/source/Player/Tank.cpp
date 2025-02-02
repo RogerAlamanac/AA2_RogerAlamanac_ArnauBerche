@@ -87,7 +87,7 @@ void Tank::Attack()
 Vector2 Tank::CalculateOfset()
 {
 	float rotationAngle = canon->GetTransform()->rotation;
-	float radians = rotationAngle * (M_PI / 180.0f);
+	float radians = rotationAngle * (float)(M_PI / 180.0f);
 
 	Vector2 rotatedOffset(
 		canon->relativeOffset.x * cos(radians) - canon->relativeOffset.y * sin(radians),
@@ -119,9 +119,9 @@ void Tank::ReceiveDamage() {
 bool Tank::IsMouseOutsideThreshold() {
 	InputManager& input = IM;
 	Vector2 canonPosition = canon->GetTransform()->position + CalculateOfset();
-	Vector2 mousePosition(input.GetMouseX(), input.GetMouseY());
+	Vector2 mousePosition((float)input.GetMouseX(), (float)input.GetMouseY());
 
-	float dx = mousePosition.x - canonPosition.x;
+	float dx = (float)mousePosition.x - (float)canonPosition.x;
 	float dy = mousePosition.y - canonPosition.y;
 
 	float distance = std::sqrt(dx * dx + dy * dy);
@@ -130,7 +130,7 @@ bool Tank::IsMouseOutsideThreshold() {
 void Tank::Update()
 {
     Object::Update();
-	body->timeSinceLastFire += TIME.GetDeltaTime();
+	body->timeSinceLastFire += (float)TIME.GetDeltaTime();
     Movement();
 
 	body->SetPosition(transform->position);
@@ -140,7 +140,7 @@ void Tank::Update()
 	if (IsMouseOutsideThreshold()) {
 		Attack();
 		Vector2 aim = DirectionToAim(CalculateOfset());
-		float angle = atan2(aim.y, aim.x) * 180.0f / M_PI;
+		float angle = (float)(atan2(aim.y, aim.x) * 180.0f / M_PI);
 		canon->SetRotation(angle + 90);
 	}
 	

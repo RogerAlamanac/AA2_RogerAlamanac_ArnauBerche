@@ -35,20 +35,20 @@ void MainMenu::OnEnter()
     int optionWidth = 600; 
     int optionHeight = 75; 
 
-    title->GetTransform()->position = Vector2((RM->WINDOW_WIDTH/2) - 50,100);
+    title->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH/2) - 50,100);
     title->GetTransform()->scale = Vector2(1.5f,1.5f);
     title->SetText("MAIN MENU");
     SPAWN.SpawnObject(title);
     options.push_back(title);
 
-    option1->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 2) - 100, 200 );
+    option1->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 2) - 100, 200 );
     option1->GetTransform()->scale = Vector2(1.5f, 1.5f);
     option1->SetText("1. SPACE INVADERS");
     option1->SetRect({static_cast<int>(option1->GetTransform()->position.x - (optionWidth / 2)), 100, optionWidth, optionHeight });
     SPAWN.SpawnObject(option1);
     options.push_back(option1);
 
-    option2->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 2) - 100, 300);
+    option2->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 2) - 100, 300);
     option2->GetTransform()->scale = Vector2(1.5f, 1.5f);
     option2->SetText("2. TANKS");
     option2->SetRect({ static_cast<int>(option2->GetTransform()->position.x - (optionWidth / 2)), 200, optionWidth, optionHeight });
@@ -56,7 +56,7 @@ void MainMenu::OnEnter()
     SPAWN.SpawnObject(option2);
     options.push_back(option2);
 
-    option3->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 2) - 100, 400);
+    option3->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 2) - 100, 400);
     option3->GetTransform()->scale = Vector2(1.5f, 1.5f);
     option3->SetText("3. SPLAT!");
     option3->SetRect({ static_cast<int>(option3->GetTransform()->position.x - (optionWidth / 2)), 300, optionWidth, optionHeight });
@@ -64,7 +64,7 @@ void MainMenu::OnEnter()
     SPAWN.SpawnObject(option3);
     options.push_back(option3);
 
-    sprites->GetTransform()->position = Vector2((RM->WINDOW_WIDTH / 2) - 100, 500);
+    sprites->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 2) - 100, 500);
     sprites->GetTransform()->scale = Vector2(1.5f, 1.5f);
     sprites->SetText("SPRITE SELECTOR");
     sprites->SetRect({ static_cast<int>(sprites->GetTransform()->position.x - (optionWidth / 2)), 400, optionWidth, optionHeight });

@@ -27,9 +27,9 @@ public:
 
 protected:
 	std::queue<Directions> pathPattern;
-	float movementTimeRemaining;
-	Directions currentDirection;
-	float movementSpeed;
+	float movementTimeRemaining = 0;
+	Directions currentDirection = Directions::NONE;
+	float movementSpeed = 0;
 
 	Vector2 DirectionToVector(Directions direction) {
 		switch (direction) {

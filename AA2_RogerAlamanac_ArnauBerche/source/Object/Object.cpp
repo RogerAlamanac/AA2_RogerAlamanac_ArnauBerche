@@ -3,8 +3,8 @@
 void Object::Update()
 {
 	if (physics != nullptr) {
-		physics->Update(TIME.GetDeltaTime());
+		physics->Update((float)TIME.GetDeltaTime());
 	}
 
-	renderer->Update(TIME.GetDeltaTime());
+	renderer->Update((float)TIME.GetDeltaTime());
 }

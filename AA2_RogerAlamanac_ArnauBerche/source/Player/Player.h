@@ -29,6 +29,7 @@ public:
 		case PlayerDirections::DOWN: return { 0.f, 1.f };
 		case PlayerDirections::DOWNRIGHT: return { std::sqrt(0.5f), std::sqrt(0.5f) };
 		case PlayerDirections::NONE: return { 0.f, 0.f };
+		default: return { 0.f, 0.f };
 		}
 	}
 	virtual void Movement() = 0;

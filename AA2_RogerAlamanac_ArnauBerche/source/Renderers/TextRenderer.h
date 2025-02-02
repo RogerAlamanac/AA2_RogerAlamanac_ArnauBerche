@@ -22,15 +22,15 @@ public:
 	virtual void Update(float dt) override {
 		Vector2 offset = (Vector2(-transform->size.x, -transform->size.y) / 2.0f) * transform->scale;
 
-		destRect.x = transform->position.x + offset.x;
-		destRect.y = transform->position.y + offset.y;
+		destRect.x = (int)transform->position.x + (int)offset.x;
+		destRect.y = (int)transform->position.y + (int)offset.y;
 		if (autoSize) {
-			destRect.w = sourceRect.w * transform->scale.x;
-			destRect.h = sourceRect.h * transform->scale.y;
+			destRect.w = (int)sourceRect.w * (int)transform->scale.x;
+			destRect.h = (int)sourceRect.h * (int)transform->scale.y;
 		}
 		else {
-			destRect.w = transform->size.x * transform->scale.x;
-			destRect.h = transform->size.y * transform->scale.y;
+			destRect.w = (int)transform->size.x * (int)transform->scale.x;
+			destRect.h = (int)transform->size.y * (int)transform->scale.y;
 		}
 
 	}

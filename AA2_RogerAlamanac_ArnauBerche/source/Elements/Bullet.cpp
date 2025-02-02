@@ -3,7 +3,7 @@
 void Bullet::Update()
 {
 	Object::Update();
-	timeSinceFire += TIME.GetDeltaTime();
+	timeSinceFire += (float)TIME.GetDeltaTime();
 	if (timeSinceFire >= timeToBeDestroyed) {
 		Destroy();
 	}

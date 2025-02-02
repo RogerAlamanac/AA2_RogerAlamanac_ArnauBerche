@@ -28,7 +28,7 @@ public:
 	}
 
 	inline int GetSpawnedObjectsCount() {
-		return spawnedObjects.size();
+		return (int)spawnedObjects.size();
 	}
 	inline void ClearSpawnedObjects() {
 		while (!spawnedObjects.empty()) {

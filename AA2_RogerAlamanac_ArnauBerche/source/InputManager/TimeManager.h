@@ -12,15 +12,15 @@ private:
 	TimeManager(const TimeManager& t) = delete;
 	TimeManager& operator=(const TimeManager& t) = delete;
 
-	float deltaTime = 0.0f;
-	float elapsedTime = 0.0f;
-	float previousElapsedTime;
+	double deltaTime = 0.0f;
+	double elapsedTime = 0.0f;
+	double previousElapsedTime;
 
 	static const int FPS = 60;
 	float frameTime;
 public:
-	inline float GetDeltaTime() const{ return deltaTime; }
-	inline float GetElapsedTime() const{ return elapsedTime; }
+	inline double GetDeltaTime() const{ return deltaTime; }
+	inline double GetElapsedTime() const{ return elapsedTime; }
 
 	inline bool ShouldUpdateGame() const { return deltaTime >= frameTime; }
 	inline void ResetDeltaTime() { deltaTime = deltaTime - (float)(floor(deltaTime / frameTime) * frameTime); } //Floor es per arrodonir cap a baix
