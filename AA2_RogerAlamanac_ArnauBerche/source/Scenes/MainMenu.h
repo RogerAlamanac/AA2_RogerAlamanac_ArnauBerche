@@ -8,6 +8,7 @@ private:
 	TextObject* option1;
 	TextObject* option2;
 	TextObject* option3;
+	TextObject* option4;
 	TextObject* sprites;
 	std::vector<TextObject*> options;
 public:

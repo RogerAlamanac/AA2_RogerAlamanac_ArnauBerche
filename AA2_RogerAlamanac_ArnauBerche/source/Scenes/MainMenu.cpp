@@ -30,6 +30,7 @@ void MainMenu::OnEnter()
 	option1 = new TextObject("Space Invaders");
 	option2 = new TextObject("Tanks");
 	option3 = new TextObject("Splat");
+	option4 = new TextObject("Ranking");
 	sprites = new TextObject("Sprite Selector");
 
     int optionWidth = 600; 
@@ -71,6 +72,14 @@ void MainMenu::OnEnter()
     sprites->SetButtonColor(SDL_Color{ 0, 0, 255, 255 }); 
     SPAWN.SpawnObject(sprites);
     options.push_back(option3);
+
+    option4->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 2) - 100, 600);
+    option4->GetTransform()->scale = Vector2(1.5f, 1.5f);
+    option4->SetText("RANKING");
+    option4->SetRect({ static_cast<int>(option3->GetTransform()->position.x - (optionWidth / 2)), 500, optionWidth, optionHeight });
+    option4->SetButtonColor(SDL_Color{ 0, 0, 255, 255 });
+    SPAWN.SpawnObject(option4);
+    options.push_back(option4);
 }
 
 void MainMenu::OnExit()
@@ -95,6 +104,9 @@ void MainMenu::Update()
         if (IsMouseOverButton(option3->GetRect(), mouseX, mouseY)) {
             SM.SetNextScene("Splat");
         } 
+        if (IsMouseOverButton(option4->GetRect(), mouseX, mouseY)) {
+            SM.SetNextScene("Ranking");
+        }
         if (IsMouseOverButton(sprites->GetRect(), mouseX, mouseY)) {
             SM.SetNextScene("Sprite Selector");
         }

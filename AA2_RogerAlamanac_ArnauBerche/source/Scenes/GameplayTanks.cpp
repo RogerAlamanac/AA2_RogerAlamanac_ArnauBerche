@@ -6,6 +6,7 @@
 #include "../Player/Tank.h"
 #include "SceneManager.h"
 #include "../Enemies/BasicEnemy.h"
+#include "../InputManager/InputManager.h"
 
 void GameplayTanks::OnEnter()
 {
@@ -77,6 +78,10 @@ void GameplayTanks::Update()
 
 
 	score->SetText("Score: " + std::to_string(currentScore));
+	if (IM.GetEvent(SDLK_ESCAPE, DOWN)) {
+		SM.SetNextScene("Main Menu");
+	}
+
 	if (player->GetCurrentLifes() <= 0) {
 		SM.SetNextScene("Main Menu");
 	}
