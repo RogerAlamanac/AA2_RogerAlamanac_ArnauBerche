@@ -3,7 +3,7 @@
 #include <iostream>
 
 void Swatter::Update() {
-	
+	Object::Update();
 	switch (currentState) {
 	case SwatterState::MOVING:
 		std::cout << "IsMoving" << std::endl;
@@ -28,7 +28,7 @@ void Swatter::Update() {
 		break;
 	}
 
-	Object::Update();
+	
 }
 
 void Swatter::Attack()
