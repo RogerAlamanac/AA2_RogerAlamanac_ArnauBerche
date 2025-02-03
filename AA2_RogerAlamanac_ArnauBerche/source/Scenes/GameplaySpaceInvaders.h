@@ -24,7 +24,7 @@ public:
 	void SpawnEnemiesFromWave(const Wave& wave); 
 	void SpawnEnemyById(EnemyConfig enemy);
 	void AdvanceToNextWave();
-	void SaveScoreToRanking(const std::string& playerName)
+	void SaveScoreToRanking(const std::string& playerName);
 	Vector2 GenerateSpawnPosition();
 	std::vector<EnemyConfig>GetCurrentWaveEnemies();
 };
