@@ -143,6 +143,15 @@ void GameplaySpaceInvaders::AdvanceToNextWave()
 	}
 }
 
+void GameplaySpaceInvaders::SaveScoreToRanking(const std::string& playerName)
+{
+	std::string filename = "ranking.bin";
+	std::vector<Player> ranking = loadRanking(filename);
+
+	addPlayerToRanking(ranking, playerName, currentScore);
+	saveRanking(ranking, filename);
+}
+
 Vector2 GameplaySpaceInvaders::GenerateSpawnPosition() {
 	return Vector2((float)(rand() % RM->WINDOW_WIDTH), (float)(rand() % RM->WINDOW_HEIGHT / 3));
 }
