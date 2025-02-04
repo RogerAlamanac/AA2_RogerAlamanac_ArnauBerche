@@ -147,11 +147,11 @@ void GameplaySpaceInvaders::AdvanceToNextWave()
 
 void GameplaySpaceInvaders::SaveScoreToRanking(const std::string& playerName)
 {
-	std::string filename = "ranking.bin";
+	/*std::string filename = "ranking.bin";
 	std::vector<Player> ranking = loadRanking(filename);
 
 	addPlayerToRanking(ranking, playerName, currentScore);
-	saveRanking(ranking, filename);
+	saveRanking(ranking, filename);*/
 }
 
 Vector2 GameplaySpaceInvaders::GenerateSpawnPosition() {
