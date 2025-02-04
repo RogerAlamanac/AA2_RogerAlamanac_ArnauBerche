@@ -39,6 +39,7 @@ void GameplaySpaceInvaders::OnEnter()
 	
 	AM.PlaySong("illuminati");
 
+
 }
 
 void GameplaySpaceInvaders::OnExit()
@@ -85,6 +86,9 @@ void GameplaySpaceInvaders::Update()
 		if (!waveManager->waves.empty()) {
 			currentWave = waveManager->waves[waveManager->currentWaveIndex];
 			amountEnemies = GetTotalEnemies(currentWave);
+		} 
+		else{
+			SM.SetNextScene("Main Menu");
 		}
 	}
 

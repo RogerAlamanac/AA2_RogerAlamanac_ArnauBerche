@@ -26,6 +26,17 @@ void Ranking::OnEnter()
     spaceHighscores["ABA"] = 150;
     spaceHighscores["ACC"] = 300;
     spaceHighscores["ATT"] = 200;
+    spaceHighscores["AHH"] = 450;
+
+    tankHighscores["BBB"] = 500;
+    tankHighscores["BAA"] = 400;
+    tankHighscores["KDU"] = 300;
+    tankHighscores["HJD"] = 200;
+
+    splatHighscores["HDY"] = 500;
+    splatHighscores["HDS"] = 400;
+    splatHighscores["JCS"] = 300;
+    splatHighscores["FAR"] = 200;
 
     if (!spaceHighscores.empty())
     {
@@ -55,6 +66,74 @@ void Ranking::OnEnter()
             TextObject* scoreY = new TextObject(" ");
             scoreY->SetText(std::to_string(entry.second));
             scoreY->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 2) - 400, 300 + (count * 50));
+            SPAWN.SpawnObject(scoreY);
+
+            ++count;
+        }
+    }
+
+    if (!tankHighscores.empty())
+    {
+        std::vector<std::pair<std::string, int>> sortedScores(tankHighscores.begin(), tankHighscores.end());
+
+        for (size_t i = 0; i < sortedScores.size(); ++i) {
+            size_t maxIndex = i;
+            for (size_t j = i + 1; j < sortedScores.size(); ++j) {
+                if (sortedScores[j].second > sortedScores[maxIndex].second) {
+                    maxIndex = j;
+                }
+            }
+            if (maxIndex != i) {
+                std::pair<std::string, int> temp = sortedScores[i];
+                sortedScores[i] = sortedScores[maxIndex];
+                sortedScores[maxIndex] = temp;
+            }
+        }
+
+        int count = 0;
+        for (const auto& entry : sortedScores) {
+            TextObject* scoreX = new TextObject(" ");
+            scoreX->SetText(entry.first);
+            scoreX->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 2) , 300 + (count * 50));
+            SPAWN.SpawnObject(scoreX);
+
+            TextObject* scoreY = new TextObject(" ");
+            scoreY->SetText(std::to_string(entry.second));
+            scoreY->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 2) + 100, 300 + (count * 50));
+            SPAWN.SpawnObject(scoreY);
+
+            ++count;
+        }
+    }
+
+     if (!splatHighscores.empty())
+    {
+        std::vector<std::pair<std::string, int>> sortedScores(splatHighscores.begin(), splatHighscores.end());
+
+        for (size_t i = 0; i < sortedScores.size(); ++i) {
+            size_t maxIndex = i;
+            for (size_t j = i + 1; j < sortedScores.size(); ++j) {
+                if (sortedScores[j].second > sortedScores[maxIndex].second) {
+                    maxIndex = j;
+                }
+            }
+            if (maxIndex != i) {
+                std::pair<std::string, int> temp = sortedScores[i];
+                sortedScores[i] = sortedScores[maxIndex];
+                sortedScores[maxIndex] = temp;
+            }
+        }
+
+        int count = 0;
+        for (const auto& entry : sortedScores) {
+            TextObject* scoreX = new TextObject(" ");
+            scoreX->SetText(entry.first);
+            scoreX->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 2) + 500, 300 + (count * 50));
+            SPAWN.SpawnObject(scoreX);
+
+            TextObject* scoreY = new TextObject(" ");
+            scoreY->SetText(std::to_string(entry.second));
+            scoreY->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 2) + 600, 300 + (count * 50));
             SPAWN.SpawnObject(scoreY);
 
             ++count;
