@@ -1,5 +1,9 @@
 #include "BasicEnemy.h"
 
+void BasicEnemy::BaseMovement()
+{
+}
+
 void BasicEnemy::Update()
 {
 	timeSinceLastMove += (float)TIME.GetDeltaTime();

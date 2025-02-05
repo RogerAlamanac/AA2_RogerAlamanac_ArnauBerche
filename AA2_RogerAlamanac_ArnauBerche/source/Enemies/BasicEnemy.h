@@ -19,7 +19,7 @@ public:
     }
     ~BasicEnemy();
 
-
+    void BaseMovement() override;
     void Update() override;
     Vector2 GetPosition() { return transform->position; }
     bool IsKilled() { return isKilled; }
