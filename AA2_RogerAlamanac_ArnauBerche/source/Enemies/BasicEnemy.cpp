@@ -1,60 +1,17 @@
 #include "BasicEnemy.h"
 
-void BasicEnemy::BaseMovement()
-{
-	ImageObject::physics->SetVelocity(DirectionToVector(pathPattern.front()) * movementSpeed);
-
-	switch (pathPattern.front())
-	{
-	case Directions::DOWN:
-		if ((int)transform->position.y % (int)transform->size.y/2 == 0 && (int)transform->position.y/2 != 0) {
-			Directions d = pathPattern.front();
-			pathPattern.pop();
-			if (Loops())
-			{
-				pathPattern.push(d);
-			}
-		}
-		break;
-	case Directions::RIGHT:
-		if ((int)transform->position.x >= RM->WINDOW_WIDTH - (int)transform->size.x / 2)
-		{
-			Directions d = pathPattern.front();
-			pathPattern.pop();
-			if (Loops())
-			{
-				pathPattern.push(d);
-			}
-		}
-		break;
-	case Directions::LEFT:
-		if ((int)transform->position.x <= (int)transform->size.x / 2)
-		{
-			Directions d = pathPattern.front();
-			pathPattern.pop();
-			if (Loops())
-			{
-				pathPattern.push(d);
-			}
-		}
-		break;
-	default:
-		break;
-	}
-
-}
-
 void BasicEnemy::Update()
 {
 	timeSinceLastMove += (float)TIME.GetDeltaTime();
 
-	if (timeSinceLastMove >= 0.5f) {
-		if (!pattern.empty()) {
-			int direction = pattern[patternIndex] - '0'; 
-			MoveAccordingToPattern(direction);
+	if (!pattern.empty()) {
+		int direction = pattern[patternIndex] - '0'; 
+		MoveAccordingToPattern(direction);
+		if (timeSinceLastMove >= 0.5f) {
 			patternIndex = (patternIndex + 1) % pattern.size();
+			timeSinceLastMove = 0.0f;
 		}
-		timeSinceLastMove = 0.0f;
+		
 	}
 
 	Object::Update();

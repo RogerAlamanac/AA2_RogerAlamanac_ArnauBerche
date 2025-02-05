@@ -45,7 +45,6 @@ void AimingEnemy::BaseMovement()
 				{
 					pathPattern.push(d);
 				}
-
 			}
 			break;
 		default:

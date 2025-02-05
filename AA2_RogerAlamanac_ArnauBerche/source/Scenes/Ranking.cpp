@@ -1,5 +1,7 @@
 #include "Ranking.h"
 #include "../Spawner/Spawner.h"
+#include "../InputManager/InputManager.h"
+#include "SceneManager.h"
 
 void Ranking::OnEnter()
 {
@@ -149,6 +151,9 @@ void Ranking::OnExit()
 void Ranking::Update()
 {
 	Scene::Update();
+    if (IM.GetEvent(SDLK_ESCAPE, DOWN)) {
+        SM.SetNextScene("Main Menu");
+    }
 }
 
 void Ranking::Render()

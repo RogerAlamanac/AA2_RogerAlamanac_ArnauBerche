@@ -23,7 +23,6 @@ private:
 
 public:
 	Enemy(int _health, int _damage, bool _loops) : health(_health), damage(_damage), loops(_loops) {};
-	virtual void BaseMovement() = 0;
 
 protected:
 	std::queue<Directions> pathPattern;
