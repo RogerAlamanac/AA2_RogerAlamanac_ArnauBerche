@@ -15,9 +15,7 @@ void BasicEnemy::Update()
 			patternIndex = (patternIndex + 1) % pattern.size();
 			timeSinceLastMove = 0.0f;
 		}
-		
 	}
-
 	Object::Update();
 
 }

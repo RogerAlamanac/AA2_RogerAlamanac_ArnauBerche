@@ -29,25 +29,39 @@ public:
 	void Shoot();
     void Update() override;
     void MoveAccordingToPattern(int direction) {
+        Vector2 velocity(0, 0);
+
         switch (direction) {
-        case 0:  break;
-        case 1:  GetTransform()->position.x = GetTransform()->position.x + movementSpeed;
+        case 0: velocity = Vector2(0, 0);
             break;
-        case 2:  GetTransform()->position = GetTransform()->position + Vector2(movementSpeed, -movementSpeed);
+        case 1: velocity = Vector2(movementSpeed, 0);
             break;
-        case 3:  GetTransform()->position.y -= movementSpeed;
+        case 2: velocity = Vector2(movementSpeed, -movementSpeed);
             break;
-        case 4:  GetTransform()->position = GetTransform()->position + Vector2(-movementSpeed, -movementSpeed);
+        case 3: velocity = Vector2(0, -movementSpeed);
             break;
-        case 5:  GetTransform()->position.x -= movementSpeed;
+        case 4: velocity = Vector2(-movementSpeed, -movementSpeed);
             break;
-        case 6:  GetTransform()->position = GetTransform()->position + Vector2(-movementSpeed, movementSpeed);
+        case 5: velocity = Vector2(-movementSpeed, 0);
             break;
-        case 7:  GetTransform()->position.y += movementSpeed;
+        case 6: velocity = Vector2(-movementSpeed, movementSpeed);
             break;
-        case 8:  GetTransform()->position = GetTransform()->position + Vector2(movementSpeed, movementSpeed);
+        case 7: velocity = Vector2(0, movementSpeed);
+            break;
+        case 8: velocity = Vector2(movementSpeed, movementSpeed);
             break;
         }
+
+        Vector2 currentPosition = GetTransform()->position;
+
+
+        if (currentPosition.x < 0 || currentPosition.x  > RM->WINDOW_WIDTH) {
+            velocity.x = -velocity.x;
+        }
+        if (currentPosition.y < 0 || currentPosition.y  > RM->WINDOW_HEIGHT) {
+            velocity.y = -velocity.y;
+        }
+        ImageObject::physics->SetVelocity(velocity);
     }
 };
 
