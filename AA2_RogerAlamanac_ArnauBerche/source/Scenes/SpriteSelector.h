@@ -7,6 +7,7 @@
 #include "../Player/Swatter.h"
 class SpriteSelector : public Scene {
 private:
+
 	ImageObject* background1;
 	ImageObject* background2;
 	ImageObject* background3;
@@ -18,6 +19,9 @@ private:
 	ImageObject* VFX3;
 	TextObject* back;
 	TextObject* title;
+	TextObject* BG;
+	TextObject* EN;
+	TextObject* VFX;
 	std::vector<ImageObject*> sprites;
 
 	ImageObject* spaceInvaders;
@@ -37,6 +41,11 @@ public:
 			delete sprite;
 		}
 		hoverSprites.clear();
+		delete BG;
+		delete EN;
+		delete VFX;
+		delete title;
+		delete back;
 	}
 	void OnEnter() override;
 	void OnExit() override;

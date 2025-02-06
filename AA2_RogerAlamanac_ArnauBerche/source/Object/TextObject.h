@@ -15,11 +15,18 @@ public:
 		tr->SetColor(SDL_Color{ 255,255,255,255 });
 		
 	}
+	~TextObject() {
+		delete tr;  
+	}
 	void SetText(std::string text) {
 		tr->SetText(text);
 	}
 	void SetRect(SDL_Rect rect) {
 		buttonRect = rect;
+	}
+
+	void SetTextColor(SDL_Color color) {
+		tr->SetColor(color);
 	}
 	void SetButtonColor(SDL_Color color) {
 		buttonColor = color;

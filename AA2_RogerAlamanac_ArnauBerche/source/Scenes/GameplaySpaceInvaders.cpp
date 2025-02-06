@@ -50,7 +50,6 @@ void GameplaySpaceInvaders::OnEnter()
 	end->GetTransform()-> scale = Vector2(2.f, 2.f);
 	AM.PlaySong("illuminati");
 
-
 }
 
 void GameplaySpaceInvaders::OnExit()
