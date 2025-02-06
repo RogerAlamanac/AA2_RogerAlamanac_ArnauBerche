@@ -49,6 +49,7 @@ int GameplaySplat::GetTotalEnemies(const Wave& wave) {
 }
 void GameplaySplat::Update() 
 {
+
 	for (int i = (int)_objects.size() - 1; i >= 0; i--) {
 		if (_objects[i]->IsPendingDestroy()) {
 			if (_objects[i]->tag == "ENEMY") {
