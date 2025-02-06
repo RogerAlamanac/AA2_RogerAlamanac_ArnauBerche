@@ -53,7 +53,6 @@ void MainMenu::OnEnter()
     option2->GetTransform()->scale = Vector2(1.5f, 1.5f);
     option2->SetText("2. TANKS");
     option2->SetRect({ static_cast<int>(option2->GetTransform()->position.x - (optionWidth / 2)), 200, optionWidth, optionHeight });
-    option2->SetButtonColor(SDL_Color{ 0, 255, 0, 255 });
     SPAWN.SpawnObject(option2);
     options.push_back(option2);
 
@@ -61,7 +60,6 @@ void MainMenu::OnEnter()
     option3->GetTransform()->scale = Vector2(1.5f, 1.5f);
     option3->SetText("3. SPLAT!");
     option3->SetRect({ static_cast<int>(option3->GetTransform()->position.x - (optionWidth / 2)), 300, optionWidth, optionHeight });
-    option3->SetButtonColor(SDL_Color{ 0, 0, 255, 255 });
     SPAWN.SpawnObject(option3);
     options.push_back(option3);
 
@@ -69,7 +67,6 @@ void MainMenu::OnEnter()
     sprites->GetTransform()->scale = Vector2(1.5f, 1.5f);
     sprites->SetText("SPRITE SELECTOR");
     sprites->SetRect({ static_cast<int>(sprites->GetTransform()->position.x - (optionWidth / 2)), 400, optionWidth, optionHeight });
-    sprites->SetButtonColor(SDL_Color{ 0, 0, 255, 255 }); 
     SPAWN.SpawnObject(sprites);
     options.push_back(option3);
 
@@ -77,7 +74,6 @@ void MainMenu::OnEnter()
     option4->GetTransform()->scale = Vector2(1.5f, 1.5f);
     option4->SetText("RANKING");
     option4->SetRect({ static_cast<int>(option3->GetTransform()->position.x - (optionWidth / 2)), 500, optionWidth, optionHeight });
-    option4->SetButtonColor(SDL_Color{ 0, 0, 255, 255 });
     SPAWN.SpawnObject(option4);
     options.push_back(option4);
 }
@@ -93,6 +89,41 @@ void MainMenu::Update()
     InputManager& input = IM;
     int mouseX = input.GetMouseX();
     int mouseY = input.GetMouseY();
+
+    if (IsMouseOverButton(option1->GetRect(), mouseX, mouseY)) {
+        option1->SetTextColor(SDL_Color{ 255, 0, 0, 255 }); 
+    }
+    else {
+        option1->SetTextColor(SDL_Color{ 255, 255, 255, 255 });
+    }
+
+    if (IsMouseOverButton(option2->GetRect(), mouseX, mouseY)) {
+        option2->SetTextColor(SDL_Color{ 255, 0, 0, 255 });  
+    }
+    else {
+        option2->SetTextColor(SDL_Color{ 255, 255, 255, 255 }); 
+    }
+
+    if (IsMouseOverButton(option3->GetRect(), mouseX, mouseY)) {
+       option3->SetTextColor(SDL_Color{ 255, 0, 0, 255 });  
+    }
+    else {
+        option3->SetTextColor(SDL_Color{ 255, 255, 255, 255 }); 
+    }
+
+    if (IsMouseOverButton(option4->GetRect(), mouseX, mouseY)) {
+        option4->SetTextColor(SDL_Color{ 255, 0, 0, 255 }); 
+    }
+    else {
+        option4->SetTextColor(SDL_Color{ 255, 255, 255, 255 }); 
+    }
+
+    if (IsMouseOverButton(sprites->GetRect(), mouseX, mouseY)) {
+        sprites->SetTextColor(SDL_Color{ 255, 0, 0, 255 });
+    }
+    else {
+        sprites->SetTextColor(SDL_Color{ 255, 255, 255, 255 });
+    }
 
     if (input.GetLeftClick()) {
         if (IsMouseOverButton(option1->GetRect(), mouseX, mouseY)) {
@@ -111,6 +142,8 @@ void MainMenu::Update()
             SM.SetNextScene("Sprite Selector");
         }
     }
+
+
 }
 
 void MainMenu::Render()
