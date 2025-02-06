@@ -69,14 +69,13 @@ void ShootingEnemy::Update()
 {
 	timeSinceLastMove += (float)TIME.GetDeltaTime();
 
-	if (timeSinceLastMove >= 1.0f) {
-		if (!pattern.empty()) {
-			int direction = pattern[patternIndex] - '0';
-			MoveAccordingToPattern(direction);
-
+	if (!pattern.empty()) {
+		int direction = pattern[patternIndex] - '0';
+		MoveAccordingToPattern(direction);
+		if (timeSinceLastMove >= 0.5f) {
 			patternIndex = (patternIndex + 1) % pattern.size();
+			timeSinceLastMove = 0.0f;
 		}
-		timeSinceLastMove = 0.0f;
 	}
 	Object::Update();
 	currentTimeToMove += (float)TIME.GetDeltaTime();

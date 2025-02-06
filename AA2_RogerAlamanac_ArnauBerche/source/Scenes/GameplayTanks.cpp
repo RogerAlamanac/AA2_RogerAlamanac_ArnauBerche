@@ -12,10 +12,13 @@ void GameplayTanks::OnEnter()
 {
 	SM.currentSceneInt = 2;
 
+	waveManager->waves.clear();
 	if (!waveManager->LoadFromXML("source/WavesEnemiesTanks.xml")) {
 		return;
 	}
 	waveManager->currentWaveIndex = 0;
+	enemySpawned = false;
+
 	if (!waveManager->waves.empty()) {
 		currentWave = waveManager->waves[waveManager->currentWaveIndex];
 		amountEnemies = GetTotalEnemies(currentWave);
@@ -31,6 +34,7 @@ void GameplayTanks::OnEnter()
 
 void GameplayTanks::OnExit()
 {
+	currentScore = 0;
 	Scene::OnExit();
 }
 int GameplayTanks::GetTotalEnemies(const Wave& wave) {

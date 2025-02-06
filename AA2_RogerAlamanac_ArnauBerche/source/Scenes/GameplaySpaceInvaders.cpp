@@ -16,12 +16,15 @@ void GameplaySpaceInvaders::OnEnter()
 {
 	SM.currentSceneInt = 0;
 
+	waveManager->waves.clear(); 
 	if (!waveManager->LoadFromXML("source/WavesEnemiesSpaceInvaders.xml")) {
 		std::cout << "No se ha podido cargar el archivo" << std::endl;
 		return;
 	}
 
 	waveManager->currentWaveIndex = 0;
+	enemySpawned = false;
+
 	if (!waveManager->waves.empty()) {
 		currentWave = waveManager->waves[waveManager->currentWaveIndex];
 		amountEnemies = GetTotalEnemies(currentWave);
@@ -35,8 +38,14 @@ void GameplaySpaceInvaders::OnEnter()
 	score = new Score(Vector2(100, 100), 0);
 	score->SetText("Score: " + std::to_string(currentScore));
 	SPAWN.SpawnObject(score);
-
-	
+	lifes = new TextObject(" ");
+	lifes->SetText("LIFES: " + std::to_string(player->GetCurrentLifes()));
+	lifes->GetTransform()->position = Vector2(RM->WINDOW_WIDTH / 2, 100);
+	SPAWN.SpawnObject(lifes);
+	end = new TextObject(" ");
+	end->SetText(" ");
+	end->GetTransform()->position = Vector2(RM->WINDOW_WIDTH / 2, RM->WINDOW_HEIGHT / 2);
+	end->GetTransform()-> scale = Vector2(2.f, 2.f);
 	AM.PlaySong("illuminati");
 
 
@@ -47,6 +56,7 @@ void GameplaySpaceInvaders::OnExit()
 	AM.StopAudio();
 	waveManager->currentWaveIndex = 0;
 	waveManager->waves.clear();
+	currentScore = 0;
 	Scene::OnExit();
 }
 int GameplaySpaceInvaders::GetTotalEnemies(const Wave& wave) {
@@ -70,13 +80,14 @@ void GameplaySpaceInvaders::Update()
 			}
 		}
 	Scene::Update();
-	std::cout << amountEnemies << std::endl;
+	std::cout << waveManager->currentWaveIndex << std::endl;
 	if (amountEnemies > 0) {
 		for (const auto& enemy : currentWave.enemies) {
 			if (!enemySpawned) {
 
 				SpawnEnemiesFromWave(currentWave);
 				enemySpawned = true;
+				std::cout << "Enemy Spawned" << std::endl;
 			}		
 		}
 	}
@@ -93,6 +104,7 @@ void GameplaySpaceInvaders::Update()
 	}
 
 	score->SetText("Score: " + std::to_string(currentScore));
+	lifes->SetText("LIFES: " + std::to_string(player->GetCurrentLifes()));
 
 	 if(IM.GetEvent(SDLK_ESCAPE, DOWN) ) {
 		SM.SetNextScene("Main Menu");
@@ -101,6 +113,8 @@ void GameplaySpaceInvaders::Update()
 	if (player->GetCurrentLifes() <= 0) {
 		SM.SetNextScene("Main Menu");
 	}
+
+
 }
 
 void GameplaySpaceInvaders::Render()
@@ -113,7 +127,6 @@ void GameplaySpaceInvaders::SpawnEnemiesFromWave(const Wave& wave) {
 		for (int i = 0; i < enemy.amount; ++i) {
 			SpawnEnemyById(enemy);
 		}
-
 }
 void GameplaySpaceInvaders::SpawnEnemyById(EnemyConfig enemy)
 {
@@ -137,6 +150,7 @@ void GameplaySpaceInvaders::SpawnEnemyById(EnemyConfig enemy)
 
 void GameplaySpaceInvaders::AdvanceToNextWave()
 {
+
 	if (waveManager->HasNextWave()) {
 		waveManager->LoadNextWave(); 
 		enemySpawned = false;
@@ -144,8 +158,8 @@ void GameplaySpaceInvaders::AdvanceToNextWave()
 		std::cout << "NEXT WAVE";
 	}
 	else {
-
 		end->SetText("YOU WIN!");
+		SM.SetNextScene("Main Menu");
 	}
 }
 

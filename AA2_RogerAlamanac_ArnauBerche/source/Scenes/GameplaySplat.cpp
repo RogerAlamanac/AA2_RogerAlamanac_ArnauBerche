@@ -10,12 +10,14 @@ void GameplaySplat::OnEnter()
 {
 	SM.currentSceneInt = 1;
 
+	waveManager->waves.clear();
 	if (!waveManager->LoadFromXML("source/WavesEnemiesSplat.xml")) {
 		std::cout << "No se ha podido cargar el archivo" << std::endl;
 		return;
 	}
 
 	waveManager->currentWaveIndex = 0;
+	enemySpawned = false;
 	if (!waveManager->waves.empty()) {
 		currentWave = waveManager->waves[waveManager->currentWaveIndex];
 		amountEnemies = GetTotalEnemies(currentWave);
