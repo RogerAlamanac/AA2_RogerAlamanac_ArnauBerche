@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Scenes\HighScoreInput.cpp" />
     <ClCompile Include="source\Elements\Background.cpp" />
     <ClCompile Include="source\Elements\Explosion.cpp" />
     <ClCompile Include="source\Elements\Bullet.cpp" />
@@ -49,6 +50,7 @@
     <ClCompile Include="source\UI\Score.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Scenes\HighScoreInput.h" />
     <ClInclude Include="source\dep\inc\xml\rapidxml.hpp" />
     <ClInclude Include="source\dep\inc\xml\rapidxml_iterators.hpp" />
     <ClInclude Include="source\dep\inc\xml\rapidxml_print.hpp" />

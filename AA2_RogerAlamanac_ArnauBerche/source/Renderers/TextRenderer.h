@@ -32,7 +32,6 @@ public:
 			destRect.w = (int)transform->size.x * (int)transform->scale.x;
 			destRect.h = (int)transform->size.y * (int)transform->scale.y;
 		}
-
 	}
 
 	virtual void Render() override {

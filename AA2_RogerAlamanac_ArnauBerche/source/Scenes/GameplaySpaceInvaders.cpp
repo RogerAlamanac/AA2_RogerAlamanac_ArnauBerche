@@ -11,6 +11,8 @@
 #include "../Enemies/ShootingEnemy.h"
 #include "../Scenes/SceneManager.h"
 #include "../InputManager/InputManager.h"
+#include "../Scenes/Ranking.h"
+#include "../Scenes/HighScoreInput.h"
 
 void GameplaySpaceInvaders::OnEnter()
 {
@@ -110,11 +112,19 @@ void GameplaySpaceInvaders::Update()
 		SM.SetNextScene("Main Menu");
 	 }
 
-	if (player->GetCurrentLifes() <= 0) {
-		SM.SetNextScene("Main Menu");
-	}
-
-
+	 if (player->GetCurrentLifes() <= 0) {
+		 Ranking* rankingScene = dynamic_cast<Ranking*>(SM.GetScene("Ranking"));
+		 if (rankingScene && rankingScene->IsHighScore("Space", currentScore)) {
+			 HighScoreInput* highScoreScene = dynamic_cast<HighScoreInput*>(SM.GetScene("HighScoreInput"));
+			 if (highScoreScene) {
+				 highScoreScene->SetGameData("Space", currentScore);
+				 SM.SetNextScene("HighScoreInput");
+			 }
+		 }
+		 else {
+			 SM.SetNextScene("Main Menu");
+		 }
+	 }
 }
 
 void GameplaySpaceInvaders::Render()
@@ -150,18 +160,28 @@ void GameplaySpaceInvaders::SpawnEnemyById(EnemyConfig enemy)
 
 void GameplaySpaceInvaders::AdvanceToNextWave()
 {
-
 	if (waveManager->HasNextWave()) {
-		waveManager->LoadNextWave(); 
+		waveManager->LoadNextWave();
 		enemySpawned = false;
-		
 		std::cout << "NEXT WAVE";
 	}
 	else {
-		end->SetText("YOU WIN!");
-		SM.SetNextScene("Main Menu");
+		// Player completed all waves
+		Ranking* rankingScene = dynamic_cast<Ranking*>(SM.GetScene("Ranking"));
+		if (rankingScene && rankingScene->IsHighScore("Space", currentScore)) {
+			HighScoreInput* highScoreScene = dynamic_cast<HighScoreInput*>(SM.GetScene("HighScoreInput"));
+			if (highScoreScene) {
+				highScoreScene->SetGameData("Space", currentScore);
+				SM.SetNextScene("HighScoreInput");
+			}
+		}
+		else {
+			SM.SetNextScene("Main Menu");
+		}
 	}
 }
+
+
 
 void GameplaySpaceInvaders::SaveScoreToRanking(const std::string& playerName)
 {

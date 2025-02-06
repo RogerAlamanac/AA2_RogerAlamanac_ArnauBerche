@@ -5,6 +5,8 @@
 
 void Ranking::OnEnter()
 {
+    LoadRankingsFromFile();
+
 	title = new TextObject(" ");
 	title->SetText("RANKING");
 	title->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 2), 100);
@@ -24,21 +26,6 @@ void Ranking::OnEnter()
 	splat->SetText("Splat HighScores");
 	splat->GetTransform()->position = Vector2(((float)RM->WINDOW_WIDTH / 2) + 400, 200);
 	SPAWN.SpawnObject(splat);
-
-    spaceHighscores["ABA"] = 150;
-    spaceHighscores["ACC"] = 300;
-    spaceHighscores["ATT"] = 200;
-    spaceHighscores["AHH"] = 450;
-
-    tankHighscores["BBB"] = 500;
-    tankHighscores["BAA"] = 400;
-    tankHighscores["KDU"] = 300;
-    tankHighscores["HJD"] = 200;
-
-    splatHighscores["HDY"] = 500;
-    splatHighscores["HDS"] = 400;
-    splatHighscores["JCS"] = 300;
-    splatHighscores["FAR"] = 200;
 
     if (!spaceHighscores.empty())
     {
@@ -159,4 +146,96 @@ void Ranking::Update()
 void Ranking::Render()
 {
 	Scene::Render();
+}
+
+bool Ranking::IsHighScore(const std::string& game, int score) {
+    std::map<std::string, int>* highScores;
+
+    if (game == "Space") highScores = &spaceHighscores;
+    else if (game == "Tank") highScores = &tankHighscores;
+    else if (game == "Splat") highScores = &splatHighscores;
+    else return false;
+
+    if (highScores->size() < 10) return true;
+
+    for (const auto& entry : *highScores) {
+        if (score > entry.second) return true;
+    }
+    return false;
+}
+
+void Ranking::AddHighScore(const std::string& game, const std::string& initials, int score) {
+    std::map<std::string, int>* highScores;
+
+    if (game == "Space") highScores = &spaceHighscores;
+    else if (game == "Tank") highScores = &tankHighscores;
+    else if (game == "Splat") highScores = &splatHighscores;
+    else return;
+
+    (*highScores)[initials] = score;
+
+    if (highScores->size() > 10) {
+        auto minIt = std::min_element(highScores->begin(), highScores->end(),
+            [](const auto& a, const auto& b) { return a.second < b.second; });
+        highScores->erase(minIt);
+    }
+
+    SaveRankingsToFile();
+}
+
+void Ranking::SaveRankingsToFile() {
+    std::ofstream outFile(saveFile, std::ios::binary | std::ios::out);
+    if (!outFile.is_open()) {
+        std::cerr << "Error opening file for saving highscores!" << std::endl;
+        return;
+    }
+
+    auto saveGameScores = [&](const std::map<std::string, int>& highscores, const std::string& gameType) {
+        for (const auto& entry : highscores) {
+            HighScoreEntry scoreEntry;
+            strncpy_s(scoreEntry.initials, sizeof(scoreEntry.initials), entry.first.c_str(), _TRUNCATE);
+
+
+            scoreEntry.score = entry.second;
+
+            strncpy_s(scoreEntry.gameType, sizeof(scoreEntry.gameType), gameType.c_str(), _TRUNCATE);
+
+
+            outFile.write(reinterpret_cast<char*>(&scoreEntry), sizeof(HighScoreEntry));
+        }
+        };
+
+    saveGameScores(spaceHighscores, "Space");
+    saveGameScores(tankHighscores, "Tank");
+    saveGameScores(splatHighscores, "Splat");
+
+    outFile.close();
+    std::cout << "Highscores saved successfully!" << std::endl;
+}
+
+void Ranking::LoadRankingsFromFile() {
+    std::ifstream inFile(saveFile, std::ios::binary | std::ios::in);
+    if (!inFile.is_open()) {
+        std::cerr << "No existing highscore file found. Starting fresh!" << std::endl;
+        return;
+    }
+
+    HighScoreEntry scoreEntry;
+    while (inFile.read(reinterpret_cast<char*>(&scoreEntry), sizeof(HighScoreEntry))) {
+        std::string initials(scoreEntry.initials);
+        std::string gameType(scoreEntry.gameType);
+
+        if (gameType == "Space") {
+            spaceHighscores[initials] = scoreEntry.score;
+        }
+        else if (gameType == "Tank") {
+            tankHighscores[initials] = scoreEntry.score;
+        }
+        else if (gameType == "Splat") {
+            splatHighscores[initials] = scoreEntry.score;
+        }
+    }
+
+    inFile.close();
+    std::cout << "Highscores loaded successfully!" << std::endl;
 }

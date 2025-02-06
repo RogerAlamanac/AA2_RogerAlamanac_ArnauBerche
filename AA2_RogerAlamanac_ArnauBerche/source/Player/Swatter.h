@@ -7,12 +7,16 @@ class Swatter : public ImageObject, public Player
 private:
 	enum class SwatterState { MOVING, ATTACKING, STUNNED };
 	SwatterState currentState = SwatterState::MOVING;
-	bool enemyhit = false;;
-	float stateStartTime = 0.0f;
-	int lives = 3;
 
-	int lifes;
+	bool enemyhit = false;
+	float stateStartTime = 0.0f;
+
+	float attackCooldown = 0.5f;
+	float lastAttackTime = -attackCooldown;
+
+	int lifes = 3;
 	int score = 0;
+
 	
 public:
 	Swatter(Vector2 pos, int _lifes) : ImageObject("resources/images/Swater/Player/Swatter.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "PLAYER"), Player() {

@@ -10,6 +10,8 @@
 #include "../InputManager/InputManager.h"
 #include "../Audio/AudioManager.h"
 #include "../Scenes/Ranking.h"
+#include "../Scenes/HighScoreInput.h"
+
 
 void Game::Init()
 {
@@ -73,6 +75,8 @@ void Game::Init()
 	assert(SM.AddScene("Ranking", new Ranking()));
 	assert(SM.AddScene("Sprite Selector", new SpriteSelector()));
 	assert(SM.AddScene("Splash Screen", new SplashScreen()));
+	assert(SM.AddScene("HighScoreInput", new HighScoreInput()));
+
 	assert(SM.InitFirstScene("Splash Screen"));
 
 	AM.LoadSong("illuminati");

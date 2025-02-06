@@ -7,6 +7,8 @@
 #include "SceneManager.h"
 #include "../Enemies/BasicEnemy.h"
 #include "../InputManager/InputManager.h"
+#include "../Scenes/Ranking.h"
+#include "../Scenes/HighScoreInput.h"
 
 void GameplayTanks::OnEnter()
 {
@@ -87,8 +89,19 @@ void GameplayTanks::Update()
 	}
 
 	if (player->GetCurrentLifes() <= 0) {
-		SM.SetNextScene("Main Menu");
+		Ranking* rankingScene = dynamic_cast<Ranking*>(SM.GetScene("Ranking"));
+		if (rankingScene && rankingScene->IsHighScore("Tank", currentScore)) {
+			HighScoreInput* highScoreScene = dynamic_cast<HighScoreInput*>(SM.GetScene("HighScoreInput"));
+			if (highScoreScene) {
+				highScoreScene->SetGameData("Tank", currentScore);
+				SM.SetNextScene("HighScoreInput");
+			}
+		}
+		else {
+			SM.SetNextScene("Main Menu");
+		}
 	}
+
 }
 
 void GameplayTanks::Render()
@@ -122,21 +135,28 @@ void GameplayTanks::SpawnEnemyById(EnemyConfig enemy)
 	}
 }
 
-void GameplayTanks::AdvanceToNextWave()
-{
+void GameplayTanks::AdvanceToNextWave() {
 	if (waveManager->HasNextWave()) {
-		waveManager->LoadNextWave(); 
+		waveManager->LoadNextWave();
 		enemySpawned = false;
-
 		std::cout << "NEXT WAVE";
-		TextObject* nextWave = new TextObject("Wave");
-		nextWave->GetTransform()->position = Vector2((float)RM->WINDOW_WIDTH / 2, (float)RM->WINDOW_HEIGHT / 2);
-		nextWave->GetTransform()->scale = Vector2(5, 5);
-		nextWave->SetText("NEW WAVE!");
-		
 	}
-
+	else {
+		// Player completed all waves
+		Ranking* rankingScene = dynamic_cast<Ranking*>(SM.GetScene("Ranking"));
+		if (rankingScene && rankingScene->IsHighScore("Tank", currentScore)) {
+			HighScoreInput* highScoreScene = dynamic_cast<HighScoreInput*>(SM.GetScene("HighScoreInput"));
+			if (highScoreScene) {
+				highScoreScene->SetGameData("Tank", currentScore);
+				SM.SetNextScene("HighScoreInput");
+			}
+		}
+		else {
+			SM.SetNextScene("Main Menu");
+		}
+	}
 }
+
 
 Vector2 GameplayTanks::GenerateSpawnPosition() {
 	return Vector2((float)(rand() % RM->WINDOW_WIDTH), (float)(rand() % RM->WINDOW_HEIGHT / 3));

@@ -5,6 +5,8 @@
 #include "../Elements/Background.h"
 #include "SceneManager.h"
 #include "../Enemies/ShootingEnemy.h"
+#include "../Scenes/Ranking.h"
+#include "../Scenes/HighScoreInput.h"
 
 void GameplaySplat::OnEnter()
 {
@@ -87,8 +89,19 @@ void GameplaySplat::Update()
 		end->SetText("NEW BEST!");
 	}
 	if (player->GetCurrentLifes() <= 0) {
-		SM.SetNextScene("Main Menu");
+		Ranking* rankingScene = dynamic_cast<Ranking*>(SM.GetScene("Ranking"));
+		if (rankingScene && rankingScene->IsHighScore("Splat", currentScore)) {
+			HighScoreInput* highScoreScene = dynamic_cast<HighScoreInput*>(SM.GetScene("HighScoreInput"));
+			if (highScoreScene) {
+				highScoreScene->SetGameData("Splat", currentScore);
+				SM.SetNextScene("HighScoreInput");
+			}
+		}
+		else {
+			SM.SetNextScene("Main Menu");
+		}
 	}
+
 }
 
 void GameplaySplat::Render()
@@ -130,18 +143,28 @@ void GameplaySplat::SpawnEnemyById(EnemyConfig enemy)
 	}
 }
 
-void GameplaySplat::AdvanceToNextWave()
-{
+void GameplaySplat::AdvanceToNextWave() {
 	if (waveManager->HasNextWave()) {
 		waveManager->LoadNextWave();
 		enemySpawned = false;
-
 		std::cout << "NEXT WAVE";
 	}
 	else {
-		end->SetText("YOU WIN!");
+		// Player completed all waves
+		Ranking* rankingScene = dynamic_cast<Ranking*>(SM.GetScene("Ranking"));
+		if (rankingScene && rankingScene->IsHighScore("Splat", currentScore)) {
+			HighScoreInput* highScoreScene = dynamic_cast<HighScoreInput*>(SM.GetScene("HighScoreInput"));
+			if (highScoreScene) {
+				highScoreScene->SetGameData("Splat", currentScore);
+				SM.SetNextScene("HighScoreInput");
+			}
+		}
+		else {
+			SM.SetNextScene("Main Menu");
+		}
 	}
 }
+
 
 Vector2 GameplaySplat::GenerateSpawnPosition() {
 	return Vector2((float)(rand() % RM->WINDOW_WIDTH), (float)(rand() % RM->WINDOW_HEIGHT / 3));
