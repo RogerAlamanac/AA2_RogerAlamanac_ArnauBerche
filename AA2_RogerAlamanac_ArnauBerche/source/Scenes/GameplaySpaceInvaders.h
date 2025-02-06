@@ -9,9 +9,11 @@ private:
 	bool randomSpawned = false;
 	int amountEnemies = 10;
 	int currentScore = 0;
+	float timeToReturnToMenu = 0.0f;
 	Wave currentWave;
 	Score* score;
 	TextObject* end;
+	TextObject* lifes;
 	WaveManager* waveManager = new WaveManager();
 
 public:

@@ -12,6 +12,8 @@ private:
     std::string pattern;
     size_t patternIndex = 0;
     float timeSinceLastMove = 0.0f;
+    Vector2 velocity = Vector2(0, 0);
+    Vector2 currentPosition;
 public:
     void SetPattern(const std::string& p) { pattern = p; }
 	ShootingEnemy(Vector2 pos, float _movementSpeed, int _health, int _damage, bool _loops, std::string path) : ImageObject(path, Vector2(0.f, 0.f), Vector2(1000.f, 1000.f), 0, "ENEMY"), Enemy(_health, _damage, _loops) {
@@ -29,7 +31,6 @@ public:
 	void Shoot();
     void Update() override;
     void MoveAccordingToPattern(int direction) {
-        Vector2 velocity(0, 0);
 
         switch (direction) {
         case 0: velocity = Vector2(0, 0);
@@ -52,7 +53,7 @@ public:
             break;
         }
 
-        Vector2 currentPosition = GetTransform()->position;
+       currentPosition = GetTransform()->position;
 
 
         if (currentPosition.x < 0 || currentPosition.x  > RM->WINDOW_WIDTH) {

@@ -8,6 +8,8 @@ private:
     std::string pattern; 
     size_t patternIndex = 0; 
     float timeSinceLastMove = 0.0f;
+    Vector2 velocity = Vector2(0,0);
+    Vector2 currentPosition;
 public:
     bool isKilled = false;
     void SetPattern(const std::string& p) { pattern = p; }
@@ -25,7 +27,7 @@ public:
     bool IsKilled() { return isKilled; }
 
     void MoveAccordingToPattern(int direction) {
-        Vector2 velocity(0, 0); 
+        
 
         switch (direction) {
         case 0: velocity = Vector2(0, 0);
@@ -47,9 +49,7 @@ public:
         case 8: velocity = Vector2(movementSpeed, movementSpeed); 
             break;
         }
-
-        Vector2 currentPosition = GetTransform()->position;
-
+        currentPosition = GetTransform()->position + velocity;
 
         if (currentPosition.x < 0 || currentPosition.x  > RM->WINDOW_WIDTH) {
             velocity.x = -velocity.x; 
