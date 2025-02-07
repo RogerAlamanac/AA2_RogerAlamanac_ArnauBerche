@@ -44,16 +44,20 @@ void Spaceship::Attack()
 
 void Spaceship::ReceiveDamage()
 {
-    lifes--;
+    if (DMGCooldown <= timeSinceDMG) 
+    {
+        lifes--;
+        std::cout << lifes << std::endl;
+    }
     if (GetCurrentLifes() <= 0) {
         Destroy();
     }
-    std::cout << lifes << std::endl;
 }
 
 void Spaceship::Update()
 {
     Object::Update();
+    timeSinceDMG += (float)TIME.GetDeltaTime();
     timeSinceLastFire += (float)TIME.GetDeltaTime();
     Movement();
     Attack();

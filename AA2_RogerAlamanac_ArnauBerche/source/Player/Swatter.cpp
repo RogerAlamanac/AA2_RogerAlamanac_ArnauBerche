@@ -93,6 +93,14 @@ void Swatter::Movement() {
 
 void Swatter::ReceiveDamage()
 {
+    if (DMGCooldown <= timeSinceDMG)
+    {
+        lifes--;
+        std::cout << lifes << std::endl;
+    }
+    if (GetCurrentLifes() <= 0) {
+        Destroy();
+    }
 }
 
 void Swatter::OnCollisionEnter(Object* other) {
@@ -101,4 +109,7 @@ void Swatter::OnCollisionEnter(Object* other) {
 		enemyhit = true;
 		std::cout << "Enemy hit during attack!" << std::endl;
 	}
+    if (other->tag == "ENEMY" && currentState == SwatterState::STUNNED) {
+        ReceiveDamage();
+    }
 }

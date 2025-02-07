@@ -12,6 +12,8 @@ public:
 	float fireCooldown = 1.f;
 	float timeSinceLastFire = 0.f;
 	float timeToStartHolding = 0.2f;
+	float DMGCooldown = 1.0f;
+	float timeSinceDMG;
 
 	Spaceship(Vector2 pos, int _lifes) : ImageObject("resources/images/SpaceShip/Player/Spaceship.png", Vector2(0.f, 0.f), Vector2(512.f, 512.f), 0, "PLAYER"), Player() {
 		ImageObject::transform->position = pos;
@@ -24,6 +26,12 @@ public:
 	void Attack() override;
 	void ReceiveDamage() override;
 	void Update() override;
+	void OnCollisionEnter(Object* other) override
+	{
+		if (other->tag == "ENEMY") {
+			ReceiveDamage();
+		}
+	}
 	inline int GetCurrentLifes() override { return lifes; }
 	inline int GetCurrentScore() override { return score; }
 };

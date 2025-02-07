@@ -14,6 +14,9 @@ private:
 	float attackCooldown = 0.5f;
 	float lastAttackTime = -attackCooldown;
 
+	float DMGCooldown = 1.0f;
+	float timeSinceDMG;
+
 	int lifes = 3;
 	int score = 0;
 
