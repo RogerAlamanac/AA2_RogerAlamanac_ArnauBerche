@@ -57,7 +57,7 @@ private:
 	float movementSpeed;
 	int lifes;
 	int score = 0;
-	float DMGCooldown = 1.0f;
+	float DMGCooldown = 2.0f;
 	float timeSinceDMG;
 
 	float rotationThreshold = 50.0f;

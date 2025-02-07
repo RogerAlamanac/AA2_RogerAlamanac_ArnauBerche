@@ -6,7 +6,7 @@ void Swatter::Update() {
     Object::Update();
 
     float currentTime = (float)TIME.GetElapsedTime();
-
+    timeSinceDMG += (float)TIME.GetDeltaTime();
     switch (currentState) {
     case SwatterState::MOVING:
         std::cout << "IsMoving" << std::endl;
@@ -96,6 +96,8 @@ void Swatter::ReceiveDamage()
     if (DMGCooldown <= timeSinceDMG)
     {
         lifes--;
+        timeSinceDMG = 0.0f;
+        currentState = SwatterState::MOVING;
         std::cout << lifes << std::endl;
     }
     if (GetCurrentLifes() <= 0) {

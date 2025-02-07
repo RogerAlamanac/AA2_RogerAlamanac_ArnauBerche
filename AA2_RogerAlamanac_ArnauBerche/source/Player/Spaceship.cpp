@@ -47,6 +47,7 @@ void Spaceship::ReceiveDamage()
     if (DMGCooldown <= timeSinceDMG) 
     {
         lifes--;
+        timeSinceDMG = 0.0f;
         std::cout << lifes << std::endl;
     }
     if (GetCurrentLifes() <= 0) {

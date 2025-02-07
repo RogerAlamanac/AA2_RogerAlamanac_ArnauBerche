@@ -117,6 +117,7 @@ void Tank::ReceiveDamage()
 	if (DMGCooldown <= timeSinceDMG)
 	{
 		lifes--;
+		timeSinceDMG = 0.0f;
 		std::cout << lifes << std::endl;
 	}
 	if (GetCurrentLifes() <= 0) {
@@ -141,6 +142,7 @@ void Tank::Update()
 	body->timeSinceLastFire += (float)TIME.GetDeltaTime();
     Movement();
 
+	timeSinceDMG += (float)TIME.GetDeltaTime();
 	body->SetPosition(transform->position);
 	body->SetRotation(transform->rotation);
 	canon->SetPosition(transform->position);

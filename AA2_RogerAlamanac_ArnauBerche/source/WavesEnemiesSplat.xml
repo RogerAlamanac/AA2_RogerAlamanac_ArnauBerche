@@ -42,7 +42,7 @@
 			<amount>0</amount>
 		</random_enemy>
 		<enemy>
-			<id>1</id>
+			<id>3</id>
 			<pattern>1188772</pattern>
 			<amount>10</amount>
 		</enemy>
