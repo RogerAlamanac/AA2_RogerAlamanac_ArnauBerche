@@ -111,13 +111,19 @@ Vector2 Tank::DirectionToAim(Vector2 relativeOffset) {
 	direction.Normalize();
 	return direction;
 }
-void Tank::ReceiveDamage() {
-	lifes--;
+
+void Tank::ReceiveDamage()
+{
+	if (DMGCooldown <= timeSinceDMG)
+	{
+		lifes--;
+		std::cout << lifes << std::endl;
+	}
 	if (GetCurrentLifes() <= 0) {
 		Destroy();
 	}
-	std::cout << lifes << std::endl;
 }
+
 bool Tank::IsMouseOutsideThreshold() {
 	InputManager& input = IM;
 	Vector2 canonPosition = canon->GetTransform()->position + CalculateOfset();

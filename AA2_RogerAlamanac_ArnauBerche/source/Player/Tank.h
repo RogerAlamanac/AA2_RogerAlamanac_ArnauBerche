@@ -57,6 +57,9 @@ private:
 	float movementSpeed;
 	int lifes;
 	int score = 0;
+	float DMGCooldown = 1.0f;
+	float timeSinceDMG;
+
 	float rotationThreshold = 50.0f;
 	bool IsMouseOutsideThreshold(); 
 public:
@@ -78,6 +81,12 @@ public:
 	void Attack() override;
 	void ReceiveDamage() override;
 	void Update() override;
+	void OnCollisionEnter(Object* other) override 
+	{
+		if (other->tag == "ENEMY") {
+			ReceiveDamage();
+		}
+	}
 	inline int GetCurrentLifes() override { return lifes; }
 	inline int GetCurrentScore() override { return score; }
 };
