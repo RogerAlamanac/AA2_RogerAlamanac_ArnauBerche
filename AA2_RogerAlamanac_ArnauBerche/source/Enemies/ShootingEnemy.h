@@ -17,11 +17,6 @@ private:
 public:
     void SetPattern(const std::string& p) { pattern = p; }
 	ShootingEnemy(Vector2 pos, float _movementSpeed, int _health, int _damage, bool _loops, std::string path) : ImageObject(path, Vector2(0.f, 0.f), Vector2(1000.f, 1000.f), 0, "ENEMY"), Enemy(_health, _damage, _loops) {
-
-        pathPattern.push(Directions::DOWN);
-        pathPattern.push(Directions::RIGHT);
-        pathPattern.push(Directions::UP);
-        pathPattern.push(Directions::LEFT);
         transform->position = pos;
         movementSpeed = _movementSpeed;
         ImageObject::transform->scale = Vector2(1.f, 1.f);

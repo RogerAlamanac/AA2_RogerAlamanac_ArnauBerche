@@ -1,74 +1,35 @@
 #include "SeekerEnemy.h"
 
-void SeekerEnemy::BaseMovement()
-{
-	if (CalculateDistance(transform->position, target->GetTransform()->position) > rangeToSeek) {
-		ImageObject::physics->SetVelocity(DirectionToVector(pathPattern.front()) * movementSpeed);
-		switch (pathPattern.front())
-		{
-		case Directions::DOWN:
-			if (currentTimeToMove >= timeToMove) {
-				Directions d = pathPattern.front();
-				pathPattern.pop();
-				if (Loops())
-				{
-					pathPattern.push(d);
-				}
-				currentTimeToMove = 0;
-			}
-			break;
-		case Directions::RIGHT:
-			if (currentTimeToMove >= timeToMove) {
-				Directions d = pathPattern.front();
-				pathPattern.pop();
-				if (Loops())
-				{
-					pathPattern.push(d);
-				}
-				currentTimeToMove = 0;
-			}
-			break;
-		case Directions::LEFT:
-			if (currentTimeToMove >= timeToMove) {
-				Directions d = pathPattern.front();
-				pathPattern.pop();
-				if (Loops())
-				{
-					pathPattern.push(d);
-				}
-				currentTimeToMove = 0;
-			}
-		case Directions::UP:
-			if (currentTimeToMove >= timeToMove) {
-				Directions d = pathPattern.front();
-				pathPattern.pop();
-				if (Loops())
-				{
-					pathPattern.push(d);
-				}
-				currentTimeToMove = 0;
-			}
-			break;
-		default:
-			break;
-		}
-	}
-	else {
-		ImageObject::physics->SetVelocity(DirectionToPlayer() * movementSpeed);
-	}
+
+void SeekerEnemy::BaseMovement() {
+    if (CalculateDistance(transform->position, target->GetTransform()->position) > rangeToSeek) {
+        MoveTowardsPlayer();
+        isAttacking = false;
+    }
+    else {
+        ImageObject::physics->SetVelocity(Vector2(0, 0));  // Stop moving when in range
+        isAttacking = true;
+    }
 }
 
-void SeekerEnemy::Update(){
-	Object::Update();
-	currentTimeToMove += (float)TIME.GetDeltaTime();
-	timeSinceLastMove += (float)TIME.GetDeltaTime();
+void SeekerEnemy::Update() {
+    timeSinceLastMove += (float)TIME.GetDeltaTime();
 
-	if (!pattern.empty()) {
-		int direction = pattern[patternIndex] - '0';
-		MoveAccordingToPattern(direction);
-		if (timeSinceLastMove >= 0.5f) {
-			patternIndex = (patternIndex + 1) % pattern.size();
-			timeSinceLastMove = 0.0f;
-		}
-	}
+    if (!pattern.empty()) {
+        int direction = pattern[patternIndex] - '0';
+        MoveAccordingToPattern(direction);
+        if (timeSinceLastMove >= 0.5f) {
+            patternIndex = (patternIndex + 1) % pattern.size();
+            timeSinceLastMove = 0.0f;
+        }
+    }
+
+    BaseMovement();
+
+    if (isAttacking && timeSinceLastMove >= 0.5f) {
+        AttackPlayer();
+        timeSinceLastMove = 0.0f;
+    }
+
+    Object::Update();
 }

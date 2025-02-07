@@ -11,7 +11,7 @@ class Bullet : public ImageObject
 private:
 	bool friendly;
 	float timeSinceFire = 0.0f;
-	float timeToBeDestroyed = 1.5f;
+	float timeToBeDestroyed = 5.0f;
 public:
 	Bullet(Vector2 initialPos, float velocity, Vector2 finalPos, bool _friendly) : ImageObject("resources/images/SpaceShip/VFX/SpaceShipBullet_Pixel.png", Vector2(0.f, 0.f), Vector2(1000.f, 1000.f), 0, "BULLET") {
 		friendly = _friendly;

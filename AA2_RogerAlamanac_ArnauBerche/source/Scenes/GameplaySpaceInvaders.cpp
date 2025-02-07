@@ -1,6 +1,9 @@
 #include "GameplaySpaceInvaders.h"
 #include "../Spawner/Spawner.h"
 #include "../Enemies/BasicEnemy.h"
+#include "../Enemies/ShootingEnemy.h"
+#include "../Enemies/SeekerEnemy.h"
+#include "../Enemies/AimingEnemy.h"
 #include "../Player/Spaceship.h"
 #include "../Object/TextObject.h"
 #include "../Elements/Background.h"
@@ -8,7 +11,6 @@
 #include <iostream>
 #include "SceneManager.h"
 #include "../Audio/AudioManager.h"
-#include "../Enemies/ShootingEnemy.h"
 #include "../Scenes/SceneManager.h"
 #include "../InputManager/InputManager.h"
 #include "../Scenes/Ranking.h"
@@ -150,6 +152,20 @@ void GameplaySpaceInvaders::SpawnEnemyById(EnemyConfig enemy)
 	case 2: {
 		Vector2 spawnPos = GenerateSpawnPosition(); 
 		ShootingEnemy* enemyShoot = new ShootingEnemy(spawnPos, 50, 20, 1, true, SM.imagesToUse[SM.currentSceneInt][1]);
+		enemyShoot->SetPattern(enemy.pattern);
+		SPAWN.SpawnObject(enemyShoot);
+		break;
+	}
+	case 3: {
+		Vector2 spawnPos = GenerateSpawnPosition();
+		SeekerEnemy* enemyShoot = new SeekerEnemy(spawnPos, 50, 20, 1, 20, true, player, SM.imagesToUse[SM.currentSceneInt][1]);
+		enemyShoot->SetPattern(enemy.pattern);
+		SPAWN.SpawnObject(enemyShoot);
+		break;
+	}
+	case 4: {
+		Vector2 spawnPos = GenerateSpawnPosition();
+		AimingEnemy* enemyShoot = new AimingEnemy(spawnPos, 50, 20, 1, true, player, SM.imagesToUse[SM.currentSceneInt][1]);
 		enemyShoot->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(enemyShoot);
 		break;
