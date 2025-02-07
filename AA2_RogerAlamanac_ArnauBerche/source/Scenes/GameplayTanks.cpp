@@ -10,6 +10,7 @@
 #include "../Scenes/Ranking.h"
 #include "../Scenes/HighScoreInput.h"
 #include "../Audio/AudioManager.h"
+#include "../Enemies/SeekerEnemy.h"
 
 void GameplayTanks::OnEnter()
 {
@@ -44,6 +45,7 @@ void GameplayTanks::OnEnter()
 
 void GameplayTanks::OnExit()
 {
+	AM.StopAudio();
 	currentScore = 0;
 	Scene::OnExit();
 }
@@ -138,6 +140,20 @@ void GameplayTanks::SpawnEnemyById(EnemyConfig enemy)
 	case 2: {
 		Vector2 spawnPos = GenerateSpawnPosition();
 		ShootingEnemy* enemyShoot = new ShootingEnemy(spawnPos, 50, 20, 1, true, SM.imagesToUse[SM.currentSceneInt][1]);
+		enemyShoot->SetPattern(enemy.pattern);
+		SPAWN.SpawnObject(enemyShoot);
+		break;
+	}
+	case 3: {
+		Vector2 spawnPos = GenerateSpawnPosition();
+		SeekerEnemy* enemyShoot = new SeekerEnemy(spawnPos, 50, 20, 1, 20, true, player, SM.imagesToUse[SM.currentSceneInt][1]);
+		enemyShoot->SetPattern(enemy.pattern);
+		SPAWN.SpawnObject(enemyShoot);
+		break;
+	}
+	case 4: {
+		Vector2 spawnPos = GenerateSpawnPosition();
+		AimingEnemy* enemyShoot = new AimingEnemy(spawnPos, 50, 20, 1, true, player, SM.imagesToUse[SM.currentSceneInt][1]);
 		enemyShoot->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(enemyShoot);
 		break;

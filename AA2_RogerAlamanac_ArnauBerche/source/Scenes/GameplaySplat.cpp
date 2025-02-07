@@ -8,6 +8,7 @@
 #include "../Scenes/Ranking.h"
 #include "../Scenes/HighScoreInput.h"
 #include "../InputManager/InputManager.h"
+#include "../Enemies/AimingEnemy.h"
 
 void GameplaySplat::OnEnter()
 {
@@ -135,9 +136,16 @@ void GameplaySplat::SpawnEnemyById(EnemyConfig enemy)
 	}
 	case 3: {
 		Vector2 spawnPos = GenerateSpawnPosition();
-		SeekerEnemy* seekEnemy = new SeekerEnemy(spawnPos, 5, 10, 10, 100, true, player, SM.imagesToUse[SM.currentSceneInt][1]);
-		seekEnemy->SetPattern(enemy.pattern);
-		SPAWN.SpawnObject(seekEnemy);
+		SeekerEnemy* enemyShoot = new SeekerEnemy(spawnPos, 50, 20, 1, 20, true, player, SM.imagesToUse[SM.currentSceneInt][1]);
+		enemyShoot->SetPattern(enemy.pattern);
+		SPAWN.SpawnObject(enemyShoot);
+		break;
+	}
+	case 4: {
+		Vector2 spawnPos = GenerateSpawnPosition();
+		AimingEnemy* enemyShoot = new AimingEnemy(spawnPos, 50, 20, 1, true, player, SM.imagesToUse[SM.currentSceneInt][1]);
+		enemyShoot->SetPattern(enemy.pattern);
+		SPAWN.SpawnObject(enemyShoot);
 		break;
 	}
 	}
