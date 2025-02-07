@@ -9,6 +9,7 @@
 #include "../InputManager/InputManager.h"
 #include "../Scenes/Ranking.h"
 #include "../Scenes/HighScoreInput.h"
+#include "../Audio/AudioManager.h"
 
 void GameplayTanks::OnEnter()
 {
@@ -37,6 +38,8 @@ void GameplayTanks::OnEnter()
 	lifes->SetText("LIFES: " + std::to_string(player->GetCurrentLifes()));
 	lifes->GetTransform()->position = Vector2(RM->WINDOW_WIDTH / 2, 100);
 	SPAWN.SpawnObject(lifes);
+
+	AM.PlaySong("warSound");
 }
 
 void GameplayTanks::OnExit()
@@ -127,14 +130,14 @@ void GameplayTanks::SpawnEnemyById(EnemyConfig enemy)
 	switch (enemy.id) {
 	case 1: {
 		Vector2 spawnPos = GenerateSpawnPosition();
-		BasicEnemy* enemyBasic = new BasicEnemy(spawnPos, 10, 10, 1, true, SM.imagesToUse[SM.currentSceneInt][1]);
+		BasicEnemy* enemyBasic = new BasicEnemy(spawnPos, 50, 10, 1, true, SM.imagesToUse[SM.currentSceneInt][1]);
 		enemyBasic->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(enemyBasic);
 		break;
 	}
 	case 2: {
 		Vector2 spawnPos = GenerateSpawnPosition();
-		ShootingEnemy* enemyShoot = new ShootingEnemy(spawnPos, 10, 20, 1, true, SM.imagesToUse[SM.currentSceneInt][1]);
+		ShootingEnemy* enemyShoot = new ShootingEnemy(spawnPos, 50, 20, 1, true, SM.imagesToUse[SM.currentSceneInt][1]);
 		enemyShoot->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(enemyShoot);
 		break;

@@ -11,6 +11,7 @@ private:
 	TextObject* option4;
 	TextObject* sprites;
 	std::vector<TextObject*> options;
+
 public:
 	MainMenu() = default;
 	~MainMenu() {

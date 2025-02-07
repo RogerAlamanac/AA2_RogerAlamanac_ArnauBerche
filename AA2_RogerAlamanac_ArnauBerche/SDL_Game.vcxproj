@@ -152,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Media Include="resources\audio\music\illuminati.mp3" />
+    <Media Include="resources\audio\music\warSound.mp3" />
     <Media Include="resources\audio\sfx\d.wav" />
   </ItemGroup>
   <ItemGroup>

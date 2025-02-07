@@ -105,7 +105,7 @@ void MainMenu::Update()
     }
 
     if (IsMouseOverButton(option3->GetRect(), mouseX, mouseY)) {
-       option3->SetTextColor(SDL_Color{ 255, 0, 0, 255 });  
+        option3->SetTextColor(SDL_Color{ 255, 0, 0, 255 });  
     }
     else {
         option3->SetTextColor(SDL_Color{ 255, 255, 255, 255 }); 

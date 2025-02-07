@@ -7,7 +7,7 @@
 			<amount>0</amount>
 		</random_enemy>
 		<enemy>
-			<id>1</id>
+			<id>2</id>
 			<pattern>111777333888</pattern>
 			<amount>10</amount>
 		</enemy>
