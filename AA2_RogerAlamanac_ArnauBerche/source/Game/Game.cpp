@@ -81,6 +81,7 @@ void Game::Init()
 
 	AM.LoadSong("illuminati");
 	AM.LoadClip("d");
+	AM.LoadSong("warSound");
 }
 
 

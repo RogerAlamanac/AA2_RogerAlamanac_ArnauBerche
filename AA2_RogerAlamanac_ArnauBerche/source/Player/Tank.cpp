@@ -2,6 +2,7 @@
 #include "../InputManager/InputManager.h"
 #include "../Spawner/Spawner.h"
 #include "../Elements/Bullet.h"
+#include "../Audio/AudioManager.h"
 
 void Tank::Movement()
 {
@@ -78,6 +79,7 @@ void Tank::Attack()
 {
 	InputManager& input = IM;
 	if (input.GetLeftClick() && body->timeSinceLastFire >= body->fireCooldown) {
+		AM.PlayClip("d", 0);
 		Vector2 bulletSpawnPosition = ImageObject::transform->position + CalculateOfset();
 		SPAWN.SpawnObject(new Bullet(bulletSpawnPosition, 500, DirectionToAim(CalculateOfset()), true));
 		body->timeSinceLastFire = 0.f;

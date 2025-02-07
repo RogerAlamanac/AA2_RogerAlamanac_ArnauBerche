@@ -393,6 +393,7 @@
     <Media Include="resources\audio\sfx\d.wav">
       <Filter>Resource Files</Filter>
     </Media>
+    <Media Include="resources\audio\music\warSound.mp3" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\images\Tanks\background-tanks1.avif" />

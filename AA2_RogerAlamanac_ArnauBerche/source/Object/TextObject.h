@@ -35,6 +35,10 @@ public:
 	SDL_Rect GetRect() const {
 		return buttonRect;
 	}
+
+	SDL_Color GetTextColor() const {
+		return buttonColor;
+	}
 	void Render() {
 
 		SDL_SetRenderDrawColor(RM->GetRenderer(), 0, 0,0, 255);

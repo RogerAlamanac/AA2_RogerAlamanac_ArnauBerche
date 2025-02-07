@@ -121,14 +121,14 @@ void GameplaySplat::SpawnEnemyById(EnemyConfig enemy)
 	switch (enemy.id) {
 	case 1: {
 		Vector2 spawnPos = GenerateSpawnPosition();
-		BasicEnemy* enemyBasic = new BasicEnemy(spawnPos, 5, 10, 1, true, SM.imagesToUse[SM.currentSceneInt][1]);
+		BasicEnemy* enemyBasic = new BasicEnemy(spawnPos, 50, 10, 1, true, SM.imagesToUse[SM.currentSceneInt][1]);
 		enemyBasic->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(enemyBasic);
 		break;
 	}
 	case 2: {
 		Vector2 spawnPos = GenerateSpawnPosition();
-		ShootingEnemy* enemyShoot = new ShootingEnemy(spawnPos, 5, 20, 1, true, SM.imagesToUse[SM.currentSceneInt][1]);
+		ShootingEnemy* enemyShoot = new ShootingEnemy(spawnPos, 50, 20, 1, true, SM.imagesToUse[SM.currentSceneInt][1]);
 		enemyShoot->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(enemyShoot);
 		break;
