@@ -4,65 +4,37 @@
 
 void ShootingEnemy::BaseMovement()
 {
-	ImageObject::physics->SetVelocity(DirectionToVector(pathPattern.front()) * movementSpeed);
-	switch (pathPattern.front())
-	{
-	case Directions::DOWN:
-		if (currentTimeToMove >= timeToMove) {
-			Directions d = pathPattern.front();
-			pathPattern.pop();
-			if (Loops())
-			{
-				pathPattern.push(d);
-			}
-			currentTimeToMove = 0;
-		}
-		break;
-	case Directions::RIGHT:
-		if (currentTimeToMove >= timeToMove) {
-			Directions d = pathPattern.front();
-			pathPattern.pop();
-			if (Loops())
-			{
-				pathPattern.push(d);
-			}
-			currentTimeToMove = 0;
-		}
-		break;
-	case Directions::LEFT:
-		if (currentTimeToMove >= timeToMove) {
-			Directions d = pathPattern.front();
-			pathPattern.pop();
-			if (Loops())
-			{
-				pathPattern.push(d);
-			}
-			currentTimeToMove = 0;
-		}
-	case Directions::UP:
-		if (currentTimeToMove >= timeToMove) {
-			Directions d = pathPattern.front();
-			pathPattern.pop();
-			if (Loops())
-			{
-				pathPattern.push(d);
-			}
-			currentTimeToMove = 0;
-		}
-		break;
-	default:
-		break;
-	}
 
 }
 
 void ShootingEnemy::Shoot()
 {
-	if (currentTimeToShoot >= timeToShoot) {
-		SPAWN.SpawnObject(new Bullet(ImageObject::transform->position, 
-			100, DirectionToVector(pathPattern.front())*5, false));
-		currentTimeToShoot = 0;
-	}
+    if (currentTimeToShoot >= timeToShoot) {
+        if (!pattern.empty()) {
+            int direction = pattern[patternIndex] - '0';  // Get the current direction from the pattern
+            Vector2 shootDirection;
+
+            // Convert direction index to movement vector
+            switch (direction) {
+            case 0: shootDirection = Vector2(0, 0); break;                       // No movement
+            case 1: shootDirection = Vector2(1, 0); break;                       // Right
+            case 2: shootDirection = Vector2(1, -1); break;                      // Up-Right
+            case 3: shootDirection = Vector2(0, -1); break;                      // Up
+            case 4: shootDirection = Vector2(-1, -1); break;                     // Up-Left
+            case 5: shootDirection = Vector2(-1, 0); break;                      // Left
+            case 6: shootDirection = Vector2(-1, 1); break;                      // Down-Left
+            case 7: shootDirection = Vector2(0, 1); break;                       // Down
+            case 8: shootDirection = Vector2(1, 1); break;                       // Down-Right
+            default: shootDirection = Vector2(0, -1); break;                     // Default to Up
+            }
+
+            shootDirection.Normalize();  // Normalize the direction to avoid speed issues
+
+            SPAWN.SpawnObject(new Bullet(ImageObject::transform->position,
+                100, shootDirection * 5, false));  // Shoot in the direction of movement
+        }
+        currentTimeToShoot = 0;  // Reset shooting timer
+    }
 }
 
 void ShootingEnemy::Update()

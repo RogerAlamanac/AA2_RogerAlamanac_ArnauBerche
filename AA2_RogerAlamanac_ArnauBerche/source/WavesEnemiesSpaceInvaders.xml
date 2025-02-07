@@ -27,46 +27,46 @@
 		<enemy>
 			<id>2</id>
 			<pattern>13571357</pattern>
-			<amount>10</amount>
+			<amount>1</amount>
 		</enemy>
 		<enemy>
 			<id>2</id>
 			<pattern>4482211</pattern>
-			<amount>4</amount>
+			<amount>1</amount>
 		</enemy>
 	</wave>
 	<wave>
 		<random_enemy>
-			<id>2</id>
+			<id>3</id>
 			<pattern>011055</pattern>
 			<amount>0</amount>
 		</random_enemy>
 		<enemy>
-			<id>1</id>
+			<id>3</id>
 			<pattern>1188772</pattern>
-			<amount>10</amount>
+			<amount>1</amount>
 		</enemy>
 		<enemy>
-			<id>2</id>
+			<id>3</id>
 			<pattern>250788334</pattern>
-			<amount>5</amount>
+			<amount>1</amount>
 		</enemy>
 	</wave>
 	<wave>
 		<random_enemy>
-			<id>2</id>
+			<id>4</id>
 			<pattern>011055</pattern>
 			<amount>0</amount>
 		</random_enemy>
 		<enemy>
-			<id>1</id>
+			<id>4</id>
 			<pattern>1188772</pattern>
-			<amount>10</amount>
+			<amount>1</amount>
 		</enemy>
 		<enemy>
-			<id>2</id>
+			<id>4</id>
 			<pattern>25088334</pattern>
-			<amount>15</amount>
+			<amount>1</amount>
 		</enemy>
 	</wave>
 
