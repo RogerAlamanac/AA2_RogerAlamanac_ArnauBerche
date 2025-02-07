@@ -8,12 +8,12 @@
 		</random_enemy>
 		<enemy>
 			<id>1</id>
-			<pattern>12345678</pattern>
+			<pattern>111777333888</pattern>
 			<amount>10</amount>
 		</enemy>
 		<enemy>
 			<id>1</id>
-			<pattern>66778877</pattern>
+			<pattern>1199222446633</pattern>
 			<amount>10</amount>
 		</enemy>
 	</wave>

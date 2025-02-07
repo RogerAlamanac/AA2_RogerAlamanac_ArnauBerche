@@ -11,7 +11,6 @@ private:
 	int currentScore = 0;
 	Wave currentWave;
 	Score* score;
-	TextObject* end;
 	WaveManager* waveManager = new WaveManager();
 public:
 	GameplaySplat() = default;

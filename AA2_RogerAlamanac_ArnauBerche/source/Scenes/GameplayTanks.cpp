@@ -32,6 +32,11 @@ void GameplayTanks::OnEnter()
 	score = new Score(Vector2(100, 100), 0);
 	score->SetText("Score: " + std::to_string(currentScore));
 	SPAWN.SpawnObject(score);
+
+	lifes = new TextObject(" ");
+	lifes->SetText("LIFES: " + std::to_string(player->GetCurrentLifes()));
+	lifes->GetTransform()->position = Vector2(RM->WINDOW_WIDTH / 2, 100);
+	SPAWN.SpawnObject(lifes);
 }
 
 void GameplayTanks::OnExit()
@@ -84,6 +89,8 @@ void GameplayTanks::Update()
 
 
 	score->SetText("Score: " + std::to_string(currentScore));
+	lifes->SetText("LIFES: " + std::to_string(player->GetCurrentLifes()));
+
 	if (IM.GetEvent(SDLK_ESCAPE, DOWN)) {
 		SM.SetNextScene("Main Menu");
 	}

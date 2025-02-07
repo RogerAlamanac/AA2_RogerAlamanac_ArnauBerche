@@ -7,6 +7,7 @@
 #include "../Enemies/ShootingEnemy.h"
 #include "../Scenes/Ranking.h"
 #include "../Scenes/HighScoreInput.h"
+#include "../InputManager/InputManager.h"
 
 void GameplaySplat::OnEnter()
 {
@@ -30,12 +31,9 @@ void GameplaySplat::OnEnter()
 	SPAWN.SpawnObject(dynamic_cast<Object*>(player));
 	score = new Score(Vector2(100, 100), 0);
 	score->SetText("Score: " + std::to_string(currentScore));
+	score->SetTextColor(SDL_Color{ 0, 0, 0, 255 });
 	SPAWN.SpawnObject(score);
-	end = new TextObject("End");
-	end->GetTransform()->position = Vector2((float)RM->WINDOW_WIDTH / 2 - 50, (float)RM->WINDOW_HEIGHT / 2 + 50);
-	end->SetText(" ");
-	end->GetTransform()->scale = Vector2(5, 5);
-	SPAWN.SpawnObject(end);
+
 }
 
 void GameplaySplat::OnExit()
@@ -86,9 +84,10 @@ void GameplaySplat::Update()
 	
 	score->SetText("Score: " + std::to_string(currentScore));
 
-	if (currentScore >= 500) {
-		end->SetText("NEW BEST!");
+	if (IM.GetEvent(SDLK_ESCAPE, DOWN)) {
+		SM.SetNextScene("Main Menu");
 	}
+
 	if (player->GetCurrentLifes() <= 0) {
 		Ranking* rankingScene = dynamic_cast<Ranking*>(SM.GetScene("Ranking"));
 		if (rankingScene && rankingScene->IsHighScore("Splat", currentScore)) {
@@ -136,7 +135,7 @@ void GameplaySplat::SpawnEnemyById(EnemyConfig enemy)
 	}
 	case 3: {
 		Vector2 spawnPos = GenerateSpawnPosition();
-		SeekerEnemy* seekEnemy = new SeekerEnemy(spawnPos, 100, 10, 10, 1000, true, player, SM.imagesToUse[SM.currentSceneInt][1]);
+		SeekerEnemy* seekEnemy = new SeekerEnemy(spawnPos, 5, 10, 10, 100, true, player, SM.imagesToUse[SM.currentSceneInt][1]);
 		seekEnemy->SetPattern(enemy.pattern);
 		SPAWN.SpawnObject(seekEnemy);
 		break;

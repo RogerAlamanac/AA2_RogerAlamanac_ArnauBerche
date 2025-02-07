@@ -11,6 +11,7 @@ private:
 	Wave currentWave;
 	int currentWaveIndex = 0;
 	Score* score;
+	TextObject* lifes;
 	WaveManager* waveManager = new WaveManager();
 public:
 	GameplayTanks() = default;

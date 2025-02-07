@@ -76,6 +76,19 @@ void Swatter::Movement() {
 	else {
 		transform->position = transform->position + velocity;
 	}
+
+    if (transform->position.x < 0) {
+        transform->position.x = 0;
+    }
+    if (transform->position.y < 0) {
+        transform->position.y = 0;
+    }
+    if (transform->position.x > RM->WINDOW_WIDTH - 50) {
+        transform->position.x = RM->WINDOW_WIDTH - 50;
+    }
+    if (transform->position.y > RM->WINDOW_HEIGHT - 50) {
+        transform->position.y = RM->WINDOW_HEIGHT - 50;
+    }
 }
 
 void Swatter::ReceiveDamage()

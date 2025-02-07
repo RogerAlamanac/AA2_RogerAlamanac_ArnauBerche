@@ -155,6 +155,7 @@
     <Media Include="resources\audio\sfx\d.wav" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="highscores.bin" />
     <None Include="resources\images\Tanks\background-tanks1.avif" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

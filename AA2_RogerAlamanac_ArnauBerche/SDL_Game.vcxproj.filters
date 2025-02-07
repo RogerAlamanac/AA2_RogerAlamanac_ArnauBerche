@@ -396,5 +396,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\images\Tanks\background-tanks1.avif" />
+    <None Include="highscores.bin">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
